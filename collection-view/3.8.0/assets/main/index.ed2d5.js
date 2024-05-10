@@ -326,7 +326,7 @@ System.register("chunks:///_virtual/debug-view-runtime-control.ts", ['./rollupPl
   };
 });
 
-System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
+System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout, YXEdgeInsets;
 
   return {
@@ -348,7 +348,7 @@ System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -470,7 +470,7 @@ System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
+System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout, YXEdgeInsets;
 
   return {
@@ -492,7 +492,7 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -623,7 +623,7 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
+System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, math, Component, YXCollectionView, YXFlowLayout, YXIndexPath;
 
   return {
@@ -643,7 +643,7 @@ System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelper
       Label = module.Label;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -778,7 +778,7 @@ System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Toggle, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXCoverLayout, YXFlowLayout;
 
   return {
@@ -801,7 +801,7 @@ System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelper
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXCoverLayout = module.YXCoverLayout;
@@ -929,8 +929,8 @@ System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts', './yx-masonry-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout, YXEdgeInsets, YXMasonryFlowLayout;
+System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-masonry-flow-layout.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXMasonryFlowLayout, YXFlowLayout, YXEdgeInsets;
 
   return {
     setters: [function (module) {
@@ -951,14 +951,14 @@ System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelper
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
+    }, function (module) {
+      YXMasonryFlowLayout = module.YXMasonryFlowLayout;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
     }, function (module) {
       YXEdgeInsets = module.YXEdgeInsets;
-    }, function (module) {
-      YXMasonryFlowLayout = module.YXMasonryFlowLayout;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
@@ -1081,7 +1081,7 @@ System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, math, Component, randomRangeInt, YXCollectionView, YXFlowLayout;
 
   return {
@@ -1100,7 +1100,7 @@ System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelper
       math = module.math;
       Component = module.Component;
       randomRangeInt = module.randomRangeInt;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -1248,7 +1248,7 @@ System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout;
 
   return {
@@ -1270,7 +1270,7 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -1373,7 +1373,7 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout;
 
   return {
@@ -1394,7 +1394,7 @@ System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -1504,7 +1504,7 @@ System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout;
 
   return {
@@ -1526,7 +1526,7 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -1629,7 +1629,7 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout;
 
   return {
@@ -1651,7 +1651,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -1750,7 +1750,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo6.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/demo6.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Toggle, NodeEventType, director, math, instantiate, UITransform, Label, Sprite, ScrollView, log, Component, YXCollectionView, YXFlowLayout;
 
   return {
@@ -1774,7 +1774,7 @@ System.register("chunks:///_virtual/demo6.ts", ['./rollupPluginModLoBabelHelpers
       ScrollView = module.ScrollView;
       log = module.log;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -1965,7 +1965,7 @@ System.register("chunks:///_virtual/demo6.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo7.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
+System.register("chunks:///_virtual/demo7.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, math, UITransform, Sprite, v3, Label, HorizontalTextAlignment, log, Component, randomRangeInt, YXCollectionView, YXFlowLayout, YXEdgeInsets;
 
   return {
@@ -1990,7 +1990,7 @@ System.register("chunks:///_virtual/demo7.ts", ['./rollupPluginModLoBabelHelpers
       log = module.log;
       Component = module.Component;
       randomRangeInt = module.randomRangeInt;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -2233,7 +2233,7 @@ System.register("chunks:///_virtual/demo7.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo8.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
+System.register("chunks:///_virtual/demo8.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout, YXEdgeInsets;
 
   return {
@@ -2255,7 +2255,7 @@ System.register("chunks:///_virtual/demo8.ts", ['./rollupPluginModLoBabelHelpers
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -2357,7 +2357,7 @@ System.register("chunks:///_virtual/demo8.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
+System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-types.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout, YXEdgeInsets;
 
   return {
@@ -2379,7 +2379,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
       Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -2510,7 +2510,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Node, ProgressBar, instantiate, UITransform, Label, director, math, Component, YXCollectionView, YXFlowLayout;
 
   return {
@@ -2531,7 +2531,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
       director = module.director;
       math = module.math;
       Component = module.Component;
-    }, function (module) {
+    }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
@@ -2705,9 +2705,40 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
   };
 });
 
-System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts', './yx-types.ts'], function () {
+System.register("chunks:///_virtual/index.ts", ['cc', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts', './yx-types.ts'], function (exports) {
+  var cclegacy;
   return {
-    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+    }, function (module) {
+      var _setter = {};
+      _setter.YXCollectionView = module.YXCollectionView;
+      _setter.YXLayout = module.YXLayout;
+      _setter.YXLayoutAttributes = module.YXLayoutAttributes;
+      exports(_setter);
+    }, function (module) {
+      exports('YXCoverLayout', module.YXCoverLayout);
+    }, function (module) {
+      exports('YXFlowLayout', module.YXFlowLayout);
+    }, function (module) {
+      exports('YXMasonryFlowLayout', module.YXMasonryFlowLayout);
+    }, function (module) {
+      var _setter = {};
+      _setter.YXEdgeInsets = module.YXEdgeInsets;
+      _setter.YXIndexPath = module.YXIndexPath;
+      exports(_setter);
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "1e299YNYrBBRo6Zh9p5Ik3Z", "index", undefined);
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './index.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts', './yx-types.ts'], function () {
+  return {
+    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     execute: function () {}
   };
 });
@@ -3031,7 +3062,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           _initializerDefineProperty(_this3, "scrollEnabled", _descriptor2, _assertThisInitialized(_this3));
           /**
            * 每多少帧刷新一次可见节点，1 表示每帧都刷
-           * @default 1
            */
 
 
@@ -3160,7 +3190,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
         _proto4.onTouchItem = function onTouchItem(ev) {
           if (this.onTouchItemAt) {
-            var _cell2 = ev.target.getComponent(_cell_) || ev.target.addComponent(_cell_);
+            var _cell2 = ev.target.getComponent(_cell_);
 
             this.onTouchItemAt(_cell2.attributes.indexPath, this);
           }
@@ -3173,7 +3203,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
         _proto4.getVisibleNode = function getVisibleNode(indexPath) {
           return this.visibleNodes.find(function (element) {
-            var cell = element.getComponent(_cell_) || element.addComponent(_cell_);
+            var cell = element.getComponent(_cell_);
             return cell.attributes.indexPath.equals(indexPath);
           });
         }
@@ -3209,10 +3239,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           for (var index = 0; index < this.visibleNodes.length; index++) {
             var element = this.visibleNodes[index];
-
-            var _cell3 = element.getComponent(_cell_) || element.addComponent(_cell_);
-
-            this.pools.get(_cell3.identifier).put(element);
+            this.pools.get(element.getComponent(_cell_).identifier).put(element);
           }
 
           this.visibleNodes = []; // 记录一下当前的偏移量，保证数据更新之后位置也不会太偏
@@ -3324,7 +3351,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
 
           this.visibleNodes = this.visibleNodes.filter(function (element) {
-            var cell = element.getComponent(_cell_) || element.addComponent(_cell_);
+            var cell = element.getComponent(_cell_);
 
             if (visibleRect.intersects(cell.attributes.frame) == false) {
               _this4.pools.get(cell.identifier).put(element);
@@ -3360,13 +3387,18 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
 
         _proto4.applyLayoutAttributes = function applyLayoutAttributes(node, attributes, bringToFront) {
-          var cell = node.getComponent(_cell_) || node.addComponent(_cell_);
+          var cell = node.getComponent(_cell_);
           cell.attributes = attributes;
           var transform = node.getComponent(UITransform) || node.addComponent(UITransform);
           transform.setContentSize(attributes.frame.size);
-          var pos = node.position.clone();
-          pos.x = -(this.layout.contentSize.width - attributes.frame.width) * 0.5 + attributes.frame.x;
-          pos.y = +(this.layout.contentSize.height - attributes.frame.height) * 0.5 - attributes.frame.y;
+          var pos = attributes["_in_collection_view_pos"];
+
+          if (pos == null) {
+            pos = node.position.clone();
+            pos.x = -(this.layout.contentSize.width - attributes.frame.width) * 0.5 + attributes.frame.x;
+            pos.y = +(this.layout.contentSize.height - attributes.frame.height) * 0.5 - attributes.frame.y;
+            attributes["_in_collection_view_pos"] = pos;
+          }
 
           if (attributes.offset) {
             pos.add(attributes.offset);
@@ -3435,6 +3467,13 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this.node.off(ScrollView.EventType.SCROLLING, this.onScrolling, this);
           this.node.off(ScrollView.EventType.TOUCH_UP, this.onScrollTouchUp, this);
           this.node.off(ScrollView.EventType.SCROLL_ENDED, this.onScrollEnded, this);
+          this.visibleNodes = [];
+          this.pools.forEach(function (element) {
+            element.clear();
+          });
+          this.pools.clear();
+          this.makers.clear();
+          this.layout.attributes = [];
         };
 
         _proto4.update = function update(dt) {
@@ -3501,6 +3540,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
             if (result == null) {
               result = this.node.addComponent(_scroll_view); // 配置 scroll view 默认参数
+
+              result.brake = 0.6;
             }
 
             if (result.content == null) {
@@ -3536,9 +3577,9 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             for (var index = 0; index < this.visibleNodes.length; index++) {
               var element = this.visibleNodes[index];
 
-              var _cell4 = element.getComponent(_cell_) || element.addComponent(_cell_);
+              var _cell3 = element.getComponent(_cell_);
 
-              result.push(_cell4.attributes.indexPath.clone());
+              result.push(_cell3.attributes.indexPath.clone());
             }
 
             return result;
