@@ -1,0 +1,42 @@
+{
+    "paths": {},
+    "uuids": [
+        "02delMVqdBD70a/HSD99FK",
+        "a2MjXRFdtLlYQ5ouAFv/+R",
+        "aaxVkngFZEAYVQWGQJMl3F",
+        "adC00nbEhJtLv4itEDazu7",
+        "ecpdLyjvZBwrvm+cedCcQy"
+    ],
+    "scenes": {
+        "db://assets/home/home.fire": "aaxVkngFZEAYVQWGQJMl3F"
+    },
+    "redirect": [
+        "02delMVqdBD70a/HSD99FK",
+        0,
+        "ecpdLyjvZBwrvm+cedCcQy",
+        0
+    ],
+    "deps": [
+        "internal"
+    ],
+    "packs": {
+        "096eebb84": [
+            "a2MjXRFdtLlYQ5ouAFv/+R",
+            "aaxVkngFZEAYVQWGQJMl3F",
+            "adC00nbEhJtLv4itEDazu7"
+        ]
+    },
+    "name": "main",
+    "importBase": "import",
+    "nativeBase": "native",
+    "debug": true,
+    "isZip": false,
+    "encrypted": false,
+    "versions": {
+        "import": [
+            "096eebb84",
+            "5a58b"
+        ],
+        "native": []
+    }
+}
