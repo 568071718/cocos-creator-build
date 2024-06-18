@@ -67,9 +67,9 @@
         "designResolution": {
             "width": 720,
             "height": 1280,
-            "policy": 3
+            "policy": 2
         },
-        "orientation": "auto"
+        "orientation": "portrait"
     },
     "rendering": {
         "renderPipeline": ""

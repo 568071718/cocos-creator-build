@@ -1586,13 +1586,13 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
       YXCoverLayout = module.YXCoverLayout;
     }],
     execute: function () {
-      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
 
       cclegacy._RF.push({}, "9a7678fMaNLsLhHZevOcP9F", "Demo15Cell2", undefined);
 
       var ccclass = _decorator.ccclass,
           property = _decorator.property;
-      var Demo15Cell2 = exports('Demo15Cell2', (_dec = ccclass('Demo15Cell2'), _dec2 = property(YXCollectionView), _dec3 = property(Prefab), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+      var Demo15Cell2 = exports('Demo15Cell2', (_dec = ccclass('Demo15Cell2'), _dec2 = property(YXCollectionView), _dec3 = property(Prefab), _dec4 = property(Prefab), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
         _inheritsLoose(Demo15Cell2, _Component);
 
         function Demo15Cell2() {
@@ -1607,6 +1607,8 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
           _initializerDefineProperty(_this, "collectionView", _descriptor, _assertThisInitialized(_this));
 
           _initializerDefineProperty(_this, "cellPrefab", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "layoutPrefab", _descriptor3, _assertThisInitialized(_this));
 
           return _this;
         }
@@ -1626,7 +1628,10 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
 
             return banner.node;
           });
-          this.collectionView.numberOfSections = 4;
+          this.collectionView.register("layout", function () {
+            return instantiate(_this2.layoutPrefab);
+          });
+          this.collectionView.numberOfSections = 5;
 
           this.collectionView.numberOfItems = function (section) {
             if (section == 0) {
@@ -1634,10 +1639,14 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
             }
 
             if (section == 1) {
-              return 5;
+              return 1;
             }
 
             if (section == 2) {
+              return 5;
+            }
+
+            if (section == 3) {
               return 3;
             }
 
@@ -1649,6 +1658,10 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
               return collectionView.dequeueReusableCell("banner");
             }
 
+            if (indexPath.section == 1) {
+              return collectionView.dequeueReusableCell("layout");
+            }
+
             return collectionView.dequeueReusableCell("cell");
           };
 
@@ -1656,6 +1669,10 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
             if (indexPath.section == 0) {
               var banner = cell.getComponent(YXCollectionView);
               banner.reloadData();
+              return;
+            }
+
+            if (indexPath.section == 1) {
               return;
             }
 
@@ -1680,10 +1697,14 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
             }
 
             if (indexPath.section == 1) {
-              return new math.Size(213, 213);
+              return new math.Size(680, 800);
             }
 
             if (indexPath.section == 2) {
+              return new math.Size(213, 213);
+            }
+
+            if (indexPath.section == 3) {
               return new math.Size(collectionView.scrollView.view.width - 20 * 2, 200);
             }
 
@@ -1734,6 +1755,13 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
           return null;
         }
       }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "cellPrefab", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "layoutPrefab", [_dec4], {
         configurable: true,
         enumerable: true,
         writable: true,
@@ -2525,6 +2553,8 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
         _proto.start = function start() {
           var _this2 = this;
 
+          this.collectionView.frameInterval = 1;
+          this.collectionView.recycleInterval = 1;
           this.collectionView.register("cell", function () {
             return instantiate(_this2.cellPrefab);
           });
@@ -3569,9 +3599,134 @@ System.register("chunks:///_virtual/index.ts", ['cc', './yx-collection-view.ts',
   };
 });
 
-System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './Demo15Cell1.ts', './Demo15Cell2.ts', './demo15.ts', './demo16.ts', './demo17.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './index.ts', './yx-carousel-layout.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts'], function () {
+System.register("chunks:///_virtual/LayoutCell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Node, Sprite, math, Label, Component;
+
   return {
-    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      Sprite = module.Sprite;
+      math = module.math;
+      Label = module.Label;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+
+      cclegacy._RF.push({}, "bd690DdmBNFEog4cAIIP539", "LayoutCell", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      /**
+       * 嵌套 Layout 组件示例
+       */
+
+      var LayoutCell = exports('LayoutCell', (_dec = ccclass('LayoutCell'), _dec2 = property(Node), _dec3 = property(Node), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(LayoutCell, _Component);
+
+        function LayoutCell() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+          /**
+           * 当前选中的 tab idx
+           */
+
+          _this.selectTab = 0;
+
+          _initializerDefineProperty(_this, "titles", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "content", _descriptor2, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = LayoutCell.prototype;
+
+        _proto.onLoad = function onLoad() {};
+
+        _proto.start = function start() {
+          this.reloadTab();
+          this.reloadContent();
+        }
+        /**
+         * 更新选中标题
+         */
+        ;
+
+        _proto.reloadTab = function reloadTab() {
+          for (var index = 0; index < 4; index++) {
+            var name = "Node-00" + index;
+            var node = this.titles.getChildByName(name);
+            var selected = index == this.selectTab;
+
+            if (selected) {
+              node.getComponent(Sprite).color = math.Color.RED;
+            } else {
+              node.getComponent(Sprite).color = math.Color.WHITE;
+            }
+          }
+        }
+        /**
+         * 更新 9宫格 数据
+         */
+        ;
+
+        _proto.reloadContent = function reloadContent() {
+          for (var index = 0; index < 9; index++) {
+            var name = "Node-00" + index;
+            var node = this.content.getChildByName(name);
+            var contentText = this.selectTab + "-" + name;
+            node.getChildByName("label").getComponent(Label).string = contentText;
+          }
+        }
+        /**
+         * 标题按钮点击事件
+         */
+        ;
+
+        _proto.onTouchTitleElement = function onTouchTitleElement(ev, idx) {
+          this.selectTab = idx;
+          this.reloadTab();
+          this.reloadContent();
+        };
+
+        return LayoutCell;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "titles", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "content", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './Demo15Cell1.ts', './Demo15Cell2.ts', './LayoutCell.ts', './demo15.ts', './demo16.ts', './demo17.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './index.ts', './yx-carousel-layout.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts'], function () {
+  return {
+    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     execute: function () {}
   };
 });
@@ -3735,6 +3890,10 @@ System.register("chunks:///_virtual/yx-carousel-layout.ts", ['./rollupPluginModL
           return true;
         };
 
+        _proto.shouldUpdateAttributesForBoundsChange = function shouldUpdateAttributesForBoundsChange() {
+          return true;
+        };
+
         _proto.scrollTo = function scrollTo(indexPath, collectionView) {
           var leftX = (this.attributes.length * 0 + indexPath.item) * collectionView.scrollView.view.width;
           var midX = (this.attributes.length * 1 + indexPath.item) * collectionView.scrollView.view.width;
@@ -3754,10 +3913,6 @@ System.register("chunks:///_virtual/yx-carousel-layout.ts", ['./rollupPluginModL
           var flag = array.sort(function (a, b) {
             return Math.abs(currentX - a.value) - Math.abs(currentX - b.value);
           }).shift().flag;
-
-          if (flag == 0) {
-            _vec2Out.x = leftX;
-          }
 
           do {
             if (flag == 0) {
@@ -4252,7 +4407,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         _proto4.onScrollEnded = function onScrollEnded(collectionView) {}
         /**
          * @optional
-         * 返回区域内可见的节点属性，并实时的调整这些节点变换效果
+         * 返回区域内可见的节点属性，并实时的调整这些节点变换效果 (如果在这个方法里调整了节点变换属性，需要重写 shouldUpdateAttributesForBoundsChange 以支持实时变换)
          * 根据实际的布局情况，计算出当前屏幕内需要显示的布局属性
          * 这个方法会直接影响到列表的性能，如果在自定义的时候对性能要求不高(比如明确知道数据量不多的情况下)，可以忽略此方法
          * @param rect 当前滚动视图的可见区域
@@ -4305,6 +4460,16 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
         _proto4.shouldUpdateAttributesOpacity = function shouldUpdateAttributesOpacity() {
           return false;
+        }
+        /**
+         * @optional
+         * 此布局下的节点，是否需要实时更新变换效果
+         * @returns 返回 true 会忽略 YXCollectionView 的 frameInterval 设置，强制在滚动过程中实时更新节点
+         */
+        ;
+
+        _proto4.shouldUpdateAttributesForBoundsChange = function shouldUpdateAttributesForBoundsChange() {
+          return false;
         };
 
         return YXLayout;
@@ -4352,14 +4517,13 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
 
           _initializerDefineProperty(_this5, "frameInterval", _descriptor3, _assertThisInitialized(_this5));
-
-          _this5._frameIdx = 0;
           /**
            * 滚动过程中，每多少帧回收一次不可见节点，1表示每帧都回收，0表示不在滚动过程中回收不可见节点
            * @bug 滚动过程中如果实时的回收不可见节点，有时候会收不到 scroll view 的 cancel 事件，导致 scroll view 的滚动状态不会更新 (且收不到滚动结束事件)
            * @fix 当这个属性设置为 0 时，只会在 `touch-up` 和 `scroll-ended` 里面回收不可见节点  
            * 如果需要准确的监听 scroll 结束事件，把这个属性设为 0
            */
+
 
           _initializerDefineProperty(_this5, "recycleInterval", _descriptor4, _assertThisInitialized(_this5));
           /**
@@ -4383,7 +4547,15 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            */
 
           _this5.numberOfItems = 0;
+          /**
+           * 每个注册的标识符对应一个节点池
+           */
+
           _this5.pools = new Map();
+          /**
+           * 每个注册的标识符对应一个生成节点回调
+           */
+
           _this5.makers = new Map();
           /**
            * 配置每块内容对应的 UI 节点
@@ -4416,16 +4588,30 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5.layout = null;
           /**
-           * 获取当前正在显示的所有节点
+           * @version 1.0.3 新增 ( key-value 结构替代原来的 visibleNodes 数组，减少查找复杂度)
+           * 保存列表上所有 cell 节点
+           * key = indexPath
+           * value = Node
            */
 
-          _this5.visibleNodes = [];
+          _this5.allCellNodes = {};
           /**
            * 记录 @reloadData 执行了多少次了，用来区分刷新列表的时候是否是首次刷新列表
            */
 
           _this5.reloadDataCounter = 0;
+          _this5._frameIdx = 0;
+          /**
+           * 刷新当前可见节点
+           * @param force true: 立即刷新  false: 下帧刷新
+           */
+
           _this5._late_update_visible_data = false;
+          /**
+           * 回收不可见节点逻辑
+           */
+
+          _this5._late_recycle_invisible_node = false;
           _this5._scroll_offset_on_touch_start = null;
           return _this5;
         }
@@ -4465,13 +4651,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           var result = pool.get();
 
           if (result == null) {
+            // 如果对应的重用池里没有的话，新生成一个
             var maker = this.makers.get(identifier);
 
             if (maker instanceof Function == false) {
               throw new Error("YXCollectionView: register() \u53C2\u6570\u9519\u8BEF\uFF0C\u8BF7\u6B63\u786E\u914D\u7F6E maker \u56DE\u8C03\u51FD\u6570\u4EE5\u751F\u6210\u6807\u8BC6\u5BF9\u5E94\u7684\u8282\u70B9");
             }
 
-            result = maker();
+            result = maker(); // 关联节点的自定义组件
 
             if (result instanceof Node && pool.poolHandlerComp instanceof Function) {
               result.getComponent(pool.poolHandlerComp) || result.addComponent(pool.poolHandlerComp);
@@ -4503,10 +4690,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
 
         _proto5.getVisibleNode = function getVisibleNode(indexPath) {
-          return this.visibleNodes.find(function (element) {
-            var cell = element.getComponent(_cell_);
-            return cell.attributes.indexPath.equals(indexPath);
-          });
+          return this.allCellNodes[indexPath.toString()];
         }
         /**
          * 获取指定节点的索引
@@ -4538,12 +4722,13 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           this.scrollView.stopAutoScroll(); // 移除掉当前所有节点，准备刷新
 
-          for (var index = 0; index < this.visibleNodes.length; index++) {
-            var element = this.visibleNodes[index];
+          for (var key in this.allCellNodes) {
+            var element = this.allCellNodes[key];
             this.pools.get(element.getComponent(_cell_).identifier).put(element);
+            delete this.allCellNodes[key];
           }
 
-          this.visibleNodes = []; // 记录一下当前的偏移量，保证数据更新之后位置也不会太偏
+          this.allCellNodes = {}; // 记录一下当前的偏移量，保证数据更新之后位置也不会太偏
 
           var offset = this.scrollView.getScrollOffset();
           offset.x = -offset.x; // 重新计算一遍布局属性
@@ -4562,7 +4747,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           } // 更新 cell 节点
 
 
-          this.reloadVisibleCells();
+          this.markForUpdateVisibleData(true);
           this.reloadDataCounter++;
         };
         /**
@@ -4576,24 +4761,20 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           _rectOut.x = -_rectOut.x;
           _rectOut.size = this.scrollView.view.contentSize; // 根据可见区域，找出对应的布局属性
 
-          var layoutAttributes = this.layout.layoutAttributesForElementsInRect(_rectOut, this);
+          var layoutAttributes = this.layout.layoutAttributesForElementsInRect(_rectOut, this); // 是否需要实时更新节点
 
-          if (layoutAttributes == null || layoutAttributes == this.layout.attributes) {
-            layoutAttributes = this.layout.attributes.slice();
-          } // 按 zIndex 排序
-
+          var shouldUpdateAttributesForBoundsChange = this.layout.shouldUpdateAttributesForBoundsChange(); // 按 zIndex 排序
 
           var shouldUpdateAttributesZIndex = this.layout.shouldUpdateAttributesZIndex();
 
           if (shouldUpdateAttributesZIndex) {
+            if (layoutAttributes == null || layoutAttributes == this.layout.attributes) {
+              layoutAttributes = this.layout.attributes.slice();
+            }
+
             layoutAttributes.sort(function (a, b) {
               return a.zIndex - b.zIndex;
             });
-          } // 回收不可见节点
-
-
-          if (this.recycleInterval >= 1 && this._frameIdx % this.recycleInterval == 0) {
-            this.recycleInvisibleNodes(_rectOut);
           }
           /*
           let poolsCounter = 0
@@ -4617,15 +4798,22 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             var visibleNode = this.getVisibleNode(element.indexPath);
 
             if (visibleNode) {
-              this.applyLayoutAttributes(visibleNode, element, shouldUpdateAttributesZIndex);
+              if (shouldUpdateAttributesForBoundsChange) {
+                this.applyLayoutAttributes(visibleNode, element);
+              }
+
+              if (shouldUpdateAttributesZIndex) {
+                visibleNode.setSiblingIndex(-1);
+              }
+
               continue;
             } // 需要显示但是当前未显示出来的
 
 
             var node = this.cellForItemAt(element.indexPath, this);
             node.parent = this.scrollView.content;
-            this.applyLayoutAttributes(node, element, shouldUpdateAttributesZIndex);
-            this.visibleNodes.push(node);
+            this.applyLayoutAttributes(node, element);
+            this.allCellNodes[element.indexPath.toString()] = node;
 
             if (this.onCellDisplay) {
               this.onCellDisplay(node, element.indexPath, this);
@@ -4640,8 +4828,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         ;
 
         _proto5.recycleInvisibleNodes = function recycleInvisibleNodes(visibleRect) {
-          var _this6 = this;
-
           if (visibleRect === void 0) {
             visibleRect = null;
           }
@@ -4656,8 +4842,11 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           var _realFrame = new math.Rect();
 
           var _contentSize = this.scrollView.content.getComponent(UITransform).contentSize;
-          this.visibleNodes = this.visibleNodes.filter(function (element) {
-            var cell = element.getComponent(_cell_);
+
+          for (var key in this.allCellNodes) {
+            var element = this.allCellNodes[key];
+
+            var _cell3 = element.getComponent(_cell_);
             /**
              * @version 1.0.2
              * 检查节点是否可见应该是通过变换后的位置来检查
@@ -4665,45 +4854,24 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
              * 把实际的 position 转换为 origin
              */
 
+
             var boundingBox = element.getComponent(UITransform).getBoundingBox();
             _realFrame.size = boundingBox.size;
             _realFrame.x = (_contentSize.width - _realFrame.width) * 0.5 + element.position.x;
             _realFrame.y = (_contentSize.height - _realFrame.height) * 0.5 - element.position.y;
 
             if (visibleRect.intersects(_realFrame) == false) {
-              _this6.pools.get(cell.identifier).put(element);
-
-              return false;
+              this.pools.get(_cell3.identifier).put(element);
+              delete this.allCellNodes[key];
             }
-
-            return true;
-          });
+          }
         }
         /**
-         * 刷新当前可见节点
-         * @param force true: 立即刷新  false: 下帧刷新
+         * 调整节点的位置/变换
          */
         ;
 
-        _proto5.markForUpdateVisibleData = function markForUpdateVisibleData(force) {
-          if (force === void 0) {
-            force = false;
-          }
-
-          if (force) {
-            this.reloadVisibleCells();
-            return;
-          }
-
-          this._late_update_visible_data = true;
-        };
-        /**
-         * 调整节点的位置/变换
-         * @param bringToFront 是否把这个节点移到最上层显示
-         */
-
-
-        _proto5.applyLayoutAttributes = function applyLayoutAttributes(node, attributes, bringToFront) {
+        _proto5.applyLayoutAttributes = function applyLayoutAttributes(node, attributes) {
           var cell = node.getComponent(_cell_);
           cell.attributes = attributes;
           var transform = node.getComponent(UITransform) || node.addComponent(UITransform);
@@ -4729,10 +4897,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           if (this.layout.shouldUpdateAttributesOpacity() && attributes.opacity) {
             var opacity = node.getComponent(UIOpacity) || node.addComponent(UIOpacity);
             opacity.opacity = attributes.opacity;
-          }
-
-          if (bringToFront) {
-            node.setSiblingIndex(-1);
           }
         }
         /**
@@ -4770,7 +4934,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         ;
 
         _proto5.onLoad = function onLoad() {
-          // this.node.on(NodeEventType.TOUCH_START, this.onTouchStart, this)
           this.node.on(ScrollView.EventType.SCROLL_BEGAN, this.onScrollBegan, this);
           this.node.on(ScrollView.EventType.SCROLLING, this.onScrolling, this);
           this.node.on(ScrollView.EventType.TOUCH_UP, this.onScrollTouchUp, this);
@@ -4779,12 +4942,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         };
 
         _proto5.onDestroy = function onDestroy() {
-          // this.node.off(NodeEventType.TOUCH_START, this.onTouchStart, this)
           this.node.off(ScrollView.EventType.SCROLL_BEGAN, this.onScrollBegan, this);
           this.node.off(ScrollView.EventType.SCROLLING, this.onScrolling, this);
           this.node.off(ScrollView.EventType.TOUCH_UP, this.onScrollTouchUp, this);
           this.node.off(ScrollView.EventType.SCROLL_ENDED, this.onScrollEnded, this);
-          this.visibleNodes = [];
+          this.allCellNodes = {};
+          delete this.allCellNodes;
           this.pools.forEach(function (element) {
             element.clear();
           });
@@ -4797,35 +4960,51 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         };
 
         _proto5.update = function update(dt) {
-          this.updateVisibleDataIfNeeds(dt);
-        }
-        /**
-         * 更新可见区域的 cell ，如果需要的话
-         */
-        ;
-
-        _proto5.updateVisibleDataIfNeeds = function updateVisibleDataIfNeeds(dt) {
-          if (this._late_update_visible_data) {
-            this._late_update_visible_data = false;
-            this.reloadVisibleCells();
-          }
+          this._frameIdx++;
+          this.update_reloadVisibleCellsIfNeeds(dt);
+          this.update_recycleInvisibleNodesIfNeeds(dt);
         };
 
-        _proto5.onTouchStart = function onTouchStart() {};
+        _proto5.markForUpdateVisibleData = function markForUpdateVisibleData(force) {
+          if (force === void 0) {
+            force = false;
+          }
 
-        _proto5.onScrollBegan = function onScrollBegan() {};
-
-        _proto5.onScrolling = function onScrolling() {
-          this._frameIdx++;
-
-          if (this.frameInterval <= 1) {
+          if (force) {
             this.reloadVisibleCells();
             return;
           }
 
-          if (this._frameIdx % this.frameInterval == 0) {
-            this.reloadVisibleCells();
+          this._late_update_visible_data = true;
+        }
+        /**
+         * 更新可见区域节点逻辑
+         */
+        ;
+
+        _proto5.update_reloadVisibleCellsIfNeeds = function update_reloadVisibleCellsIfNeeds(dt) {
+          if (this.frameInterval <= 1 || this._frameIdx % this.frameInterval == 0) {
+            if (this._late_update_visible_data) {
+              this._late_update_visible_data = false;
+              this.reloadVisibleCells();
+            }
           }
+        };
+
+        _proto5.update_recycleInvisibleNodesIfNeeds = function update_recycleInvisibleNodesIfNeeds(dt) {
+          if (this.recycleInterval >= 1 && this._frameIdx % this.recycleInterval == 0) {
+            if (this._late_recycle_invisible_node) {
+              this._late_recycle_invisible_node = false;
+              this.recycleInvisibleNodes();
+            }
+          }
+        };
+
+        _proto5.onScrollBegan = function onScrollBegan() {};
+
+        _proto5.onScrolling = function onScrolling() {
+          this.markForUpdateVisibleData(this.layout.shouldUpdateAttributesForBoundsChange());
+          this._late_recycle_invisible_node = true;
         };
 
         _proto5.onScrollTouchUp = function onScrollTouchUp() {
@@ -4833,6 +5012,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         };
 
         _proto5.onScrollEnded = function onScrollEnded() {
+          this.markForUpdateVisibleData();
           this.recycleInvisibleNodes();
           this.layout.onScrollEnded(this);
         };
@@ -4844,7 +5024,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             this.scrollView.scrollToOffset(endValue.offset, endValue.time);
             this.markForUpdateVisibleData();
           }
-        };
+        }
+        /** ---------- deprecated ---------- **/
+
+        /**
+         * 是否在滚动过程中立即回收不可见节点
+         * @deprecated 使用 `recycleInterval` 代替
+         */
+        ;
 
         _createClass(YXCollectionView, [{
           key: "scrollView",
@@ -4857,8 +5044,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
             if (result == null) {
               result = this.node.addComponent(_scroll_view); // 配置 scroll view 默认参数
-
-              result.brake = 0.6;
             }
 
             if (result.content == null) {
@@ -4887,29 +5072,43 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             return this.scrollView;
           }
         }, {
-          key: "immediateAutoRecycleInvisibleNodes",
-          set:
+          key: "visibleNodes",
+          get:
           /**
-           * 是否在滚动过程中立即回收不可见节点
-           * @deprecated 使用 `recycleInterval` 代替
+           * 获取当前正在显示的所有节点
            */
-          function set(value) {
-            this.recycleInterval = value ? 1 : 0;
+          function get() {
+            var result = [];
+
+            for (var key in this.allCellNodes) {
+              result.push(this.allCellNodes[key]);
+            }
+
+            return result;
           }
+          /**
+           * 获取所有正在显示节点的索引
+           */
+
         }, {
           key: "visibleIndexPaths",
           get: function get() {
             var result = [];
 
-            for (var index = 0; index < this.visibleNodes.length; index++) {
-              var element = this.visibleNodes[index];
+            for (var key in this.allCellNodes) {
+              var element = this.allCellNodes[key];
 
-              var _cell3 = element.getComponent(_cell_);
+              var _cell4 = element.getComponent(_cell_);
 
-              result.push(_cell3.attributes.indexPath.clone());
+              result.push(_cell4.attributes.indexPath.clone());
             }
 
             return result;
+          }
+        }, {
+          key: "immediateAutoRecycleInvisibleNodes",
+          set: function set(value) {
+            this.recycleInterval = value ? 1 : 0;
           }
         }], [{
           key: "VERSION",
@@ -4918,7 +5117,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            * 版本号
            */
           function get() {
-            return "1.0.2";
+            return "1.0.3";
           }
         }]);
 
@@ -4942,14 +5141,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         enumerable: true,
         writable: true,
         initializer: function initializer() {
-          return 2;
+          return 1;
         }
       }), _descriptor4 = _applyDecoratedDescriptor(_class6.prototype, "recycleInterval", [_dec9], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
-          return 30;
+          return 1;
         }
       }), _descriptor5 = _applyDecoratedDescriptor(_class6.prototype, "is3DCell", [_dec10], {
         configurable: true,
@@ -5173,6 +5372,10 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
         };
 
         _proto.shouldUpdateAttributesZIndex = function shouldUpdateAttributesZIndex() {
+          return true;
+        };
+
+        _proto.shouldUpdateAttributesForBoundsChange = function shouldUpdateAttributesForBoundsChange() {
           return true;
         };
 
