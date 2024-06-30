@@ -326,8 +326,8 @@ System.register("chunks:///_virtual/debug-view-runtime-control.ts", ['./rollupPl
   };
 });
 
-System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXEdgeInsets, YXFlowLayout;
+System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './Demo1Cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, math, Component, Demo1Cell, YXCollectionView, YXEdgeInsets, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -338,52 +338,27 @@ System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers
     }, function (module) {
       cclegacy = module.cclegacy;
       _decorator = module._decorator;
-      Prefab = module.Prefab;
       NodeEventType = module.NodeEventType;
       director = module.director;
-      instantiate = module.instantiate;
-      UITransform = module.UITransform;
-      Label = module.Label;
-      randomRangeInt = module.randomRangeInt;
-      Sprite = module.Sprite;
       math = module.math;
       Component = module.Component;
     }, null, function (module) {
+      Demo1Cell = module.Demo1Cell;
+    }, function (module) {
       YXCollectionView = module.YXCollectionView;
       YXEdgeInsets = module.YXEdgeInsets;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
     }],
     execute: function () {
-      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+      var _dec, _dec2, _class, _class2, _descriptor;
 
       cclegacy._RF.push({}, "81c2cAOrgxH+6bUCzTfvfoH", "demo1", undefined);
 
       var ccclass = _decorator.ccclass,
           property = _decorator.property;
-      /**
-       * @example
-       * 如果需要监听 NodePool 的节点复用逻辑，需要给自己的节点组件实现 YXCollectionViewCell 接口并在 register() 方法注册组件
-       */
-
-      var YourCustomComp = /*#__PURE__*/function (_Component) {
-        _inheritsLoose(YourCustomComp, _Component);
-
-        function YourCustomComp() {
-          return _Component.apply(this, arguments) || this;
-        }
-
-        var _proto = YourCustomComp.prototype;
-
-        _proto.unuse = function unuse() {};
-
-        _proto.reuse = function reuse(args) {};
-
-        return YourCustomComp;
-      }(Component);
-
-      var demo1 = exports('demo1', (_dec = ccclass('demo1'), _dec2 = property(YXCollectionView), _dec3 = property(Prefab), _dec(_class = (_class2 = /*#__PURE__*/function (_Component2) {
-        _inheritsLoose(demo1, _Component2);
+      var demo1 = exports('demo1', (_dec = ccclass('demo1'), _dec2 = property(YXCollectionView), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo1, _Component);
 
         function demo1() {
           var _this;
@@ -392,77 +367,57 @@ System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers
             args[_key] = arguments[_key];
           }
 
-          _this = _Component2.call.apply(_Component2, [this].concat(args)) || this;
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
           _initializerDefineProperty(_this, "collectionView", _descriptor, _assertThisInitialized(_this));
-
-          _initializerDefineProperty(_this, "cellPrefab", _descriptor2, _assertThisInitialized(_this));
 
           return _this;
         }
 
-        var _proto2 = demo1.prototype;
+        var _proto = demo1.prototype;
 
-        _proto2.onLoad = function onLoad() {
+        _proto.onLoad = function onLoad() {
           this.initBackAction();
         };
 
-        _proto2.initBackAction = function initBackAction() {
+        _proto.initBackAction = function initBackAction() {
           this.node.once(NodeEventType.TOUCH_END, function () {
             director.loadScene("home");
           });
         };
 
-        _proto2.start = function start() {
-          var _this2 = this;
-
-          this.collectionView.register("cell", function () {
-            return instantiate(_this2.cellPrefab);
-          }, YourCustomComp);
-
+        _proto.start = function start() {
+          // 确定列表一共多少条内容
           this.collectionView.numberOfItems = function () {
             return 10000;
-          };
+          }; // 当节点添加到列表上后执行，更新节点数据 (注册 cell 通过编辑器实现)
 
-          this.collectionView.cellForItemAt = function (indexPath, collectionView) {
-            return collectionView.dequeueReusableCell("cell");
-          };
 
           this.collectionView.onCellDisplay = function (cell, indexPath, collectionView) {
-            var transform = cell.getComponent(UITransform);
-            cell.getChildByName("Bg").getComponent(UITransform).contentSize = transform.contentSize;
-            cell.getChildByName("Label").getComponent(Label).string = "" + indexPath;
-            var r = randomRangeInt(10, 150);
-            var g = randomRangeInt(10, 150);
-            var b = randomRangeInt(10, 150);
-            cell.getChildByName("Bg").getComponent(Sprite).color = new math.Color(r, g, b);
-          };
+            var comp = cell.getComponent(Demo1Cell);
+            comp.updateBackground();
+            comp.label.string = "" + indexPath;
+          }; // 配置列表的布局方案
+
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL;
           layout.itemSize = new math.Size(400, 500);
           layout.horizontalSpacing = 20;
           layout.sectionInset = new YXEdgeInsets(0, 20, 0, 0);
-          this.collectionView.layout = layout;
+          this.collectionView.layout = layout; // 刷新列表
+
           this.collectionView.reloadData();
         };
 
         return demo1;
-      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "collectionView", [_dec2], {
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "collectionView", [_dec2], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return null;
         }
-      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "cellPrefab", [_dec3], {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        initializer: function initializer() {
-          return null;
-        }
-      })), _class2)) || _class));
+      }), _class2)) || _class));
 
       cclegacy._RF.pop();
     }
@@ -574,7 +529,6 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.horizontalSpacing = 20;
           layout.verticalSpacing = 20;
           layout.sectionInset = new YXEdgeInsets(20, 0, 0, 0);
@@ -730,7 +684,6 @@ System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelper
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.horizontalSpacing = 20;
           layout.verticalSpacing = 20;
 
@@ -775,8 +728,8 @@ System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Toggle, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXCoverLayout, YXFlowLayout;
+System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-cover-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Toggle, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXCoverLayout;
 
   return {
     setters: [function (module) {
@@ -802,8 +755,6 @@ System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelper
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXCoverLayout = module.YXCoverLayout;
-    }, function (module) {
-      YXFlowLayout = module.YXFlowLayout;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
@@ -848,6 +799,7 @@ System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelper
         _proto.start = function start() {
           var _this2 = this;
 
+          this.collectionView.scrollDirection = YXCollectionView.ScrollDirection.HORIZONTAL;
           this.collectionView.register("cell", function () {
             return instantiate(_this2.cellPrefab);
           });
@@ -878,9 +830,8 @@ System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelper
            */
 
 
-          this.collectionView.immediateAutoRecycleInvisibleNodes = false;
+          this.collectionView.recycleInterval = 0;
           var layout = new YXCoverLayout(new math.Size(500, 400));
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL;
           layout.pagingEnabled = this.toggle.isChecked;
           this.collectionView.layout = layout;
           this.collectionView.reloadData();
@@ -926,8 +877,8 @@ System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-masonry-flow-layout.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXEdgeInsets, YXMasonryFlowLayout, YXFlowLayout;
+System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-masonry-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXEdgeInsets, YXMasonryFlowLayout;
 
   return {
     setters: [function (module) {
@@ -953,8 +904,6 @@ System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelper
       YXEdgeInsets = module.YXEdgeInsets;
     }, function (module) {
       YXMasonryFlowLayout = module.YXMasonryFlowLayout;
-    }, function (module) {
-      YXFlowLayout = module.YXFlowLayout;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
@@ -1033,7 +982,6 @@ System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelper
           };
 
           var layout = new YXMasonryFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.horizontalSpacing = 20;
           layout.verticalSpacing = 20;
           layout.sectionInset = new YXEdgeInsets(20, 20, 20, 20); // 修改这个值查看不同行列效果
@@ -1050,8 +998,7 @@ System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelper
         };
 
         _proto.updateScrollDirection = function updateScrollDirection() {
-          var layout = this.collectionView.layout;
-          layout.scrollDirection = layout.scrollDirection == YXFlowLayout.ScrollDirection.HORIZONTAL ? YXFlowLayout.ScrollDirection.VERTICAL : YXFlowLayout.ScrollDirection.HORIZONTAL;
+          this.collectionView.scrollDirection = this.collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL ? YXCollectionView.ScrollDirection.VERTICAL : YXCollectionView.ScrollDirection.HORIZONTAL;
           this.collectionView.reloadData();
         };
 
@@ -1133,6 +1080,10 @@ System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelper
           _initializerDefineProperty(_this, "winPrefab", _descriptor2, _assertThisInitialized(_this));
 
           _initializerDefineProperty(_this, "losePrefab", _descriptor3, _assertThisInitialized(_this));
+          /**
+           * 模拟数据源
+           */
+
 
           _this.testData = [];
           return _this;
@@ -1155,7 +1106,12 @@ System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelper
 
           for (var index = 0; index < 10000; index++) {
             this.testData.push(new Data());
-          } // 注册列表需要用到的节点类型
+          } // 确定列表一共多少条内容
+
+
+          this.collectionView.numberOfItems = function () {
+            return _this2.testData.length;
+          }; // 注册列表需要用到的节点类型
 
 
           this.collectionView.register("win", function () {
@@ -1163,14 +1119,9 @@ System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelper
           });
           this.collectionView.register("lose", function () {
             return instantiate(_this2.losePrefab);
-          });
-
-          this.collectionView.numberOfItems = function () {
-            return _this2.testData.length;
-          };
+          }); // 根据数据确定要用的节点类型 (通过注册时候的标识符来确定)
 
           this.collectionView.cellForItemAt = function (indexPath, collectionView) {
-            // 根据数据区分要用的节点类型
             var rowData = _this2.testData[indexPath.item];
 
             if (rowData.type == 0) {
@@ -1182,7 +1133,8 @@ System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelper
             }
 
             return null;
-          };
+          }; // 当节点添加到列表上后执行，更新节点数据
+
 
           this.collectionView.onCellDisplay = function (cell, indexPath, collectionView) {
             var rowData = _this2.testData[indexPath.item];
@@ -1192,7 +1144,6 @@ System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelper
 
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL; // 滚动方向
 
           layout.itemSize = function (indexPath, flowLayout, collectionView) {
             var rowData = _this2.testData[indexPath.item];
@@ -1208,8 +1159,7 @@ System.register("chunks:///_virtual/demo14.ts", ['./rollupPluginModLoBabelHelper
             return null;
           };
 
-          layout.verticalSpacing = 20; // 间距
-
+          layout.verticalSpacing = 20;
           this.collectionView.layout = layout; // 刷新列表
 
           this.collectionView.reloadData();
@@ -1320,7 +1270,8 @@ System.register("chunks:///_virtual/demo15.ts", ['./rollupPluginModLoBabelHelper
            */
 
 
-          this.collectionView.immediateAutoRecycleInvisibleNodes = false; // 注册列表需要用到的节点类型
+          this.collectionView.recycleInterval = 0;
+          this.collectionView.scrollDirection = YXCollectionView.ScrollDirection.HORIZONTAL; // 注册列表需要用到的节点类型
 
           this.collectionView.register("cell1", function () {
             return instantiate(_this2.cell1Prefab);
@@ -1366,8 +1317,6 @@ System.register("chunks:///_virtual/demo15.ts", ['./rollupPluginModLoBabelHelper
 
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL; // 滚动方向
-
           layout.itemSize = this.collectionView.scrollView.view.contentSize;
           layout.pagingEnabled = true;
           this.collectionView.layout = layout; // 刷新列表
@@ -1436,8 +1385,8 @@ System.register("chunks:///_virtual/demo15.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/Demo15Cell1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-masonry-flow-layout.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, instantiate, Label, randomRangeInt, Sprite, math, log, Component, YXCollectionView, YXEdgeInsets, YXMasonryFlowLayout, YXFlowLayout;
+System.register("chunks:///_virtual/Demo15Cell1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-masonry-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, instantiate, Label, randomRangeInt, Sprite, math, log, Component, YXCollectionView, YXEdgeInsets, YXMasonryFlowLayout;
 
   return {
     setters: [function (module) {
@@ -1461,8 +1410,6 @@ System.register("chunks:///_virtual/Demo15Cell1.ts", ['./rollupPluginModLoBabelH
       YXEdgeInsets = module.YXEdgeInsets;
     }, function (module) {
       YXMasonryFlowLayout = module.YXMasonryFlowLayout;
-    }, function (module) {
-      YXFlowLayout = module.YXFlowLayout;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
@@ -1520,7 +1467,6 @@ System.register("chunks:///_virtual/Demo15Cell1.ts", ['./rollupPluginModLoBabelH
           };
 
           var layout = new YXMasonryFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.horizontalSpacing = 20;
           layout.verticalSpacing = 20;
           layout.sectionInset = new YXEdgeInsets(20, 20, 20, 20);
@@ -1686,7 +1632,6 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.horizontalSpacing = 20;
           layout.verticalSpacing = 20;
           layout.sectionInset = new YXEdgeInsets(20, 20, 0, 20);
@@ -1718,6 +1663,7 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
         _proto.setupBanner = function setupBanner(banner) {
           var _this3 = this;
 
+          banner.scrollDirection = YXCollectionView.ScrollDirection.HORIZONTAL;
           banner.register("cell", function () {
             return instantiate(_this3.cellPrefab);
           });
@@ -1739,11 +1685,10 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
           };
 
           var layout = new YXCoverLayout(new math.Size(600, 400));
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL;
           layout.pagingEnabled = true;
           layout.horizontalSpacing = -100;
           banner.layout = layout;
-          banner.immediateAutoRecycleInvisibleNodes = false;
+          banner.recycleInterval = 0;
         };
 
         return Demo15Cell2;
@@ -1900,8 +1845,8 @@ System.register("chunks:///_virtual/demo16.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Camera, geometry, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, PhysicsSystem, log, Component, YXCollectionView, YXCoverLayout, YXFlowLayout;
+System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-cover-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Camera, geometry, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, PhysicsSystem, log, Component, YXCollectionView, YXCoverLayout;
 
   return {
     setters: [function (module) {
@@ -1930,8 +1875,6 @@ System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelper
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXCoverLayout = module.YXCoverLayout;
-    }, function (module) {
-      YXFlowLayout = module.YXFlowLayout;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
@@ -2012,6 +1955,7 @@ System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelper
           this.camera.fov = 2 * Math.atan(1280 / (2 * cameraPosition.z)) * (180 / Math.PI);
           this.collectionView.is3DCell = true;
           this.collectionView.recycleInterval = 0;
+          this.collectionView.scrollDirection = YXCollectionView.ScrollDirection.HORIZONTAL;
           this.collectionView.register("cell", function () {
             return instantiate(_this2.cellPrefab);
           });
@@ -2035,7 +1979,6 @@ System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelper
           };
 
           var layout = new YXCoverLayout(new math.Size(300, 400));
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL;
           layout.horizontalSpacing = -100;
           layout.angleY = 70;
           this.collectionView.layout = layout;
@@ -2098,6 +2041,82 @@ System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelper
           return null;
         }
       })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/Demo1Cell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, UITransform, randomRangeInt, Sprite, math, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      UITransform = module.UITransform;
+      randomRangeInt = module.randomRangeInt;
+      Sprite = module.Sprite;
+      math = module.math;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "72ff7QH5jBFTYUcK6TLNpbk", "Demo1Cell", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var Demo1Cell = exports('Demo1Cell', (_dec = ccclass('Demo1Cell'), _dec2 = property(Label), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Demo1Cell, _Component);
+
+        function Demo1Cell() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "label", _descriptor, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = Demo1Cell.prototype;
+
+        _proto.unuse = function unuse() {// log(`unuse`)
+        };
+
+        _proto.reuse = function reuse(args) {// log(`reuse`)
+        };
+
+        _proto.updateBackground = function updateBackground() {
+          var bg = this.node.getChildByName("Bg");
+          var transform = this.node.getComponent(UITransform);
+          bg.getComponent(UITransform).contentSize = transform.contentSize;
+          var r = randomRangeInt(10, 150);
+          var g = randomRangeInt(10, 150);
+          var b = randomRangeInt(10, 150);
+          bg.getComponent(Sprite).color = new math.Color(r, g, b);
+        };
+
+        return Demo1Cell;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "label", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
 
       cclegacy._RF.pop();
     }
@@ -2176,7 +2195,8 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
            */
 
 
-          this.collectionView.immediateAutoRecycleInvisibleNodes = false;
+          this.collectionView.recycleInterval = 0;
+          this.collectionView.scrollDirection = YXCollectionView.ScrollDirection.HORIZONTAL;
           this.collectionView.register("cell", function () {
             return instantiate(_this2.cellPrefab);
           });
@@ -2200,7 +2220,6 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL;
           layout.pagingEnabled = true;
           layout.itemSize = this.collectionView.scrollView.view.contentSize;
           this.collectionView.layout = layout;
@@ -2331,7 +2350,6 @@ System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.itemSize = new math.Size(600, 200);
           layout.verticalSpacing = 20;
           this.collectionView.layout = layout;
@@ -2432,7 +2450,7 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
            */
 
 
-          this.collectionView.immediateAutoRecycleInvisibleNodes = false;
+          this.collectionView.recycleInterval = 0;
           this.collectionView.register("cell", function () {
             return instantiate(_this2.cellPrefab);
           });
@@ -2456,7 +2474,6 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.pagingEnabled = true;
           layout.itemSize = this.collectionView.scrollView.view.contentSize;
           this.collectionView.layout = layout;
@@ -2578,7 +2595,6 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.horizontalSpacing = 20;
           layout.verticalSpacing = 20;
           layout.itemSize = new math.Size(200, 200);
@@ -2708,10 +2724,10 @@ System.register("chunks:///_virtual/demo6.ts", ['./rollupPluginModLoBabelHelpers
             bgColor: new math.Color(30, 30, 80)
           }];
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL;
           layout.pagingEnabled = true;
           layout.itemSize = this.collectionView.scrollView.view.contentSize;
           this.collectionView.layout = layout;
+          this.collectionView.scrollDirection = YXCollectionView.ScrollDirection.HORIZONTAL;
           this.collectionView.register("cell", function () {
             return instantiate(_this2.cellPrefab);
           });
@@ -2736,7 +2752,7 @@ System.register("chunks:///_virtual/demo6.ts", ['./rollupPluginModLoBabelHelpers
            */
 
 
-          this.collectionView.immediateAutoRecycleInvisibleNodes = false;
+          this.collectionView.recycleInterval = 0;
           this.collectionView.reloadData();
           this.collectionView.node.on(ScrollView.EventType.SCROLL_ENDED, function () {
             var offset = _this2.collectionView.scrollView.getScrollOffset();
@@ -2943,7 +2959,6 @@ System.register("chunks:///_virtual/demo7.ts", ['./rollupPluginModLoBabelHelpers
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           layout.verticalSpacing = 20;
           layout.sectionInset = new YXEdgeInsets(20, 0, 20, 0);
 
@@ -3159,6 +3174,7 @@ System.register("chunks:///_virtual/demo8.ts", ['./rollupPluginModLoBabelHelpers
         _proto.start = function start() {
           var _this2 = this;
 
+          this.collectionView.scrollDirection = YXCollectionView.ScrollDirection.HORIZONTAL;
           this.collectionView.register("cell", function () {
             return instantiate(_this2.cellPrefab);
           });
@@ -3182,7 +3198,6 @@ System.register("chunks:///_virtual/demo8.ts", ['./rollupPluginModLoBabelHelpers
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL;
           layout.horizontalSpacing = 20;
           layout.verticalSpacing = 20;
           layout.sectionInset = new YXEdgeInsets(0, 20, 0, 0);
@@ -3282,6 +3297,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
         _proto.start = function start() {
           var _this2 = this;
 
+          this.collectionView.scrollDirection = YXCollectionView.ScrollDirection.HORIZONTAL;
           this.collectionView.register("cell", function () {
             return instantiate(_this2.cellPrefab);
           });
@@ -3318,7 +3334,6 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
           };
 
           var layout = new YXFlowLayout();
-          layout.scrollDirection = YXFlowLayout.ScrollDirection.HORIZONTAL;
           layout.horizontalSpacing = 20;
           layout.verticalSpacing = 20;
           layout.sectionInset = new YXEdgeInsets(0, 20, 0, 0);
@@ -3366,7 +3381,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
 });
 
 System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Node, ProgressBar, instantiate, UITransform, Label, director, math, Component, YXCollectionView, YXFlowLayout;
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Node, ProgressBar, math, UITransform, Label, director, Component, YXCollectionView, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -3377,14 +3392,12 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
     }, function (module) {
       cclegacy = module.cclegacy;
       _decorator = module._decorator;
-      Prefab = module.Prefab;
       Node = module.Node;
       ProgressBar = module.ProgressBar;
-      instantiate = module.instantiate;
+      math = module.math;
       UITransform = module.UITransform;
       Label = module.Label;
       director = module.director;
-      math = module.math;
       Component = module.Component;
     }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
@@ -3392,13 +3405,13 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
       YXFlowLayout = module.YXFlowLayout;
     }],
     execute: function () {
-      var _dec, _dec2, _dec3, _dec4, _dec5, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _class3;
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _class3;
 
       cclegacy._RF.push({}, "44846CmwAhCrY4/ZZ8KUxtV", "home", undefined);
 
       var ccclass = _decorator.ccclass,
           property = _decorator.property;
-      var home = exports('home', (_dec = ccclass('home'), _dec2 = property(Prefab), _dec3 = property(YXCollectionView), _dec4 = property(Node), _dec5 = property(ProgressBar), _dec(_class = (_class2 = (_class3 = /*#__PURE__*/function (_Component) {
+      var home = exports('home', (_dec = ccclass('home'), _dec2 = property(YXCollectionView), _dec3 = property(Node), _dec4 = property(ProgressBar), _dec(_class = (_class2 = (_class3 = /*#__PURE__*/function (_Component) {
         _inheritsLoose(home, _Component);
 
         function home() {
@@ -3410,13 +3423,11 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
 
           _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
-          _initializerDefineProperty(_this, "cellPrefab", _descriptor, _assertThisInitialized(_this));
+          _initializerDefineProperty(_this, "collectionView", _descriptor, _assertThisInitialized(_this));
 
-          _initializerDefineProperty(_this, "collectionView", _descriptor2, _assertThisInitialized(_this));
+          _initializerDefineProperty(_this, "loading", _descriptor2, _assertThisInitialized(_this));
 
-          _initializerDefineProperty(_this, "loading", _descriptor3, _assertThisInitialized(_this));
-
-          _initializerDefineProperty(_this, "progressBar", _descriptor4, _assertThisInitialized(_this));
+          _initializerDefineProperty(_this, "progressBar", _descriptor3, _assertThisInitialized(_this));
 
           return _this;
         }
@@ -3485,14 +3496,11 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
             title: "\u65CB\u8F6C\u6728\u9A6C",
             scene: "demo16"
           }];
+          var layout = new YXFlowLayout();
+          layout.itemSize = new math.Size(600, 100);
+          layout.verticalSpacing = 20;
+          this.collectionView.layout = layout;
           this.collectionView.numberOfItems = array.length;
-          this.collectionView.register("cell", function () {
-            return instantiate(_this2.cellPrefab);
-          });
-
-          this.collectionView.cellForItemAt = function (indexPath, collectionView) {
-            return collectionView.dequeueReusableCell("cell");
-          };
 
           this.collectionView.onCellDisplay = function (cell, indexPath, collectionView) {
             var rowData = array[indexPath.item];
@@ -3521,10 +3529,6 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
             });
           };
 
-          var layout = new YXFlowLayout();
-          layout.itemSize = new math.Size(600, 100);
-          layout.verticalSpacing = 20;
-          this.collectionView.layout = layout;
           this.collectionView.reloadData();
 
           if (home.LAST_OFFSET) {
@@ -3534,28 +3538,21 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
         };
 
         return home;
-      }(Component), _class3.LAST_OFFSET = null, _class3), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "cellPrefab", [_dec2], {
+      }(Component), _class3.LAST_OFFSET = null, _class3), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "collectionView", [_dec2], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return null;
         }
-      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "collectionView", [_dec3], {
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "loading", [_dec3], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return null;
         }
-      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "loading", [_dec4], {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        initializer: function initializer() {
-          return null;
-        }
-      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "progressBar", [_dec5], {
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "progressBar", [_dec4], {
         configurable: true,
         enumerable: true,
         writable: true,
@@ -3724,9 +3721,9 @@ System.register("chunks:///_virtual/LayoutCell.ts", ['./rollupPluginModLoBabelHe
   };
 });
 
-System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './Demo15Cell1.ts', './Demo15Cell2.ts', './LayoutCell.ts', './demo15.ts', './demo16.ts', './demo17.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './index.ts', './yx-carousel-layout.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts'], function () {
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './Demo1Cell.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './Demo15Cell1.ts', './Demo15Cell2.ts', './LayoutCell.ts', './demo15.ts', './demo16.ts', './demo17.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './index.ts', './yx-carousel-layout.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts'], function () {
   return {
-    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     execute: function () {}
   };
 });
@@ -3756,6 +3753,7 @@ System.register("chunks:///_virtual/yx-carousel-layout.ts", ['./rollupPluginModL
       var _vec2Out = new math.Vec2();
       /**
        * 旋转木马，会加载所有节点，适合少量数据
+       * 仅支持了水平方向滚动
        */
 
 
@@ -3957,37 +3955,41 @@ System.register("chunks:///_virtual/yx-carousel-layout.ts", ['./rollupPluginModL
 });
 
 System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, _createClass, cclegacy, _decorator, math, ValueType, NodePool, Node, NodeEventType, UITransform, UIOpacity, ScrollView, Component, Mask;
+  var _applyDecoratedDescriptor, _initializerDefineProperty, _inheritsLoose, _assertThisInitialized, _createClass, cclegacy, _decorator, math, Enum, Prefab, ValueType, NodePool, NodeEventType, UITransform, UIOpacity, ScrollView, Component, instantiate, Node, Mask;
 
   return {
     setters: [function (module) {
       _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
-      _inheritsLoose = module.inheritsLoose;
       _initializerDefineProperty = module.initializerDefineProperty;
+      _inheritsLoose = module.inheritsLoose;
       _assertThisInitialized = module.assertThisInitialized;
       _createClass = module.createClass;
     }, function (module) {
       cclegacy = module.cclegacy;
       _decorator = module._decorator;
       math = module.math;
+      Enum = module.Enum;
+      Prefab = module.Prefab;
       ValueType = module.ValueType;
       NodePool = module.NodePool;
-      Node = module.Node;
       NodeEventType = module.NodeEventType;
       UITransform = module.UITransform;
       UIOpacity = module.UIOpacity;
       ScrollView = module.ScrollView;
       Component = module.Component;
+      instantiate = module.instantiate;
+      Node = module.Node;
       Mask = module.Mask;
     }],
     execute: function () {
-      var _dec, _class, _class2, _dec2, _class3, _class4, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class5, _class6, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _dec5, _class4, _class5, _dec6, _class6, _class7, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _class8, _class9, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class10;
 
       cclegacy._RF.push({}, "f2c14q0UedOp7pnWIKia8C+", "yx-collection-view", undefined);
 
       var ccclass = _decorator.ccclass,
           property = _decorator.property,
           requireComponent = _decorator.requireComponent,
+          executionOrder = _decorator.executionOrder,
           disallowMultiple = _decorator.disallowMultiple,
           help = _decorator.help;
 
@@ -3997,18 +3999,77 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
       var _rectOut = new math.Rect();
       /**
+       * 定义列表的滚动方向  
+       */
+
+
+      var _yx_collection_view_scroll_direction = /*#__PURE__*/function (_yx_collection_view_scroll_direction) {
+        _yx_collection_view_scroll_direction[_yx_collection_view_scroll_direction["HORIZONTAL"] = 0] = "HORIZONTAL";
+        _yx_collection_view_scroll_direction[_yx_collection_view_scroll_direction["VERTICAL"] = 1] = "VERTICAL";
+        return _yx_collection_view_scroll_direction;
+      }(_yx_collection_view_scroll_direction || {});
+
+      Enum(_yx_collection_view_scroll_direction);
+      /**
+       * 定义通过编辑器注册节点时的结构体
+       */
+
+      var _yx_editor_register_cell_info = (_dec = ccclass("_yx_editor_register_cell_info"), _dec2 = property({
+        type: Prefab,
+        tooltip: "cell \u8282\u70B9\u9884\u5236\u4F53\uFF0C\u5FC5\u987B\u914D\u7F6E"
+      }), _dec3 = property({
+        tooltip: "\u8282\u70B9\u91CD\u7528\u6807\u8BC6\u7B26\n\u5982\u679C\u786E\u5B9A\u6B64\u5217\u8868\u4EC5\u4F7F\u7528\u4E00\u79CD\u8282\u70B9\u7C7B\u578B\uFF0C\u53EF\u4EE5\u5FFD\u7565\u6B64\u914D\u7F6E"
+      }), _dec4 = property({
+        tooltip: "\u8282\u70B9\u6302\u8F7D\u7684\u81EA\u5B9A\u4E49\u7EC4\u4EF6\n\u5982\u679C\u9700\u8981\u76D1\u542C NodePool \u7684\u91CD\u7528/\u56DE\u6536\u4E8B\u4EF6\uFF0C\u786E\u4FDD\u4F60\u7684\u81EA\u5B9A\u4E49\u7EC4\u4EF6\u5DF2\u7ECF\u5B9E\u73B0\u4E86 YXCollectionViewCell \u63A5\u53E3\u5E76\u914D\u7F6E\u6B64\u5C5E\u6027\u4E3A\u4F60\u7684\u81EA\u5B9A\u4E49\u7EC4\u4EF6\u540D\n\u5982\u679C\u4E0D\u9700\u8981\uFF0C\u53EF\u4EE5\u5FFD\u7565\u6B64\u914D\u7F6E"
+      }), _dec(_class = (_class2 = function _yx_editor_register_cell_info() {
+        _initializerDefineProperty(this, "prefab", _descriptor, this);
+
+        _initializerDefineProperty(this, "identifier", _descriptor2, this);
+
+        _initializerDefineProperty(this, "comp", _descriptor3, this);
+      }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "prefab", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "identifier", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return "";
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "comp", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return "";
+        }
+      })), _class2)) || _class);
+      /**
        * 表示索引的对象
        */
 
 
-      var YXIndexPath = exports('YXIndexPath', (_dec = ccclass("YXIndexPath"), _dec(_class = (_class2 = /*#__PURE__*/function (_ValueType) {
+      var YXIndexPath = exports('YXIndexPath', (_dec5 = ccclass("YXIndexPath"), _dec5(_class4 = (_class5 = /*#__PURE__*/function (_ValueType) {
         _inheritsLoose(YXIndexPath, _ValueType);
 
         function YXIndexPath(section, item) {
           var _this;
 
           _this = _ValueType.call(this) || this;
+          /**
+           * 区索引
+           */
+
           _this.section = 0;
+          /**
+           * 单元格在区内的位置
+           */
+
           _this.item = 0;
           _this.section = section;
           _this.item = item;
@@ -4035,12 +4096,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         };
 
         return YXIndexPath;
-      }(ValueType), _class2.ZERO = new _class2(0, 0), _class2)) || _class));
+      }(ValueType), _class5.ZERO = new _class5(0, 0), _class5)) || _class4));
       /**
        * 表示边距的对象
        */
 
-      var YXEdgeInsets = exports('YXEdgeInsets', (_dec2 = ccclass("YXEdgeInsets"), _dec2(_class3 = (_class4 = /*#__PURE__*/function (_ValueType2) {
+      var YXEdgeInsets = exports('YXEdgeInsets', (_dec6 = ccclass("YXEdgeInsets"), _dec6(_class6 = (_class7 = /*#__PURE__*/function (_ValueType2) {
         _inheritsLoose(YXEdgeInsets, _ValueType2);
 
         function YXEdgeInsets(top, left, bottom, right) {
@@ -4080,7 +4141,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         };
 
         return YXEdgeInsets;
-      }(ValueType), _class4.ZERO = new _class4(0, 0, 0, 0), _class4)) || _class3));
+      }(ValueType), _class7.ZERO = new _class7(0, 0, 0, 0), _class7)) || _class6));
       /**
        * 私有组件
        * cell 节点添加到 YXCollectionView 上时，自动挂载此组件，用来记录一些实时参数
@@ -4479,17 +4540,25 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
        * 节点的自定义组件可以通过这个接口跟 @NodePool 的重用业务关联起来
        */
 
-      var YXCollectionView = exports('YXCollectionView', (_dec3 = ccclass('YXCollectionView'), _dec4 = disallowMultiple(true), _dec5 = help("https://forum.cocos.org/t/topic/157984"), _dec6 = property({
+      var YXCollectionView = exports('YXCollectionView', (_dec7 = ccclass('YXCollectionView'), _dec8 = disallowMultiple(true), _dec9 = executionOrder(-1), _dec10 = help("https://forum.cocos.org/t/topic/157984"), _dec11 = property({
         tooltip: "\u81EA\u52A8\u7ED9\u6302\u8F7D\u8282\u70B9\u6DFB\u52A0 mask \u7EC4\u4EF6"
-      }), _dec7 = property({
+      }), _dec12 = property({
         tooltip: "\u5141\u8BB8\u624B\u52BF\u6EDA\u52A8"
-      }), _dec8 = property({
+      }), _dec13 = property({
+        type: _yx_collection_view_scroll_direction,
+        tooltip: "\u5217\u8868\u6EDA\u52A8\u65B9\u5411"
+      }), _dec14 = property({
         tooltip: "\u6BCF\u591A\u5C11\u5E27\u5237\u65B0\u4E00\u6B21\u53EF\u89C1\u8282\u70B9\uFF0C1 \u8868\u793A\u6BCF\u5E27\u90FD\u5237"
-      }), _dec9 = property({
+      }), _dec15 = property({
         tooltip: "\u6EDA\u52A8\u8FC7\u7A0B\u4E2D\uFF0C\u6BCF\u591A\u5C11\u5E27\u56DE\u6536\u4E00\u6B21\u4E0D\u53EF\u89C1\u8282\u70B9\uFF0C1\u8868\u793A\u6BCF\u5E27\u90FD\u56DE\u6536\uFF0C0\u8868\u793A\u4E0D\u5728\u6EDA\u52A8\u8FC7\u7A0B\u4E2D\u56DE\u6536\u4E0D\u53EF\u89C1\u8282\u70B9"
-      }), _dec10 = property({
+      }), _dec16 = property({
         tooltip: "\u6B64\u5217\u8868\u4E0A\u7684 cell \u8282\u70B9\uFF0C\u662F\u5426\u662F 3d cell \u8282\u70B9"
-      }), _dec3(_class5 = _dec4(_class5 = _dec5(_class5 = (_class6 = /*#__PURE__*/function (_Component2) {
+      }), _dec17 = property({
+        type: [_yx_editor_register_cell_info],
+        visible: true,
+        displayName: "Register Cells",
+        tooltip: "\u914D\u7F6E\u6B64\u5217\u8868\u5185\u9700\u8981\u7528\u5230\u7684 cell \u8282\u70B9\u7C7B\u578B"
+      }), _dec7(_class8 = _dec8(_class8 = _dec9(_class8 = _dec10(_class8 = (_class9 = (_class10 = /*#__PURE__*/function (_Component2) {
         _inheritsLoose(YXCollectionView, _Component2);
 
         function YXCollectionView() {
@@ -4504,19 +4573,27 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            * 自动给挂载节点添加 mask 组件
            */
 
-          _initializerDefineProperty(_this5, "mask", _descriptor, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "mask", _descriptor4, _assertThisInitialized(_this5));
           /**
            * 允许手势滚动
            */
 
 
-          _initializerDefineProperty(_this5, "scrollEnabled", _descriptor2, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "scrollEnabled", _descriptor5, _assertThisInitialized(_this5));
+          /**
+           * 列表滚动方向，默认垂直方向滚动
+           * 自定义 YXLayout 应该尽量根据这个配置来实现不同方向的布局业务
+           * 注意: 如果使用的 YXLayout 未支持对应的滚动方向，则此配置不会生效
+           */
+
+
+          _initializerDefineProperty(_this5, "scrollDirection", _descriptor6, _assertThisInitialized(_this5));
           /**
            * 每多少帧刷新一次可见节点，1 表示每帧都刷
            */
 
 
-          _initializerDefineProperty(_this5, "frameInterval", _descriptor3, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "frameInterval", _descriptor7, _assertThisInitialized(_this5));
           /**
            * 滚动过程中，每多少帧回收一次不可见节点，1表示每帧都回收，0表示不在滚动过程中回收不可见节点
            * @bug 滚动过程中如果实时的回收不可见节点，有时候会收不到 scroll view 的 cancel 事件，导致 scroll view 的滚动状态不会更新 (且收不到滚动结束事件)
@@ -4525,7 +4602,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            */
 
 
-          _initializerDefineProperty(_this5, "recycleInterval", _descriptor4, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "recycleInterval", _descriptor8, _assertThisInitialized(_this5));
           /**
            * 此列表上的 cell 节点，是否是 3d cell 节点
            * 3d 节点的点击事件，需要通过射线检测来做，外部自行配置碰撞体实现节点的点击事件，列表只做个排列展示
@@ -4534,22 +4611,17 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            */
 
 
-          _initializerDefineProperty(_this5, "is3DCell", _descriptor5, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "is3DCell", _descriptor9, _assertThisInitialized(_this5));
           /**
-           * 内容要分几个区展示，默认 1
-           * 没有分区展示的需求可以不管这个配置
+           * 通过编辑器注册节点类型
            */
 
 
-          _this5.numberOfSections = 1;
-          /**
-           * 每个区里要展示多少条内容
-           */
-
-          _this5.numberOfItems = 0;
+          _initializerDefineProperty(_this5, "registerCellForEditor", _descriptor10, _assertThisInitialized(_this5));
           /**
            * 每个注册的标识符对应一个节点池
            */
+
 
           _this5.pools = new Map();
           /**
@@ -4557,6 +4629,17 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            */
 
           _this5.makers = new Map();
+          /**
+           * 内容要分几个区展示，默认 1
+           * 没有分区展示的需求可以不管这个配置
+           */
+
+          _this5.numberOfSections = 1;
+          /**
+           * 每个区里要展示多少条内容
+           */
+
+          _this5.numberOfItems = 0;
           /**
            * 配置每块内容对应的 UI 节点
            * 在这个方法里，只需要关心 @indexPath 这个位置对应的节点应该是用注册过的哪个类型的 Node 节点，然后通过 @dequeueReusableCell 生成对应的 Node
@@ -4583,7 +4666,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5.onTouchItemAt = null;
           /**
-           * 布局属性
+           * 布局规则
            */
 
           _this5.layout = null;
@@ -4658,11 +4741,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
               throw new Error("YXCollectionView: register() \u53C2\u6570\u9519\u8BEF\uFF0C\u8BF7\u6B63\u786E\u914D\u7F6E maker \u56DE\u8C03\u51FD\u6570\u4EE5\u751F\u6210\u6807\u8BC6\u5BF9\u5E94\u7684\u8282\u70B9");
             }
 
-            result = maker(); // 关联节点的自定义组件
-
-            if (result instanceof Node && pool.poolHandlerComp instanceof Function) {
-              result.getComponent(pool.poolHandlerComp) || result.addComponent(pool.poolHandlerComp);
-            }
+            result = maker();
 
             var _cell = result.getComponent(_cell_) || result.addComponent(_cell_);
 
@@ -4807,10 +4886,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
               }
 
               continue;
-            } // 需要显示但是当前未显示出来的
+            }
+            /**
+             * 需要显示但是当前未显示出来的
+             * @version 1.1.0 开始，单一 cell 类型的列表支持不实现 cellForItemAt 方法来获取重用节点，这里默认自动执行
+             */
 
 
-            var node = this.cellForItemAt(element.indexPath, this);
+            var node = this.pools.size > 1 || this.cellForItemAt ? this.cellForItemAt(element.indexPath, this) : this.dequeueReusableCell(this.pools.keys().next().value);
             node.parent = this.scrollView.content;
             this.applyLayoutAttributes(node, element);
             this.allCellNodes[element.indexPath.toString()] = node;
@@ -4934,6 +5017,20 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         ;
 
         _proto5.onLoad = function onLoad() {
+          var _this6 = this;
+
+          var _loop = function _loop() {
+            var element = _this6.registerCellForEditor[index];
+
+            _this6.register(element.identifier, function () {
+              return instantiate(element.prefab);
+            }, element.comp);
+          };
+
+          for (var index = 0; index < this.registerCellForEditor.length; index++) {
+            _loop();
+          }
+
           this.node.on(ScrollView.EventType.SCROLL_BEGAN, this.onScrollBegan, this);
           this.node.on(ScrollView.EventType.SCROLLING, this.onScrolling, this);
           this.node.on(ScrollView.EventType.TOUCH_UP, this.onScrollTouchUp, this);
@@ -5024,14 +5121,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             this.scrollView.scrollToOffset(endValue.offset, endValue.time);
             this.markForUpdateVisibleData();
           }
-        }
-        /** ---------- deprecated ---------- **/
-
-        /**
-         * 是否在滚动过程中立即回收不可见节点
-         * @deprecated 使用 `recycleInterval` 代替
-         */
-        ;
+        };
 
         _createClass(YXCollectionView, [{
           key: "scrollView",
@@ -5105,11 +5195,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
             return result;
           }
-        }, {
-          key: "immediateAutoRecycleInvisibleNodes",
-          set: function set(value) {
-            this.recycleInterval = value ? 1 : 0;
-          }
         }], [{
           key: "VERSION",
           get:
@@ -5117,47 +5202,65 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            * 版本号
            */
           function get() {
-            return "1.0.3";
+            return "1.1.0";
           }
+          /**
+           * 滚动方向枚举
+           */
+
         }]);
 
         return YXCollectionView;
-      }(Component), (_descriptor = _applyDecoratedDescriptor(_class6.prototype, "mask", [_dec6], {
+      }(Component), _class10.ScrollDirection = _yx_collection_view_scroll_direction, _class10), (_descriptor4 = _applyDecoratedDescriptor(_class9.prototype, "mask", [_dec11], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return true;
         }
-      }), _descriptor2 = _applyDecoratedDescriptor(_class6.prototype, "scrollEnabled", [_dec7], {
+      }), _descriptor5 = _applyDecoratedDescriptor(_class9.prototype, "scrollEnabled", [_dec12], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return true;
         }
-      }), _descriptor3 = _applyDecoratedDescriptor(_class6.prototype, "frameInterval", [_dec8], {
+      }), _descriptor6 = _applyDecoratedDescriptor(_class9.prototype, "scrollDirection", [_dec13], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return YXCollectionView.ScrollDirection.VERTICAL;
+        }
+      }), _descriptor7 = _applyDecoratedDescriptor(_class9.prototype, "frameInterval", [_dec14], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return 1;
         }
-      }), _descriptor4 = _applyDecoratedDescriptor(_class6.prototype, "recycleInterval", [_dec9], {
+      }), _descriptor8 = _applyDecoratedDescriptor(_class9.prototype, "recycleInterval", [_dec15], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return 1;
         }
-      }), _descriptor5 = _applyDecoratedDescriptor(_class6.prototype, "is3DCell", [_dec10], {
+      }), _descriptor9 = _applyDecoratedDescriptor(_class9.prototype, "is3DCell", [_dec16], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return false;
         }
-      })), _class6)) || _class5) || _class5) || _class5));
+      }), _descriptor10 = _applyDecoratedDescriptor(_class9.prototype, "registerCellForEditor", [_dec17], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [];
+        }
+      })), _class9)) || _class8) || _class8) || _class8) || _class8));
 
       cclegacy._RF.pop();
     }
@@ -5165,7 +5268,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 });
 
 System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _inheritsLoose, cclegacy, _decorator, math, YXEdgeInsets, YXFlowLayout;
+  var _inheritsLoose, cclegacy, _decorator, math, YXEdgeInsets, YXCollectionView, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -5176,6 +5279,7 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
       math = module.math;
     }, function (module) {
       YXEdgeInsets = module.YXEdgeInsets;
+      YXCollectionView = module.YXCollectionView;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
     }],
@@ -5269,7 +5373,7 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
           var result = this.layoutAttributesForElementsInRect(visibleRect, collectionView);
           var target = null;
 
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.HORIZONTAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
             var mid = offset.x + collectionView.scrollView.view.width * 0.5;
             result.forEach(function (element) {
               var distance1 = Math.abs(element.frame.center.x - mid);
@@ -5282,7 +5386,7 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
             offset.x = target.frame.center.x - collectionView.scrollView.view.width * 0.5;
           }
 
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.VERTICAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
             var _mid = offset.y + collectionView.scrollView.view.height * 0.5;
 
             result.forEach(function (element) {
@@ -5308,11 +5412,11 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
           if (attr) {
             var offset = attr.frame.origin;
 
-            if (this.scrollDirection == YXFlowLayout.ScrollDirection.HORIZONTAL) {
+            if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
               offset.x = offset.x - (collectionView.scrollView.view.width - attr.frame.width) * 0.5;
             }
 
-            if (this.scrollDirection == YXFlowLayout.ScrollDirection.VERTICAL) {
+            if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
               offset.y = offset.y - (collectionView.scrollView.view.height - attr.frame.height) * 0.5;
             }
 
@@ -5331,7 +5435,7 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
           offset.x = -offset.x;
           var scale = this.scaleValue;
 
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.HORIZONTAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
             var mid = offset.x + collectionView.scrollView.view.width * 0.5;
             result.forEach(function (element) {
               var diff = element.frame.center.x - mid;
@@ -5349,7 +5453,7 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
             });
           }
 
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.VERTICAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
             var _mid2 = offset.y + collectionView.scrollView.view.height * 0.5;
 
             result.forEach(function (element) {
@@ -5388,7 +5492,7 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
 });
 
 System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts'], function (exports) {
-  var _inheritsLoose, cclegacy, _decorator, UITransform, math, YXIndexPath, YXLayout, YXEdgeInsets, YXLayoutAttributes;
+  var _inheritsLoose, cclegacy, _decorator, UITransform, math, YXCollectionView, YXIndexPath, YXLayout, YXEdgeInsets, YXLayoutAttributes;
 
   return {
     setters: [function (module) {
@@ -5399,6 +5503,7 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
       UITransform = module.UITransform;
       math = module.math;
     }, function (module) {
+      YXCollectionView = module.YXCollectionView;
       YXIndexPath = module.YXIndexPath;
       YXLayout = module.YXLayout;
       YXEdgeInsets = module.YXEdgeInsets;
@@ -5424,11 +5529,6 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
           }
 
           _this = _YXLayout.call.apply(_YXLayout, [this].concat(args)) || this;
-          /**
-           * 滚动方向，默认垂直方向滚动
-           */
-
-          _this.scrollDirection = YXFlowLayout.ScrollDirection.VERTICAL;
           /**
            * 是否开启分页滚动效果
            */
@@ -5500,13 +5600,13 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
         };
 
         _proto.prepare = function prepare(collectionView) {
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.HORIZONTAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
             this._horizontal(collectionView);
 
             return;
           }
 
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.VERTICAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
             this._vertical(collectionView);
 
             return;
@@ -5514,12 +5614,12 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
         };
 
         _proto.initOffset = function initOffset(collectionView) {
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.HORIZONTAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
             collectionView.scrollView.scrollToLeft(0);
             return;
           }
 
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.VERTICAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
             collectionView.scrollView.scrollToTop(0);
             return;
           }
@@ -5534,7 +5634,7 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
           offset.x = -offset.x;
           var threshold = 0.2;
 
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.HORIZONTAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
             var idx = Math.round(offset.x / collectionView.scrollView.view.width);
             var r = touchMoveVelocity.x / collectionView.scrollView.view.width;
 
@@ -5545,7 +5645,7 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
             offset.x = idx * collectionView.scrollView.view.width;
           }
 
-          if (this.scrollDirection == YXFlowLayout.ScrollDirection.VERTICAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
             var _idx = Math.round(offset.y / collectionView.scrollView.view.height);
 
             var _r = touchMoveVelocity.y / collectionView.scrollView.view.height;
@@ -5794,23 +5894,13 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
         return YXFlowLayout;
       }(YXLayout));
 
-      (function (_YXFlowLayout) {
-        var ScrollDirection = /*#__PURE__*/function (ScrollDirection) {
-          ScrollDirection[ScrollDirection["HORIZONTAL"] = 0] = "HORIZONTAL";
-          ScrollDirection[ScrollDirection["VERTICAL"] = 1] = "VERTICAL";
-          return ScrollDirection;
-        }({});
-
-        _YXFlowLayout.ScrollDirection = ScrollDirection;
-      })(YXFlowLayout || (YXFlowLayout = exports('YXFlowLayout', {})));
-
       cclegacy._RF.pop();
     }
   };
 });
 
 System.register("chunks:///_virtual/yx-masonry-flow-layout.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _inheritsLoose, cclegacy, _decorator, UITransform, math, YXIndexPath, YXLayoutAttributes, YXFlowLayout;
+  var _inheritsLoose, cclegacy, _decorator, UITransform, math, YXCollectionView, YXIndexPath, YXLayoutAttributes, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -5821,6 +5911,7 @@ System.register("chunks:///_virtual/yx-masonry-flow-layout.ts", ['./rollupPlugin
       UITransform = module.UITransform;
       math = module.math;
     }, function (module) {
+      YXCollectionView = module.YXCollectionView;
       YXIndexPath = module.YXIndexPath;
       YXLayoutAttributes = module.YXLayoutAttributes;
     }, function (module) {
@@ -5868,13 +5959,13 @@ System.register("chunks:///_virtual/yx-masonry-flow-layout.ts", ['./rollupPlugin
         var _proto = YXMasonryFlowLayout.prototype;
 
         _proto.prepare = function prepare(collectionView) {
-          if (this.scrollDirection == YXMasonryFlowLayout.ScrollDirection.HORIZONTAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
             this._masonry_horizontal(collectionView);
 
             return;
           }
 
-          if (this.scrollDirection == YXMasonryFlowLayout.ScrollDirection.VERTICAL) {
+          if (collectionView.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
             this._masonry_vertical(collectionView);
 
             return;
