@@ -2047,6 +2047,195 @@ System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
+System.register("chunks:///_virtual/demo18.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-table-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, Label, Component, YXTableView;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      NodeEventType = module.NodeEventType;
+      director = module.director;
+      Label = module.Label;
+      Component = module.Component;
+    }, function (module) {
+      YXTableView = module.YXTableView;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "5d3087FFnlIF7qqSN2J6Pe4", "demo18", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+
+      var Data = function Data() {
+        this.id = Data.ID++;
+      };
+
+      Data.ID = 0;
+      var demo18 = exports('demo18', (_dec = ccclass('demo18'), _dec2 = property(YXTableView), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo18, _Component);
+
+        function demo18() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "list", _descriptor, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = demo18.prototype;
+
+        _proto.onLoad = function onLoad() {
+          this.initBackAction();
+        };
+
+        _proto.initBackAction = function initBackAction() {
+          this.node.once(NodeEventType.TOUCH_END, function () {
+            director.loadScene("home");
+          });
+        };
+
+        _proto.start = function start() {
+          // 更新节点内容
+          this.list.onCellDisplay(function (cell, data) {
+            var label = cell.getChildByName("Label").getComponent(Label);
+            label.string = "" + data.id;
+          }); // 刷新列表数据
+
+          var array = [];
+
+          for (var index = 0; index < 10000; index++) {
+            array.push(new Data());
+          }
+
+          this.list.setData(array);
+        };
+
+        return demo18;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "list", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/demo19.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-page-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, log, instantiate, Label, Component, YXPageView;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Prefab = module.Prefab;
+      NodeEventType = module.NodeEventType;
+      director = module.director;
+      log = module.log;
+      instantiate = module.instantiate;
+      Label = module.Label;
+      Component = module.Component;
+    }, function (module) {
+      YXPageView = module.YXPageView;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+
+      cclegacy._RF.push({}, "759c1a/+jtFb5tCNiCqGKK1", "demo19", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var demo19 = exports('demo19', (_dec = ccclass('demo19'), _dec2 = property(YXPageView), _dec3 = property(Prefab), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo19, _Component);
+
+        function demo19() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "list", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "pagePrefab", _descriptor2, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = demo19.prototype;
+
+        _proto.onLoad = function onLoad() {
+          this.initBackAction();
+        };
+
+        _proto.initBackAction = function initBackAction() {
+          this.node.once(NodeEventType.TOUCH_END, function () {
+            director.loadScene("home");
+          });
+        };
+
+        _proto.start = function start() {
+          this.list.node.on(YXPageView.PAGE_CHANGE_EVENT2, function (idx) {
+            log(idx);
+          });
+
+          for (var index = 0; index < 5; index++) {
+            var page = instantiate(this.pagePrefab);
+            var label = page.getChildByName("Label").getComponent(Label);
+            label.string = "Page " + index;
+            this.list.addPage(page);
+          } // this.list.markForUpdatePages()
+          // this.list.setCurrentPageIndex(2)
+
+        };
+
+        return demo19;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "list", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "pagePrefab", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
 System.register("chunks:///_virtual/Demo1Cell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, UITransform, randomRangeInt, Sprite, math, Component;
 
@@ -2124,7 +2313,7 @@ System.register("chunks:///_virtual/Demo1Cell.ts", ['./rollupPluginModLoBabelHel
 });
 
 System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXFlowLayout;
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, ScrollView, log, Component, YXCollectionView, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -2144,6 +2333,8 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
       randomRangeInt = module.randomRangeInt;
       Sprite = module.Sprite;
       math = module.math;
+      ScrollView = module.ScrollView;
+      log = module.log;
       Component = module.Component;
     }, null, function (module) {
       YXCollectionView = module.YXCollectionView;
@@ -2173,6 +2364,7 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
 
           _initializerDefineProperty(_this, "cellPrefab", _descriptor2, _assertThisInitialized(_this));
 
+          _this.currentPage = null;
           return _this;
         }
 
@@ -2223,7 +2415,32 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
           layout.pagingEnabled = true;
           layout.itemSize = this.collectionView.scrollView.view.contentSize;
           this.collectionView.layout = layout;
-          this.collectionView.reloadData();
+          this.collectionView.reloadData(); // 立即通知一下页面变化
+
+          this.onPageChange();
+          /** 滚动 或者 滚动结束，按需求监听一个即可，一个是可以实时的监听到页面变化，一个是只有滚动结束才去检查页面变化*/
+          // 实时的监听页面变化
+
+          this.collectionView.node.on(ScrollView.EventType.SCROLLING, function () {
+            _this2.onPageChange();
+          }); // 仅在滚动结束时检查页面是否变化
+
+          this.collectionView.node.on(ScrollView.EventType.SCROLL_ENDED, function () {
+            _this2.onPageChange();
+          });
+        };
+
+        _proto.onPageChange = function onPageChange() {
+          var offset = this.collectionView.scrollView.getScrollOffset();
+          offset.x = -offset.x;
+          var idx = Math.round(offset.x / this.collectionView.scrollView.view.width);
+
+          if (idx == this.currentPage) {
+            return;
+          }
+
+          this.currentPage = idx;
+          log("onPageChange: " + this.currentPage);
         };
 
         return demo2;
@@ -2235,6 +2452,711 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
           return null;
         }
       }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "cellPrefab", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/demo20.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './Demo20Cell1.ts', './Demo20Cell0.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, math, Component, randomRangeInt, Demo20Cell1, Demo20Cell0, YXCollectionView, YXEdgeInsets, YXFlowLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      NodeEventType = module.NodeEventType;
+      director = module.director;
+      math = module.math;
+      Component = module.Component;
+      randomRangeInt = module.randomRangeInt;
+    }, null, function (module) {
+      Demo20Cell1 = module.Demo20Cell1;
+    }, function (module) {
+      Demo20Cell0 = module.Demo20Cell0;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
+      YXEdgeInsets = module.YXEdgeInsets;
+    }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "19532DZpoBBuYeK2gRYiXn1", "demo20", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+
+      var Data = function Data() {
+        this.id = Data.ID++;
+        this.width = randomRangeInt(200, 500);
+        this.height = randomRangeInt(200, 500);
+      };
+
+      Data.ID = 0;
+
+      var SectionData = function SectionData(flag) {
+        this.flag = null;
+        this.list = [];
+        /**
+         * 模拟数据
+         */
+
+        this.flag = flag;
+
+        if (flag == 0) {
+          this.list.push(new Data());
+          return;
+        }
+
+        var random_data_length = randomRangeInt(50, 60);
+
+        if (flag == 1) {
+          for (var index = 0; index < random_data_length; index++) {
+            this.list.push(new Data());
+          }
+
+          return;
+        }
+
+        if (flag == 2) {
+          for (var _index = 0; _index < random_data_length; _index++) {
+            this.list.push(new Data());
+          }
+
+          return;
+        }
+
+        if (flag == 3) {
+          for (var _index2 = 0; _index2 < random_data_length; _index2++) {
+            this.list.push(new Data());
+          }
+
+          return;
+        }
+      };
+
+      var demo20 = exports('demo20', (_dec = ccclass('demo20'), _dec2 = property(YXCollectionView), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo20, _Component);
+
+        function demo20() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "collectionView", _descriptor, _assertThisInitialized(_this));
+
+          _this.listData = [];
+          return _this;
+        }
+
+        var _proto = demo20.prototype;
+
+        _proto.onLoad = function onLoad() {
+          this.initBackAction();
+        };
+
+        _proto.initBackAction = function initBackAction() {
+          this.node.once(NodeEventType.TOUCH_END, function () {
+            director.loadScene("home");
+          });
+        };
+
+        _proto.start = function start() {
+          var _this2 = this;
+
+          this.listData.push(new SectionData(0));
+          this.listData.push(new SectionData(1));
+          this.listData.push(new SectionData(2));
+          this.listData.push(new SectionData(3));
+
+          this.collectionView.numberOfSections = function () {
+            return _this2.listData.length;
+          };
+
+          this.collectionView.numberOfItems = function (section) {
+            return _this2.listData[section].list.length;
+          };
+
+          this.collectionView.cellForItemAt = function (indexPath, collectionView) {
+            var sectionData = _this2.listData[indexPath.section];
+
+            if (sectionData.flag == 0) {
+              var rowData = sectionData.list[indexPath.item];
+              var result = collectionView.dequeueReusableCell("cell0");
+              var comp = result.getComponent(Demo20Cell0);
+              comp.setData(null);
+              return result;
+            }
+
+            if (sectionData.flag == 1) {
+              var _rowData = sectionData.list[indexPath.item];
+
+              var _result = collectionView.dequeueReusableCell("cell1");
+
+              var _comp = _result.getComponent(Demo20Cell1);
+
+              _comp.randomUpdate();
+
+              return _result;
+            }
+
+            if (sectionData.flag == 2) {
+              var _rowData2 = sectionData.list[indexPath.item];
+
+              var _result2 = collectionView.dequeueReusableCell("cell2");
+
+              var _comp2 = _result2.getComponent(Demo20Cell1);
+
+              _comp2.randomUpdate();
+
+              return _result2;
+            }
+
+            if (sectionData.flag == 3) {
+              var _rowData3 = sectionData.list[indexPath.item];
+
+              var _result3 = collectionView.dequeueReusableCell("cell3");
+
+              var _comp3 = _result3.getComponent(Demo20Cell1);
+
+              _comp3.randomUpdate();
+
+              return _result3;
+            }
+
+            return null;
+          };
+
+          this.collectionView.onCellDisplay = function (cell, indexPath, collectionView) {};
+
+          this.collectionView.onCellEndDisplay = function (cell, indexPath, collectionView) {};
+
+          var commonSpacing = 20;
+          var layout = new YXFlowLayout();
+          layout.horizontalSpacing = commonSpacing;
+          layout.verticalSpacing = commonSpacing;
+          layout.sectionInset = new YXEdgeInsets(20, 0, 0, 0);
+
+          layout.itemSize = function (indexPath, flowLayout, collectionView) {
+            var list_width = collectionView.scrollView.view.width;
+            var sectionData = _this2.listData[indexPath.section];
+
+            if (sectionData.flag == 0) {
+              return new math.Size(list_width, 380);
+            }
+
+            if (sectionData.flag == 1) {
+              var width = Math.floor((list_width - commonSpacing * 2) / 3);
+              return new math.Size(width, width);
+            }
+
+            if (sectionData.flag == 2) {
+              var _width = Math.floor((list_width - commonSpacing * 2) / 3);
+
+              if (indexPath.item == 0) {
+                var first_width = list_width - commonSpacing - _width;
+                return new math.Size(first_width, first_width);
+              }
+
+              return new math.Size(_width, _width);
+            }
+
+            if (sectionData.flag == 3) {
+              return new math.Size(list_width, 200);
+            }
+
+            return null;
+          };
+
+          this.collectionView.layout = layout;
+          this.collectionView.reloadData();
+        };
+
+        return demo20;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "collectionView", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/Demo20Cell0.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './Demo20Cell1.ts', './yx-collection-view.ts', './yx-cover-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, math, randomRangeInt, Component, Demo20Cell1, YXCollectionView, YXCoverLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      math = module.math;
+      randomRangeInt = module.randomRangeInt;
+      Component = module.Component;
+    }, null, function (module) {
+      Demo20Cell1 = module.Demo20Cell1;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
+    }, function (module) {
+      YXCoverLayout = module.YXCoverLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "4d274eC5uBM2qCxK7qGass+", "Demo20Cell0", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var Demo20Cell0 = exports('Demo20Cell0', (_dec = ccclass('Demo20Cell0'), _dec2 = property(YXCollectionView), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Demo20Cell0, _Component);
+
+        function Demo20Cell0() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "collectionView", _descriptor, _assertThisInitialized(_this));
+
+          _this.data = [];
+          _this.needs_reload_data = false;
+          return _this;
+        }
+
+        var _proto = Demo20Cell0.prototype;
+
+        _proto.start = function start() {
+          var _this2 = this;
+
+          var layout = new YXCoverLayout(new math.Size(700, 380));
+          layout.pagingEnabled = true;
+          this.collectionView.layout = layout;
+
+          this.collectionView.numberOfItems = function () {
+            return _this2.data.length;
+          };
+
+          this.collectionView.cellForItemAt = function (indexPath, collectionView) {
+            var result = collectionView.dequeueReusableCell("cell");
+            var comp = result.getComponent(Demo20Cell1);
+            comp.randomUpdate();
+            return result;
+          };
+        };
+
+        _proto.setData = function setData(array) {
+          // this.data = array
+          this.data = [];
+          var test = randomRangeInt(10, 20);
+
+          for (var index = 0; index < test; index++) {
+            this.data.push(index);
+          }
+
+          this.needs_reload_data = true;
+        };
+
+        _proto.update = function update(dt) {
+          if (this.needs_reload_data) {
+            this.needs_reload_data = false;
+            this.collectionView.reloadData();
+          }
+        };
+
+        return Demo20Cell0;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "collectionView", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/Demo20Cell1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, Sprite, SpriteFrame, randomRangeInt, Widget, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      Sprite = module.Sprite;
+      SpriteFrame = module.SpriteFrame;
+      randomRangeInt = module.randomRangeInt;
+      Widget = module.Widget;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _class3;
+
+      cclegacy._RF.push({}, "dfe5e3+PZlPP5O/aeZLgYlZ", "Demo20Cell1", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var Demo20Cell1 = exports('Demo20Cell1', (_dec = ccclass('Demo20Cell1'), _dec2 = property(Label), _dec3 = property(Label), _dec4 = property(Label), _dec5 = property(Label), _dec6 = property(Sprite), _dec7 = property(Sprite), _dec8 = property([SpriteFrame]), _dec(_class = (_class2 = (_class3 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Demo20Cell1, _Component);
+
+        function Demo20Cell1() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "nameLabel", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "titleLabel", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "otherLabel", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "detailLabel", _descriptor4, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "heroContent", _descriptor5, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "heroBackground", _descriptor6, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "imgs", _descriptor7, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = Demo20Cell1.prototype;
+
+        _proto.randomUpdate = function randomUpdate() {
+          this.nameLabel.string = Demo20Cell1.TestTexts[randomRangeInt(0, Demo20Cell1.TestTexts.length)];
+          this.nameLabel.updateRenderData(true);
+          this.nameLabel.node.getComponent(Widget).updateAlignment();
+          this.titleLabel.string = Demo20Cell1.TestTexts[randomRangeInt(0, Demo20Cell1.TestTexts.length)];
+          this.titleLabel.updateRenderData(true);
+          this.titleLabel.node.getComponent(Widget).updateAlignment();
+          this.detailLabel.string = Demo20Cell1.TestTexts[randomRangeInt(0, Demo20Cell1.TestTexts.length)];
+          this.detailLabel.updateRenderData(true);
+          this.detailLabel.node.getComponent(Widget).updateAlignment();
+          this.otherLabel.string = Demo20Cell1.TestTexts[randomRangeInt(0, Demo20Cell1.TestTexts.length)];
+          this.otherLabel.updateRenderData(true);
+          this.otherLabel.node.getComponent(Widget).updateAlignment();
+          var hero = this.imgs[randomRangeInt(0, this.imgs.length)];
+          this.heroContent.spriteFrame = hero;
+          this.heroBackground.spriteFrame = hero;
+        };
+
+        return Demo20Cell1;
+      }(Component), _class3.TestTexts = ["huchcy", "stlaloc", "jones", "supejones", "tizerc", "tlaloc", "GiantSpiders"], _class3), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "nameLabel", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "titleLabel", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "otherLabel", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "detailLabel", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "heroContent", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "heroBackground", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "imgs", [_dec8], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [];
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/demo21.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-card-page-layout.ts', './Demo21Cell.ts', './yx-collection-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, math, Widget, ScrollView, Component, randomRangeInt, YXCardPageLayout, Demo21Cell, YXCollectionView;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      NodeEventType = module.NodeEventType;
+      director = module.director;
+      math = module.math;
+      Widget = module.Widget;
+      ScrollView = module.ScrollView;
+      Component = module.Component;
+      randomRangeInt = module.randomRangeInt;
+    }, null, function (module) {
+      YXCardPageLayout = module.YXCardPageLayout;
+    }, function (module) {
+      Demo21Cell = module.Demo21Cell;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "d52c7GGvHRGroSOQuSt/l+R", "demo21", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+
+      var Data = function Data() {
+        this.id = Data.ID++;
+        this.title = Data.TestTexts[randomRangeInt(0, Data.TestTexts.length)];
+        this.detail = Data.TestTexts[randomRangeInt(0, Data.TestTexts.length)];
+        this.other = Data.TestTexts[randomRangeInt(0, Data.TestTexts.length)];
+      };
+
+      Data.ID = 0;
+      Data.TestTexts = ["huchcy", "stlaloc", "jones", "supejones", "tizerc", "tlaloc", "GiantSpiders"];
+      var demo21 = exports('demo21', (_dec = ccclass('demo21'), _dec2 = property(YXCollectionView), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo21, _Component);
+
+        function demo21() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "collectionView", _descriptor, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = demo21.prototype;
+
+        _proto.onLoad = function onLoad() {
+          this.initBackAction();
+        };
+
+        _proto.initBackAction = function initBackAction() {
+          this.node.once(NodeEventType.TOUCH_END, function () {
+            director.loadScene("home");
+          });
+        };
+
+        _proto.start = function start() {
+          var _this2 = this;
+
+          var array = [];
+
+          for (var index = 0; index < 10; index++) {
+            array.push(new Data());
+          }
+
+          var layout = new YXCardPageLayout(new math.Size(500, 600));
+          layout.contentOffset = new math.Vec3(0, 44);
+          this.collectionView.layout = layout;
+
+          this.collectionView.numberOfItems = function () {
+            return array.length;
+          };
+
+          this.collectionView.cellForItemAt = function (indexPath, collectionView) {
+            var rowData = array[indexPath.item];
+            var cell = collectionView.dequeueReusableCell("cell");
+            var comp = cell.getComponent(Demo21Cell);
+            comp.nameLabel.string = "data-id: " + rowData.id;
+            comp.nameLabel.updateRenderData(true);
+            comp.nameLabel.node.getComponent(Widget).updateAlignment();
+            comp.titleLabel.string = rowData.title;
+            comp.titleLabel.updateRenderData(true);
+            comp.titleLabel.node.getComponent(Widget).updateAlignment();
+            comp.detailLabel.string = rowData.detail;
+            comp.detailLabel.updateRenderData(true);
+            comp.detailLabel.node.getComponent(Widget).updateAlignment();
+            comp.otherLabel.string = rowData.other;
+            comp.otherLabel.updateRenderData(true);
+            comp.otherLabel.node.getComponent(Widget).updateAlignment();
+            return cell;
+          };
+
+          this.collectionView.reloadData();
+          /**
+           * 滚动结束时，需要检查是否成功切换了，根据切换结果判断是否更新列表
+           */
+
+          this.collectionView.node.on(ScrollView.EventType.SCROLL_ENDED, function () {
+            var offset = _this2.collectionView.scrollView.getScrollOffset();
+
+            offset.x = -offset.x;
+            var idx = Math.round(offset.x / _this2.collectionView.scrollView.view.width);
+
+            if (idx == 1) {
+              return; // 1 表示没切成功
+            } // 切换成功，复位并且更新数据
+
+
+            offset.x = _this2.collectionView.scrollView.view.width;
+
+            _this2.collectionView.scrollView.scrollToOffset(offset);
+
+            array.shift();
+
+            _this2.collectionView.reloadData();
+          });
+        };
+
+        return demo21;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "collectionView", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/Demo21Cell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+      cclegacy._RF.push({}, "fda9ceDdENHLId+iemk4U7u", "Demo21Cell", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var Demo21Cell = exports('Demo21Cell', (_dec = ccclass('Demo21Cell'), _dec2 = property(Label), _dec3 = property(Label), _dec4 = property(Label), _dec5 = property(Label), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Demo21Cell, _Component);
+
+        function Demo21Cell() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "nameLabel", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "titleLabel", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "otherLabel", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "detailLabel", _descriptor4, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        return Demo21Cell;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "nameLabel", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "titleLabel", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "otherLabel", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "detailLabel", [_dec5], {
         configurable: true,
         enumerable: true,
         writable: true,
@@ -2936,7 +3858,7 @@ System.register("chunks:///_virtual/demo7.ts", ['./rollupPluginModLoBabelHelpers
         _proto.start = function start() {
           var _this2 = this;
 
-          this.testData = [new Data("\u6709\u4E00\u5929\u6211\u53BB\u6587\u5177\u5E97\u4E70\u7B14\uFF0C\u6B63\u5728\u6211\u8981\u628A\u7B14\u6346\u8D77\u6765\u65F6\uFF0C\u5E97\u5458\u5BF9\u6211\u8BF4:\u8FD9\u4E2A\u7B14\u4E0D\u7528\u6346\u3002\u4E8E\u662F\u6211\u95EE\u4ED6:\u5565\u7B14\u624D\u9700\u6346\uFF1F\u4ED6\u62FF\u51FA\u4E00\u4E2A\u6495\u6389\u4E8C\u7EF4\u7801\u7684\u7B14\u5BF9\u6211\u8BF4:\u6495\u4E86\u7801\u7684\u624D\u9700\u6346\u3002"), new Data("\u4E00\u5929\uFF0C\u90B9\u5FCC\u7167\u4E86\u7167\u955C\u5B50\uFF0C\u5BF9\u7740\u4ED6\u7684\u59BB\u5B50\u8BF4\uFF1A\u201C\u543E\u719F\u4E0E\u57CE\u5317\u8521\u5F90\u5764\u7F8E\uFF1F\u201D\u5176\u59BB\u66F0\u201C\u5FCC\u4F60\u592A\u7F8E\u3002\u201D"), new Data("\u77ED\u6587\u672C"), new Data("\u6709\u4E00\u5929\u5C0F\u5409\u548C\u4E00\u7FA4\u4EBA\u53BB\u5C71\u6D1E\uFF0C\u53D1\u73B0\u5C71\u6D1E\u6709\u4E2A\u5C38\u4F53\uFF0C\u5C31\u548C\u5176\u4ED6\u4EBA\u62AC\u51FA\u53BB\u4E86\u3002\u56DE\u5BB6\u540E\uFF0C\u5176\u4ED6\u4EBA\u90FD\u6B7B\u4E86\uFF0C\u7237\u7237\u95EE\uFF1A\u201C\u5409\u4F60\u62AC\u6CA1\uFF1F\u201D\u5C0F\u5409\u6447\u4E86\u6447\u5934\u3002\u8FD9\u65F6\u5C0F\u5409\u7684\u8EAB\u4E0A\u53D8\u7EFF\u4E86\uFF0C\u7237\u7237\u8BF4\uFF1A\u201C\u4E0D\u597D\uFF0C\u662F\u7EFF\u5C38\u5BD2\u8B66\u544A\uFF01\u201D"), new Data("\u4E00\u5BF9\u6CF0\u56FD\u592B\u5987\u5E26\u7740\u5B69\u5B50\u51FA\u56FD\u65C5\u6E38\uFF0C\u8FC7\u6D77\u5173\u65F6\uFF0C\u5DE5\u4F5C\u4EBA\u5458\u95EE\u592B\u5987\uFF0C\u5B69\u5B50\u59D3\u540D\u56FD\u7C4D\u51FA\u751F\u6708\u4EFD\uFF0C\u7236\u6BCD\u9053\uFF1A\u6770\u59AE\u6CF0\u56FD\u4EBA\u4E94\u6708\uFF0C\u673A\u5668\u7FFB\u8BD1\u51FA\u6765\uFF1AJenny Thai May"), new Data("\u9732\u97E9\u548C\u51AC\u502A\u90FD\u662F\u516C\u53F8\u51FA\u8272\u7684\u5458\u5DE5\uFF0C\u9732\u6DB5\u5F88\u5AC9\u5992\u51AC\u59AE\u7684\u989C\u503C\u3002\u6709\u6B21\u516C\u53F8\u4E3E\u529E\u6D3B\u52A8\uFF0C\u9080\u8BF7\u5404\u754C\u4EBA\u58EB\u6765\u53C2\u52A0\u3002\u9732\u6DB5\u548C\u51AC\u502A\u4F5C\u4E3A\u4E3B\u6301\u4EBA\uFF0C\u6D3B\u52A8\u524D\u665A\u9732\u6DB5\u8DD1\u5230\u51AC\u502A\u5316\u5986\u5BA4\u5F04\u810F\u5979\u7684\u88D9\u5B50\u3002\u88AB\u53E6\u4E00\u4EBA\u770B\u89C1\u95EE\u5979\u4E3A\u4F55\u8981\u8FD9\u6837\u505A\u3002\u9732\u6DB5\uFF1A\u5FCC\u502A\u592A\u7F8E"), new Data("\u4ECA\u5929\u53BB\u4E86\u519C\u6751\u7684\u5927\u5A18\u5BB6\uFF0C\u53BB\u7684\u65F6\u5019\u5927\u5A18\u6B63\u5728\u5730\u91CC\u5E72\u6D3B\u3002\u6211\u95EE\uFF1A\u201C\u5927\u5A18\u4F60\u5728\u5E72\u4EC0\u4E48\u554A\uFF1F\u201D\u5927\u5A18\u8BF4\uFF1A\u201C\u6211\u5728\u5228\u6728\u6750\u3002\u201D\u8FC7\u4E86\u4F1A\u7A81\u7136\u558A\u6211\uFF1A\u201C\u4F84\u5B50\uFF0C\u53BB\u5E2E\u5927\u5A18\u62FF\u7EF3\u5B50\u3002\u201D\u6211\u95EE\u5230\uFF1A\u201C\u62FF\u7EF3\u5B50\u5E72\u4EC0\u4E48\uFF1F\u201D\u5A18\u8BF4\uFF1A\u201C\u5927\u5A18\u5228\u6750\u9700\u6346\u3002\u201D"), new Data("\u67D0\u5929\u6211\u7A7F\u8D8A\u5230\u6B66\u4FA0\u5C0F\u8BF4\u91CC\uFF0C\u9047\u5230\u4E86\u5F20\u65E0\u5FCC\u3002\u6211\u8BF4:\u5FCC\uFF0C\u6765\u5207\u78CB\u4E00\u4E0B?\u5FCC:\u540E\u9762\u3002\u6211\u770B\u89C1\u51E0\u4E07\u4EBA\u8FFD\u7740\u5F20\u65E0\u5FCC\u8BF4\u8981\u6376\u6B7B\u4ED6\u3002\u6211\u5FC3\u751F\u601C\u60AF\uFF0C\u8BF4:\u5FCC\uFF0C\u4F60\u592A\u9709\uFF01\u7A81\u7136\uFF0C\u4ED6\u4EEC\u7684\u8001\u5927\u5415\u65BD\u6DB5\u5411\u6211\u4EEC\u53D1\u51FA\u8B66\u544A\u3002\u6211\u8BF4:\u906D\u4E86\uFF01\u662F\u5415\u65BD\u6DB5\u8B66\u544A\uFF01"), new Data("\u865E\u59EC\u7684\u76AE\u80A4\u597D\u597D\u770B\u554A\uFF0C\u5FCD\u4E0D\u4F4F\u6211\u60F3\u4F5C\u8BD7\u4E00\u9996\uFF1A\u65E2\u6709\u6B4C\u821E\u60CA\u4E91\u9704\uFF0C\u9713\u88F3\u7FBD\u8863\u6F2B\u7A88\u7A95\u3002\u62AC\u6307\u4E00\u6325\u8F6C\u5929\u7C41\uFF0C\u7F8E\u9152\u4F73\u80B4\u5171\u900D\u9065\u3002"), new Data("\u6D4B\u8BD5")];
+          this.testData = [new Data("\u6709\u4E00\u5929\u6211\u53BB\u6587\u5177\u5E97\u4E70\u7B14\uFF0C\u6B63\u5728\u6211\u8981\u628A\u7B14\u6346\u8D77\u6765\u65F6\uFF0C\u5E97\u5458\u5BF9\u6211\u8BF4:\u8FD9\u4E2A\u7B14\u4E0D\u7528\u6346\u3002\u4E8E\u662F\u6211\u95EE\u4ED6:\u5565\u7B14\u624D\u9700\u6346\uFF1F\u4ED6\u62FF\u51FA\u4E00\u4E2A\u6495\u6389\u4E8C\u7EF4\u7801\u7684\u7B14\u5BF9\u6211\u8BF4:\u6495\u4E86\u7801\u7684\u624D\u9700\u6346\u3002"), new Data("\u4E00\u5929\uFF0C\u90B9\u5FCC\u7167\u4E86\u7167\u955C\u5B50\uFF0C\u5BF9\u7740\u4ED6\u7684\u59BB\u5B50\u8BF4\uFF1A\u201C\u543E\u719F\u4E0E\u57CE\u5317\u8521\u5F90\u5764\u7F8E\uFF1F\u201D\u5176\u59BB\u66F0\u201C\u5FCC\u4F60\u592A\u7F8E\u3002\u201D"), new Data("\u77ED\u6587\u672C"), new Data("\u6709\u4E00\u5929\u5C0F\u5409\u548C\u4E00\u7FA4\u4EBA\u53BB\u5C71\u6D1E\uFF0C\u53D1\u73B0\u5C71\u6D1E\u6709\u4E2A\u5C38\u4F53\uFF0C\u5C31\u548C\u5176\u4ED6\u4EBA\u62AC\u51FA\u53BB\u4E86\u3002\u56DE\u5BB6\u540E\uFF0C\u5176\u4ED6\u4EBA\u90FD\u6B7B\u4E86\uFF0C\u7237\u7237\u95EE\uFF1A\u201C\u5409\u4F60\u62AC\u6CA1\uFF1F\u201D\u5C0F\u5409\u6447\u4E86\u6447\u5934\u3002\u8FD9\u65F6\u5C0F\u5409\u7684\u8EAB\u4E0A\u53D8\u7EFF\u4E86\uFF0C\u7237\u7237\u8BF4\uFF1A\u201C\u4E0D\u597D\uFF0C\u662F\u7EFF\u5C38\u5BD2\u8B66\u544A\uFF01\u201D"), new Data("\u4E00\u5BF9\u6CF0\u56FD\u592B\u5987\u5E26\u7740\u5B69\u5B50\u51FA\u56FD\u65C5\u6E38\uFF0C\u8FC7\u6D77\u5173\u65F6\uFF0C\u5DE5\u4F5C\u4EBA\u5458\u95EE\u592B\u5987\uFF0C\u5B69\u5B50\u59D3\u540D\u56FD\u7C4D\u51FA\u751F\u6708\u4EFD\uFF0C\u7236\u6BCD\u9053\uFF1A\u6770\u59AE\u6CF0\u56FD\u4EBA\u4E94\u6708\uFF0C\u673A\u5668\u7FFB\u8BD1\u51FA\u6765\uFF1AJenny Thai May"), new Data("\u9732\u97E9\u548C\u51AC\u502A\u90FD\u662F\u516C\u53F8\u51FA\u8272\u7684\u5458\u5DE5\uFF0C\u9732\u6DB5\u5F88\u5AC9\u5992\u51AC\u59AE\u7684\u989C\u503C\u3002\u6709\u6B21\u516C\u53F8\u4E3E\u529E\u6D3B\u52A8\uFF0C\u9080\u8BF7\u5404\u754C\u4EBA\u58EB\u6765\u53C2\u52A0\u3002\u9732\u6DB5\u548C\u51AC\u502A\u4F5C\u4E3A\u4E3B\u6301\u4EBA\uFF0C\u6D3B\u52A8\u524D\u665A\u9732\u6DB5\u8DD1\u5230\u51AC\u502A\u5316\u5986\u5BA4\u5F04\u810F\u5979\u7684\u88D9\u5B50\u3002\u88AB\u53E6\u4E00\u4EBA\u770B\u89C1\u95EE\u5979\u4E3A\u4F55\u8981\u8FD9\u6837\u505A\u3002\u9732\u6DB5\uFF1A\u5FCC\u502A\u592A\u7F8E"), new Data("\u4ECA\u5929\u53BB\u4E86\u519C\u6751\u7684\u5927\u5A18\u5BB6\uFF0C\u53BB\u7684\u65F6\u5019\u5927\u5A18\u6B63\u5728\u5730\u91CC\u5E72\u6D3B\u3002\u6211\u95EE\uFF1A\u201C\u5927\u5A18\u4F60\u5728\u5E72\u4EC0\u4E48\u554A\uFF1F\u201D\u5927\u5A18\u8BF4\uFF1A\u201C\u6211\u5728\u5228\u6728\u6750\u3002\u201D\u8FC7\u4E86\u4F1A\u7A81\u7136\u558A\u6211\uFF1A\u201C\u4F84\u5B50\uFF0C\u53BB\u5E2E\u5927\u5A18\u62FF\u7EF3\u5B50\u3002\u201D\u6211\u95EE\u5230\uFF1A\u201C\u62FF\u7EF3\u5B50\u5E72\u4EC0\u4E48\uFF1F\u201D\u5A18\u8BF4\uFF1A\u201C\u5927\u5A18\u5228\u6750\u9700\u6346\u3002\u201D"), new Data("\u67D0\u5929\u6211\u7A7F\u8D8A\u5230\u6B66\u4FA0\u5C0F\u8BF4\u91CC\uFF0C\u9047\u5230\u4E86\u5F20\u65E0\u5FCC\u3002\u6211\u8BF4:\u5FCC\uFF0C\u6765\u5207\u78CB\u4E00\u4E0B?\u5FCC:\u540E\u9762\u3002\u6211\u770B\u89C1\u51E0\u4E07\u4EBA\u8FFD\u7740\u5F20\u65E0\u5FCC\u8BF4\u8981\u6376\u6B7B\u4ED6\u3002\u6211\u5FC3\u751F\u601C\u60AF\uFF0C\u8BF4:\u5FCC\uFF0C\u4F60\u592A\u9709\uFF01\u7A81\u7136\uFF0C\u4ED6\u4EEC\u7684\u8001\u5927\u5415\u65BD\u6DB5\u5411\u6211\u4EEC\u53D1\u51FA\u8B66\u544A\u3002\u6211\u8BF4:\u906D\u4E86\uFF01\u662F\u5415\u65BD\u6DB5\u8B66\u544A\uFF01"), new Data("\u865E\u59EC\u7684\u76AE\u80A4\u597D\u597D\u770B\u554A\uFF0C\u5FCD\u4E0D\u4F4F\u6211\u60F3\u4F5C\u8BD7\u4E00\u9996\uFF1A\u65E2\u6709\u6B4C\u821E\u60CA\u4E91\u9704\uFF0C\u9713\u88F3\u7FBD\u8863\u6F2B\u7A88\u7A95\u3002\u62AC\u6307\u4E00\u6325\u8F6C\u5929\u7C41\uFF0C\u7F8E\u9152\u4F73\u80B4\u5171\u900D\u9065\u3002"), new Data("\u6D4B\u8BD5"), new Data("\u6709\u4E00\u5929\u6211\u53BB\u6587\u5177\u5E97\u4E70\u7B14\uFF0C\u6B63\u5728\u6211\u8981\u628A\u7B14\u6346\u8D77\u6765\u65F6\uFF0C\u5E97\u5458\u5BF9\u6211\u8BF4:\u8FD9\u4E2A\u7B14\u4E0D\u7528\u6346\u3002\u4E8E\u662F\u6211\u95EE\u4ED6:\u5565\u7B14\u624D\u9700\u6346\uFF1F\u4ED6\u62FF\u51FA\u4E00\u4E2A\u6495\u6389\u4E8C\u7EF4\u7801\u7684\u7B14\u5BF9\u6211\u8BF4:\u6495\u4E86\u7801\u7684\u624D\u9700\u6346\u3002"), new Data("\u4E00\u5929\uFF0C\u90B9\u5FCC\u7167\u4E86\u7167\u955C\u5B50\uFF0C\u5BF9\u7740\u4ED6\u7684\u59BB\u5B50\u8BF4\uFF1A\u201C\u543E\u719F\u4E0E\u57CE\u5317\u8521\u5F90\u5764\u7F8E\uFF1F\u201D\u5176\u59BB\u66F0\u201C\u5FCC\u4F60\u592A\u7F8E\u3002\u201D"), new Data("\u77ED\u6587\u672C"), new Data("\u6709\u4E00\u5929\u5C0F\u5409\u548C\u4E00\u7FA4\u4EBA\u53BB\u5C71\u6D1E\uFF0C\u53D1\u73B0\u5C71\u6D1E\u6709\u4E2A\u5C38\u4F53\uFF0C\u5C31\u548C\u5176\u4ED6\u4EBA\u62AC\u51FA\u53BB\u4E86\u3002\u56DE\u5BB6\u540E\uFF0C\u5176\u4ED6\u4EBA\u90FD\u6B7B\u4E86\uFF0C\u7237\u7237\u95EE\uFF1A\u201C\u5409\u4F60\u62AC\u6CA1\uFF1F\u201D\u5C0F\u5409\u6447\u4E86\u6447\u5934\u3002\u8FD9\u65F6\u5C0F\u5409\u7684\u8EAB\u4E0A\u53D8\u7EFF\u4E86\uFF0C\u7237\u7237\u8BF4\uFF1A\u201C\u4E0D\u597D\uFF0C\u662F\u7EFF\u5C38\u5BD2\u8B66\u544A\uFF01\u201D"), new Data("\u4E00\u5BF9\u6CF0\u56FD\u592B\u5987\u5E26\u7740\u5B69\u5B50\u51FA\u56FD\u65C5\u6E38\uFF0C\u8FC7\u6D77\u5173\u65F6\uFF0C\u5DE5\u4F5C\u4EBA\u5458\u95EE\u592B\u5987\uFF0C\u5B69\u5B50\u59D3\u540D\u56FD\u7C4D\u51FA\u751F\u6708\u4EFD\uFF0C\u7236\u6BCD\u9053\uFF1A\u6770\u59AE\u6CF0\u56FD\u4EBA\u4E94\u6708\uFF0C\u673A\u5668\u7FFB\u8BD1\u51FA\u6765\uFF1AJenny Thai May"), new Data("\u9732\u97E9\u548C\u51AC\u502A\u90FD\u662F\u516C\u53F8\u51FA\u8272\u7684\u5458\u5DE5\uFF0C\u9732\u6DB5\u5F88\u5AC9\u5992\u51AC\u59AE\u7684\u989C\u503C\u3002\u6709\u6B21\u516C\u53F8\u4E3E\u529E\u6D3B\u52A8\uFF0C\u9080\u8BF7\u5404\u754C\u4EBA\u58EB\u6765\u53C2\u52A0\u3002\u9732\u6DB5\u548C\u51AC\u502A\u4F5C\u4E3A\u4E3B\u6301\u4EBA\uFF0C\u6D3B\u52A8\u524D\u665A\u9732\u6DB5\u8DD1\u5230\u51AC\u502A\u5316\u5986\u5BA4\u5F04\u810F\u5979\u7684\u88D9\u5B50\u3002\u88AB\u53E6\u4E00\u4EBA\u770B\u89C1\u95EE\u5979\u4E3A\u4F55\u8981\u8FD9\u6837\u505A\u3002\u9732\u6DB5\uFF1A\u5FCC\u502A\u592A\u7F8E"), new Data("\u4ECA\u5929\u53BB\u4E86\u519C\u6751\u7684\u5927\u5A18\u5BB6\uFF0C\u53BB\u7684\u65F6\u5019\u5927\u5A18\u6B63\u5728\u5730\u91CC\u5E72\u6D3B\u3002\u6211\u95EE\uFF1A\u201C\u5927\u5A18\u4F60\u5728\u5E72\u4EC0\u4E48\u554A\uFF1F\u201D\u5927\u5A18\u8BF4\uFF1A\u201C\u6211\u5728\u5228\u6728\u6750\u3002\u201D\u8FC7\u4E86\u4F1A\u7A81\u7136\u558A\u6211\uFF1A\u201C\u4F84\u5B50\uFF0C\u53BB\u5E2E\u5927\u5A18\u62FF\u7EF3\u5B50\u3002\u201D\u6211\u95EE\u5230\uFF1A\u201C\u62FF\u7EF3\u5B50\u5E72\u4EC0\u4E48\uFF1F\u201D\u5A18\u8BF4\uFF1A\u201C\u5927\u5A18\u5228\u6750\u9700\u6346\u3002\u201D"), new Data("\u67D0\u5929\u6211\u7A7F\u8D8A\u5230\u6B66\u4FA0\u5C0F\u8BF4\u91CC\uFF0C\u9047\u5230\u4E86\u5F20\u65E0\u5FCC\u3002\u6211\u8BF4:\u5FCC\uFF0C\u6765\u5207\u78CB\u4E00\u4E0B?\u5FCC:\u540E\u9762\u3002\u6211\u770B\u89C1\u51E0\u4E07\u4EBA\u8FFD\u7740\u5F20\u65E0\u5FCC\u8BF4\u8981\u6376\u6B7B\u4ED6\u3002\u6211\u5FC3\u751F\u601C\u60AF\uFF0C\u8BF4:\u5FCC\uFF0C\u4F60\u592A\u9709\uFF01\u7A81\u7136\uFF0C\u4ED6\u4EEC\u7684\u8001\u5927\u5415\u65BD\u6DB5\u5411\u6211\u4EEC\u53D1\u51FA\u8B66\u544A\u3002\u6211\u8BF4:\u906D\u4E86\uFF01\u662F\u5415\u65BD\u6DB5\u8B66\u544A\uFF01"), new Data("\u865E\u59EC\u7684\u76AE\u80A4\u597D\u597D\u770B\u554A\uFF0C\u5FCD\u4E0D\u4F4F\u6211\u60F3\u4F5C\u8BD7\u4E00\u9996\uFF1A\u65E2\u6709\u6B4C\u821E\u60CA\u4E91\u9704\uFF0C\u9713\u88F3\u7FBD\u8863\u6F2B\u7A88\u7A95\u3002\u62AC\u6307\u4E00\u6325\u8F6C\u5929\u7C41\uFF0C\u7F8E\u9152\u4F73\u80B4\u5171\u900D\u9065\u3002"), new Data("\u6D4B\u8BD5"), new Data("\u6709\u4E00\u5929\u6211\u53BB\u6587\u5177\u5E97\u4E70\u7B14\uFF0C\u6B63\u5728\u6211\u8981\u628A\u7B14\u6346\u8D77\u6765\u65F6\uFF0C\u5E97\u5458\u5BF9\u6211\u8BF4:\u8FD9\u4E2A\u7B14\u4E0D\u7528\u6346\u3002\u4E8E\u662F\u6211\u95EE\u4ED6:\u5565\u7B14\u624D\u9700\u6346\uFF1F\u4ED6\u62FF\u51FA\u4E00\u4E2A\u6495\u6389\u4E8C\u7EF4\u7801\u7684\u7B14\u5BF9\u6211\u8BF4:\u6495\u4E86\u7801\u7684\u624D\u9700\u6346\u3002"), new Data("\u4E00\u5929\uFF0C\u90B9\u5FCC\u7167\u4E86\u7167\u955C\u5B50\uFF0C\u5BF9\u7740\u4ED6\u7684\u59BB\u5B50\u8BF4\uFF1A\u201C\u543E\u719F\u4E0E\u57CE\u5317\u8521\u5F90\u5764\u7F8E\uFF1F\u201D\u5176\u59BB\u66F0\u201C\u5FCC\u4F60\u592A\u7F8E\u3002\u201D"), new Data("\u77ED\u6587\u672C"), new Data("\u6709\u4E00\u5929\u5C0F\u5409\u548C\u4E00\u7FA4\u4EBA\u53BB\u5C71\u6D1E\uFF0C\u53D1\u73B0\u5C71\u6D1E\u6709\u4E2A\u5C38\u4F53\uFF0C\u5C31\u548C\u5176\u4ED6\u4EBA\u62AC\u51FA\u53BB\u4E86\u3002\u56DE\u5BB6\u540E\uFF0C\u5176\u4ED6\u4EBA\u90FD\u6B7B\u4E86\uFF0C\u7237\u7237\u95EE\uFF1A\u201C\u5409\u4F60\u62AC\u6CA1\uFF1F\u201D\u5C0F\u5409\u6447\u4E86\u6447\u5934\u3002\u8FD9\u65F6\u5C0F\u5409\u7684\u8EAB\u4E0A\u53D8\u7EFF\u4E86\uFF0C\u7237\u7237\u8BF4\uFF1A\u201C\u4E0D\u597D\uFF0C\u662F\u7EFF\u5C38\u5BD2\u8B66\u544A\uFF01\u201D"), new Data("\u4E00\u5BF9\u6CF0\u56FD\u592B\u5987\u5E26\u7740\u5B69\u5B50\u51FA\u56FD\u65C5\u6E38\uFF0C\u8FC7\u6D77\u5173\u65F6\uFF0C\u5DE5\u4F5C\u4EBA\u5458\u95EE\u592B\u5987\uFF0C\u5B69\u5B50\u59D3\u540D\u56FD\u7C4D\u51FA\u751F\u6708\u4EFD\uFF0C\u7236\u6BCD\u9053\uFF1A\u6770\u59AE\u6CF0\u56FD\u4EBA\u4E94\u6708\uFF0C\u673A\u5668\u7FFB\u8BD1\u51FA\u6765\uFF1AJenny Thai May"), new Data("\u9732\u97E9\u548C\u51AC\u502A\u90FD\u662F\u516C\u53F8\u51FA\u8272\u7684\u5458\u5DE5\uFF0C\u9732\u6DB5\u5F88\u5AC9\u5992\u51AC\u59AE\u7684\u989C\u503C\u3002\u6709\u6B21\u516C\u53F8\u4E3E\u529E\u6D3B\u52A8\uFF0C\u9080\u8BF7\u5404\u754C\u4EBA\u58EB\u6765\u53C2\u52A0\u3002\u9732\u6DB5\u548C\u51AC\u502A\u4F5C\u4E3A\u4E3B\u6301\u4EBA\uFF0C\u6D3B\u52A8\u524D\u665A\u9732\u6DB5\u8DD1\u5230\u51AC\u502A\u5316\u5986\u5BA4\u5F04\u810F\u5979\u7684\u88D9\u5B50\u3002\u88AB\u53E6\u4E00\u4EBA\u770B\u89C1\u95EE\u5979\u4E3A\u4F55\u8981\u8FD9\u6837\u505A\u3002\u9732\u6DB5\uFF1A\u5FCC\u502A\u592A\u7F8E"), new Data("\u4ECA\u5929\u53BB\u4E86\u519C\u6751\u7684\u5927\u5A18\u5BB6\uFF0C\u53BB\u7684\u65F6\u5019\u5927\u5A18\u6B63\u5728\u5730\u91CC\u5E72\u6D3B\u3002\u6211\u95EE\uFF1A\u201C\u5927\u5A18\u4F60\u5728\u5E72\u4EC0\u4E48\u554A\uFF1F\u201D\u5927\u5A18\u8BF4\uFF1A\u201C\u6211\u5728\u5228\u6728\u6750\u3002\u201D\u8FC7\u4E86\u4F1A\u7A81\u7136\u558A\u6211\uFF1A\u201C\u4F84\u5B50\uFF0C\u53BB\u5E2E\u5927\u5A18\u62FF\u7EF3\u5B50\u3002\u201D\u6211\u95EE\u5230\uFF1A\u201C\u62FF\u7EF3\u5B50\u5E72\u4EC0\u4E48\uFF1F\u201D\u5A18\u8BF4\uFF1A\u201C\u5927\u5A18\u5228\u6750\u9700\u6346\u3002\u201D"), new Data("\u67D0\u5929\u6211\u7A7F\u8D8A\u5230\u6B66\u4FA0\u5C0F\u8BF4\u91CC\uFF0C\u9047\u5230\u4E86\u5F20\u65E0\u5FCC\u3002\u6211\u8BF4:\u5FCC\uFF0C\u6765\u5207\u78CB\u4E00\u4E0B?\u5FCC:\u540E\u9762\u3002\u6211\u770B\u89C1\u51E0\u4E07\u4EBA\u8FFD\u7740\u5F20\u65E0\u5FCC\u8BF4\u8981\u6376\u6B7B\u4ED6\u3002\u6211\u5FC3\u751F\u601C\u60AF\uFF0C\u8BF4:\u5FCC\uFF0C\u4F60\u592A\u9709\uFF01\u7A81\u7136\uFF0C\u4ED6\u4EEC\u7684\u8001\u5927\u5415\u65BD\u6DB5\u5411\u6211\u4EEC\u53D1\u51FA\u8B66\u544A\u3002\u6211\u8BF4:\u906D\u4E86\uFF01\u662F\u5415\u65BD\u6DB5\u8B66\u544A\uFF01"), new Data("\u865E\u59EC\u7684\u76AE\u80A4\u597D\u597D\u770B\u554A\uFF0C\u5FCD\u4E0D\u4F4F\u6211\u60F3\u4F5C\u8BD7\u4E00\u9996\uFF1A\u65E2\u6709\u6B4C\u821E\u60CA\u4E91\u9704\uFF0C\u9713\u88F3\u7FBD\u8863\u6F2B\u7A88\u7A95\u3002\u62AC\u6307\u4E00\u6325\u8F6C\u5929\u7C41\uFF0C\u7F8E\u9152\u4F73\u80B4\u5171\u900D\u9065\u3002"), new Data("\u6D4B\u8BD5"), new Data("\u6709\u4E00\u5929\u6211\u53BB\u6587\u5177\u5E97\u4E70\u7B14\uFF0C\u6B63\u5728\u6211\u8981\u628A\u7B14\u6346\u8D77\u6765\u65F6\uFF0C\u5E97\u5458\u5BF9\u6211\u8BF4:\u8FD9\u4E2A\u7B14\u4E0D\u7528\u6346\u3002\u4E8E\u662F\u6211\u95EE\u4ED6:\u5565\u7B14\u624D\u9700\u6346\uFF1F\u4ED6\u62FF\u51FA\u4E00\u4E2A\u6495\u6389\u4E8C\u7EF4\u7801\u7684\u7B14\u5BF9\u6211\u8BF4:\u6495\u4E86\u7801\u7684\u624D\u9700\u6346\u3002"), new Data("\u4E00\u5929\uFF0C\u90B9\u5FCC\u7167\u4E86\u7167\u955C\u5B50\uFF0C\u5BF9\u7740\u4ED6\u7684\u59BB\u5B50\u8BF4\uFF1A\u201C\u543E\u719F\u4E0E\u57CE\u5317\u8521\u5F90\u5764\u7F8E\uFF1F\u201D\u5176\u59BB\u66F0\u201C\u5FCC\u4F60\u592A\u7F8E\u3002\u201D"), new Data("\u77ED\u6587\u672C"), new Data("\u6709\u4E00\u5929\u5C0F\u5409\u548C\u4E00\u7FA4\u4EBA\u53BB\u5C71\u6D1E\uFF0C\u53D1\u73B0\u5C71\u6D1E\u6709\u4E2A\u5C38\u4F53\uFF0C\u5C31\u548C\u5176\u4ED6\u4EBA\u62AC\u51FA\u53BB\u4E86\u3002\u56DE\u5BB6\u540E\uFF0C\u5176\u4ED6\u4EBA\u90FD\u6B7B\u4E86\uFF0C\u7237\u7237\u95EE\uFF1A\u201C\u5409\u4F60\u62AC\u6CA1\uFF1F\u201D\u5C0F\u5409\u6447\u4E86\u6447\u5934\u3002\u8FD9\u65F6\u5C0F\u5409\u7684\u8EAB\u4E0A\u53D8\u7EFF\u4E86\uFF0C\u7237\u7237\u8BF4\uFF1A\u201C\u4E0D\u597D\uFF0C\u662F\u7EFF\u5C38\u5BD2\u8B66\u544A\uFF01\u201D"), new Data("\u4E00\u5BF9\u6CF0\u56FD\u592B\u5987\u5E26\u7740\u5B69\u5B50\u51FA\u56FD\u65C5\u6E38\uFF0C\u8FC7\u6D77\u5173\u65F6\uFF0C\u5DE5\u4F5C\u4EBA\u5458\u95EE\u592B\u5987\uFF0C\u5B69\u5B50\u59D3\u540D\u56FD\u7C4D\u51FA\u751F\u6708\u4EFD\uFF0C\u7236\u6BCD\u9053\uFF1A\u6770\u59AE\u6CF0\u56FD\u4EBA\u4E94\u6708\uFF0C\u673A\u5668\u7FFB\u8BD1\u51FA\u6765\uFF1AJenny Thai May"), new Data("\u9732\u97E9\u548C\u51AC\u502A\u90FD\u662F\u516C\u53F8\u51FA\u8272\u7684\u5458\u5DE5\uFF0C\u9732\u6DB5\u5F88\u5AC9\u5992\u51AC\u59AE\u7684\u989C\u503C\u3002\u6709\u6B21\u516C\u53F8\u4E3E\u529E\u6D3B\u52A8\uFF0C\u9080\u8BF7\u5404\u754C\u4EBA\u58EB\u6765\u53C2\u52A0\u3002\u9732\u6DB5\u548C\u51AC\u502A\u4F5C\u4E3A\u4E3B\u6301\u4EBA\uFF0C\u6D3B\u52A8\u524D\u665A\u9732\u6DB5\u8DD1\u5230\u51AC\u502A\u5316\u5986\u5BA4\u5F04\u810F\u5979\u7684\u88D9\u5B50\u3002\u88AB\u53E6\u4E00\u4EBA\u770B\u89C1\u95EE\u5979\u4E3A\u4F55\u8981\u8FD9\u6837\u505A\u3002\u9732\u6DB5\uFF1A\u5FCC\u502A\u592A\u7F8E"), new Data("\u4ECA\u5929\u53BB\u4E86\u519C\u6751\u7684\u5927\u5A18\u5BB6\uFF0C\u53BB\u7684\u65F6\u5019\u5927\u5A18\u6B63\u5728\u5730\u91CC\u5E72\u6D3B\u3002\u6211\u95EE\uFF1A\u201C\u5927\u5A18\u4F60\u5728\u5E72\u4EC0\u4E48\u554A\uFF1F\u201D\u5927\u5A18\u8BF4\uFF1A\u201C\u6211\u5728\u5228\u6728\u6750\u3002\u201D\u8FC7\u4E86\u4F1A\u7A81\u7136\u558A\u6211\uFF1A\u201C\u4F84\u5B50\uFF0C\u53BB\u5E2E\u5927\u5A18\u62FF\u7EF3\u5B50\u3002\u201D\u6211\u95EE\u5230\uFF1A\u201C\u62FF\u7EF3\u5B50\u5E72\u4EC0\u4E48\uFF1F\u201D\u5A18\u8BF4\uFF1A\u201C\u5927\u5A18\u5228\u6750\u9700\u6346\u3002\u201D"), new Data("\u67D0\u5929\u6211\u7A7F\u8D8A\u5230\u6B66\u4FA0\u5C0F\u8BF4\u91CC\uFF0C\u9047\u5230\u4E86\u5F20\u65E0\u5FCC\u3002\u6211\u8BF4:\u5FCC\uFF0C\u6765\u5207\u78CB\u4E00\u4E0B?\u5FCC:\u540E\u9762\u3002\u6211\u770B\u89C1\u51E0\u4E07\u4EBA\u8FFD\u7740\u5F20\u65E0\u5FCC\u8BF4\u8981\u6376\u6B7B\u4ED6\u3002\u6211\u5FC3\u751F\u601C\u60AF\uFF0C\u8BF4:\u5FCC\uFF0C\u4F60\u592A\u9709\uFF01\u7A81\u7136\uFF0C\u4ED6\u4EEC\u7684\u8001\u5927\u5415\u65BD\u6DB5\u5411\u6211\u4EEC\u53D1\u51FA\u8B66\u544A\u3002\u6211\u8BF4:\u906D\u4E86\uFF01\u662F\u5415\u65BD\u6DB5\u8B66\u544A\uFF01"), new Data("\u865E\u59EC\u7684\u76AE\u80A4\u597D\u597D\u770B\u554A\uFF0C\u5FCD\u4E0D\u4F4F\u6211\u60F3\u4F5C\u8BD7\u4E00\u9996\uFF1A\u65E2\u6709\u6B4C\u821E\u60CA\u4E91\u9704\uFF0C\u9713\u88F3\u7FBD\u8863\u6F2B\u7A88\u7A95\u3002\u62AC\u6307\u4E00\u6325\u8F6C\u5929\u7C41\uFF0C\u7F8E\u9152\u4F73\u80B4\u5171\u900D\u9065\u3002"), new Data("\u6D4B\u8BD5")];
           this.testData.sort(function () {
             return Math.random() - 0.5;
           });
@@ -3381,7 +4303,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
 });
 
 System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Node, ProgressBar, math, UITransform, Label, director, Component, YXCollectionView, YXFlowLayout;
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Node, ProgressBar, game, math, UITransform, Label, director, Component, YXCollectionView, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -3394,6 +4316,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
       _decorator = module._decorator;
       Node = module.Node;
       ProgressBar = module.ProgressBar;
+      game = module.game;
       math = module.math;
       UITransform = module.UITransform;
       Label = module.Label;
@@ -3439,6 +4362,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
 
           this.loading.active = false;
           this.progressBar.progress = 0;
+          game.frameRate = 120;
           /**
            * 通过这组数据查看效果对应的实现场景
            * 每个场景目录下都是单独的项目，不会与其他目录文件关联，查看时只需要查看对应的目录下的文件就好
@@ -3495,6 +4419,14 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
           }, {
             title: "\u65CB\u8F6C\u6728\u9A6C",
             scene: "demo16"
+          }, // { title: `TableView  组件演示`, scene: `demo18` },
+          // { title: `PageView  组件演示`, scene: `demo19` },
+          {
+            title: "Label \u5361\u987F\u4F18\u5316",
+            scene: "demo20"
+          }, {
+            title: "\u5806\u53E0\u5361\u7247",
+            scene: "demo21"
           }];
           var layout = new YXFlowLayout();
           layout.itemSize = new math.Size(600, 100);
@@ -3721,10 +4653,183 @@ System.register("chunks:///_virtual/LayoutCell.ts", ['./rollupPluginModLoBabelHe
   };
 });
 
-System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './Demo1Cell.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './Demo15Cell1.ts', './Demo15Cell2.ts', './LayoutCell.ts', './demo15.ts', './demo16.ts', './demo17.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './index.ts', './yx-carousel-layout.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts'], function () {
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './Demo1Cell.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './Demo15Cell1.ts', './Demo15Cell2.ts', './LayoutCell.ts', './demo15.ts', './demo16.ts', './demo17.ts', './demo18.ts', './demo19.ts', './demo2.ts', './Demo20Cell0.ts', './Demo20Cell1.ts', './demo20.ts', './Demo21Cell.ts', './demo21.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './yx-card-page-layout.ts', './yx-page-view.ts', './yx-table-view.ts', './index.ts', './yx-carousel-layout.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts'], function () {
   return {
-    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     execute: function () {}
+  };
+});
+
+System.register("chunks:///_virtual/yx-card-page-layout.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts'], function (exports) {
+  var _inheritsLoose, cclegacy, _decorator, math, YXIndexPath, YXLayoutAttributes, YXLayout;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      math = module.math;
+    }, null, function (module) {
+      YXIndexPath = module.YXIndexPath;
+      YXLayoutAttributes = module.YXLayoutAttributes;
+      YXLayout = module.YXLayout;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "51c36a+NyxNtLM46tNAiT8t", "yx-card-page-layout", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var YXCardPageLayout = exports('YXCardPageLayout', (_dec = ccclass('yx_card_page_layout'), _dec(_class = /*#__PURE__*/function (_YXLayout) {
+        _inheritsLoose(YXCardPageLayout, _YXLayout);
+        /**
+         * 此类布局必须确定节点大小
+         */
+
+
+        function YXCardPageLayout(itemSize) {
+          var _this;
+
+          _this = _YXLayout.call(this) || this;
+          /**
+           * 节点大小
+           */
+
+          _this.itemSize = null;
+          /**
+           * 最多同时显示多少个节点
+           */
+
+          _this.maxVisibleItemCount = 4;
+          /**
+           * 每个节点之间的缩放差距
+           */
+
+          _this.eachScale = 0.1;
+          /**
+           * 每个节点之间间距
+           */
+
+          _this.eachSpacing = 50;
+          /**
+           * 整体内容偏移
+           */
+
+          _this.contentOffset = null;
+          _this.itemSize = itemSize;
+          return _this;
+        }
+
+        var _proto = YXCardPageLayout.prototype;
+
+        _proto.prepare = function prepare(collectionView) {
+          collectionView.scrollView.horizontal = true;
+          collectionView.scrollView.vertical = false;
+          var allAttributes = [];
+          var total = collectionView.numberOfItems instanceof Function ? collectionView.numberOfItems(0, collectionView) : collectionView.numberOfItems;
+          total = Math.min(total, this.maxVisibleItemCount);
+
+          for (var index = 0; index < total; index++) {
+            var attr = new YXLayoutAttributes();
+            attr.indexPath = new YXIndexPath(0, index);
+            attr.frame = new math.Rect();
+            attr.frame.size = this.itemSize;
+            allAttributes.push(attr);
+          }
+
+          this.attributes = allAttributes;
+          var contentSize = collectionView.scrollView.view.contentSize.clone();
+          contentSize.width = contentSize.width * 3;
+          this.contentSize = contentSize;
+        };
+
+        _proto.layoutAttributesForElementsInRect = function layoutAttributesForElementsInRect(rect, collectionView) {
+          var offset = collectionView.scrollView.getScrollOffset();
+          offset.x = -offset.x;
+          var progress = (offset.x - collectionView.scrollView.view.width) / collectionView.scrollView.view.width; // [ -1 0 1 ]
+
+          for (var index = 0; index < this.attributes.length; index++) {
+            var attr = this.attributes[index]; // 调整层级
+
+            attr.zIndex = -index; // 调整位置
+
+            var startOffsetY = index * this.eachSpacing;
+            attr.frame.x = offset.x + (collectionView.scrollView.view.width - attr.frame.width) * 0.5;
+            attr.frame.y = offset.y + (collectionView.scrollView.view.height - attr.frame.height) * 0.5 + startOffsetY;
+            attr.frame.y = attr.frame.y - this.eachSpacing * Math.abs(progress);
+            attr.frame.y = Math.max(attr.frame.y, offset.y + (collectionView.scrollView.view.height - attr.frame.height) * 0.5);
+
+            if (index == 0) {
+              attr.frame.x = attr.frame.x - progress * collectionView.scrollView.view.width;
+            } // 调整缩放
+
+
+            var startScale = 1 - index * this.eachScale;
+            var scale = startScale;
+            scale = scale + this.eachScale * Math.abs(progress);
+            scale = Math.min(scale, 1);
+            attr.scale = new math.Vec3(scale, scale, 1); // 偏移
+
+            if (this.contentOffset) {
+              attr.offset = this.contentOffset;
+            }
+          }
+
+          return this.attributes;
+        };
+
+        _proto.initOffset = function initOffset(collectionView) {
+          var offset = new math.Vec2();
+          offset.x = collectionView.scrollView.view.width;
+          offset.y = 0;
+          collectionView.scrollView.scrollToOffset(offset);
+        }
+        /**
+         * 分页逻辑
+         */
+        ;
+
+        _proto.targetOffset = function targetOffset(collectionView, touchMoveVelocity, startOffset) {
+          var offset = collectionView.scrollView.getScrollOffset();
+          offset.x = -offset.x;
+          var threshold = 0.2;
+          var idx = Math.round(offset.x / collectionView.scrollView.view.width);
+          var r = touchMoveVelocity.x / collectionView.scrollView.view.width;
+
+          if (startOffset && Math.abs(r) >= threshold) {
+            idx = Math.round(startOffset.x / collectionView.scrollView.view.width) + (r > 0 ? -1 : 1);
+          }
+
+          offset.x = idx * collectionView.scrollView.view.width;
+          return {
+            offset: offset,
+            time: 0.5
+          };
+        }
+        /**
+         * 标记此布局需要实时更新
+         */
+        ;
+
+        _proto.shouldUpdateAttributesForBoundsChange = function shouldUpdateAttributesForBoundsChange() {
+          return true;
+        }
+        /**
+         * 标记此布局需要调整节点层级
+         */
+        ;
+
+        _proto.shouldUpdateAttributesZIndex = function shouldUpdateAttributesZIndex() {
+          return true;
+        };
+
+        return YXCardPageLayout;
+      }(YXLayout)) || _class));
+
+      cclegacy._RF.pop();
+    }
   };
 });
 
@@ -3955,15 +5060,16 @@ System.register("chunks:///_virtual/yx-carousel-layout.ts", ['./rollupPluginModL
 });
 
 System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
-  var _applyDecoratedDescriptor, _initializerDefineProperty, _inheritsLoose, _assertThisInitialized, _createClass, cclegacy, _decorator, math, Enum, Prefab, ValueType, NodePool, NodeEventType, UITransform, UIOpacity, ScrollView, Component, instantiate, Node, Mask;
+  var _applyDecoratedDescriptor, _initializerDefineProperty, _inheritsLoose, _createClass, _assertThisInitialized, _createForOfIteratorHelperLoose, cclegacy, _decorator, math, Enum, Prefab, ValueType, NodeEventType, UITransform, UIOpacity, ScrollView, Component, instantiate, Node, Mask;
 
   return {
     setters: [function (module) {
       _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
       _initializerDefineProperty = module.initializerDefineProperty;
       _inheritsLoose = module.inheritsLoose;
-      _assertThisInitialized = module.assertThisInitialized;
       _createClass = module.createClass;
+      _assertThisInitialized = module.assertThisInitialized;
+      _createForOfIteratorHelperLoose = module.createForOfIteratorHelperLoose;
     }, function (module) {
       cclegacy = module.cclegacy;
       _decorator = module._decorator;
@@ -3971,7 +5077,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
       Enum = module.Enum;
       Prefab = module.Prefab;
       ValueType = module.ValueType;
-      NodePool = module.NodePool;
       NodeEventType = module.NodeEventType;
       UITransform = module.UITransform;
       UIOpacity = module.UIOpacity;
@@ -3982,7 +5087,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
       Mask = module.Mask;
     }],
     execute: function () {
-      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _dec5, _class4, _class5, _dec6, _class6, _class7, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _class8, _class9, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class10;
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _dec5, _class4, _class5, _dec6, _class6, _class7, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _class8, _class9, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _class10;
 
       cclegacy._RF.push({}, "f2c14q0UedOp7pnWIKia8C+", "yx-collection-view", undefined);
 
@@ -4011,8 +5116,145 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
       Enum(_yx_collection_view_scroll_direction);
       /**
+       * 虚拟列表实现模式
+       */
+
+      var _yx_collection_view_list_mode = /*#__PURE__*/function (_yx_collection_view_list_mode) {
+        _yx_collection_view_list_mode[_yx_collection_view_list_mode["RECYCLE"] = 0] = "RECYCLE";
+        _yx_collection_view_list_mode[_yx_collection_view_list_mode["ONCE"] = 1] = "ONCE";
+        _yx_collection_view_list_mode[_yx_collection_view_list_mode["PRELOAD"] = 2] = "PRELOAD";
+        return _yx_collection_view_list_mode;
+      }(_yx_collection_view_list_mode || {});
+
+      Enum(_yx_collection_view_list_mode);
+      /**
+       * 节点池回收策略
+       */
+
+      var _yx_collection_view_cell_item_pool_policy = /*#__PURE__*/function (_yx_collection_view_cell_item_pool_policy) {
+        _yx_collection_view_cell_item_pool_policy[_yx_collection_view_cell_item_pool_policy["NONE"] = 0] = "NONE";
+        _yx_collection_view_cell_item_pool_policy[_yx_collection_view_cell_item_pool_policy["REMOVE"] = 1] = "REMOVE";
+        _yx_collection_view_cell_item_pool_policy[_yx_collection_view_cell_item_pool_policy["UI_OPACITY"] = 2] = "UI_OPACITY";
+        return _yx_collection_view_cell_item_pool_policy;
+      }(_yx_collection_view_cell_item_pool_policy || {});
+
+      Enum(_yx_collection_view_cell_item_pool_policy);
+      /**
+       * 节点池  
+       * 跟一般的节点池业务差不多，区别是这个 put 行为不会直接将节点从父节点移除，而是提供一个可选策略  
+       * https://github.com/cocos/cocos-engine/blob/v3.8.0/extensions/ccpool/node-pool.ts
+       */
+
+      var _yx_collection_view_cell_item_pool = /*#__PURE__*/function () {
+        function _yx_collection_view_cell_item_pool(poolHandlerComp, policy) {
+          if (policy === void 0) {
+            policy = _yx_collection_view_cell_item_pool_policy.REMOVE;
+          }
+          /**
+           * 管理当前所有的可用节点
+           */
+
+
+          this.nodes = new Set();
+          /**
+           * 同 cc 的 NodePool 组件
+           */
+
+          this.poolHandlerComp = null;
+          /**
+           * put 回收策略
+           */
+
+          this.policy = void 0;
+          this.poolHandlerComp = poolHandlerComp;
+          this.policy = policy;
+        }
+        /**
+         * 获取当前缓冲池的可用对象数量
+         */
+
+
+        var _proto = _yx_collection_view_cell_item_pool.prototype;
+        /**
+         * 将一个 node 节点添加到节点池
+         * @param obj 
+         */
+
+        _proto.put = function put(obj) {
+          if (this.policy == _yx_collection_view_cell_item_pool_policy.REMOVE) {
+            obj.removeFromParent();
+          } else if (this.policy == _yx_collection_view_cell_item_pool_policy.UI_OPACITY) {
+            var comp = obj.getComponent(UIOpacity) || obj.addComponent(UIOpacity);
+            comp.opacity = 0;
+          } // @ts-ignore
+
+
+          var handler = this.poolHandlerComp ? obj.getComponent(this.poolHandlerComp) : null;
+
+          if (handler && handler.unuse) {
+            handler.unuse();
+          }
+
+          this.nodes.add(obj);
+        }
+        /**
+         * 获取对象池中的对象，如果对象池没有可用对象，则返回空。
+         */
+        ;
+
+        _proto.get = function get() {
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          for (var _iterator = _createForOfIteratorHelperLoose(this.nodes), _step; !(_step = _iterator()).done;) {
+            var obj = _step.value;
+
+            if (this.policy == _yx_collection_view_cell_item_pool_policy.UI_OPACITY) {
+              var comp = obj.getComponent(UIOpacity) || obj.addComponent(UIOpacity);
+              comp.opacity = 255;
+            }
+
+            this.nodes["delete"](obj); // @ts-ignore
+
+            var handler = this.poolHandlerComp ? obj.getComponent(this.poolHandlerComp) : null;
+
+            if (handler && handler.reuse) {
+              handler.reuse(arguments);
+            }
+
+            return obj;
+          }
+
+          return null;
+        }
+        /**
+         * 销毁对象池中缓存的所有节点
+         */
+        ;
+
+        _proto.clear = function clear() {
+          for (var _iterator2 = _createForOfIteratorHelperLoose(this.nodes), _step2; !(_step2 = _iterator2()).done;) {
+            var obj = _step2.value;
+            obj.destroy();
+          }
+
+          this.nodes.clear();
+        };
+
+        _createClass(_yx_collection_view_cell_item_pool, [{
+          key: "size",
+          get: function get() {
+            return this.nodes.size;
+          }
+        }]);
+
+        return _yx_collection_view_cell_item_pool;
+      }();
+      /**
        * 定义通过编辑器注册节点时的结构体
        */
+
 
       var _yx_editor_register_cell_info = (_dec = ccclass("_yx_editor_register_cell_info"), _dec2 = property({
         type: Prefab,
@@ -4076,24 +5318,34 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           return _this;
         }
 
-        var _proto = YXIndexPath.prototype;
+        var _proto2 = YXIndexPath.prototype;
 
-        _proto.clone = function clone() {
+        _proto2.clone = function clone() {
           return new YXIndexPath(this.section, this.item);
         };
 
-        _proto.equals = function equals(other) {
+        _proto2.equals = function equals(other) {
           return this.section == other.section && this.item == other.item;
         };
 
-        _proto.set = function set(other) {
+        _proto2.set = function set(other) {
           this.section = other.section;
           this.item = other.item;
         };
 
-        _proto.toString = function toString() {
+        _proto2.toString = function toString() {
           return this.section + " - " + this.item;
         };
+
+        _createClass(YXIndexPath, [{
+          key: "row",
+          get: function get() {
+            return this.item;
+          },
+          set: function set(value) {
+            this.item = value;
+          }
+        }]);
 
         return YXIndexPath;
       }(ValueType), _class5.ZERO = new _class5(0, 0), _class5)) || _class4));
@@ -4119,24 +5371,24 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           return _this2;
         }
 
-        var _proto2 = YXEdgeInsets.prototype;
+        var _proto3 = YXEdgeInsets.prototype;
 
-        _proto2.clone = function clone() {
+        _proto3.clone = function clone() {
           return new YXEdgeInsets(this.top, this.left, this.bottom, this.right);
         };
 
-        _proto2.equals = function equals(other) {
+        _proto3.equals = function equals(other) {
           return this.top == other.top && this.left == other.left && this.bottom == other.bottom && this.right == other.right;
         };
 
-        _proto2.set = function set(other) {
+        _proto3.set = function set(other) {
           this.top = other.top;
           this.left = other.left;
           this.bottom = other.bottom;
           this.right = other.right;
         };
 
-        _proto2.toString = function toString() {
+        _proto3.toString = function toString() {
           return "[ " + this.top + ", " + this.left + ", " + this.bottom + ", " + this.right + " ]";
         };
 
@@ -4153,8 +5405,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         function _cell_() {
           var _this3;
 
-          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
+          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
           }
 
           _this3 = _Component.call.apply(_Component, [this].concat(args)) || this;
@@ -4186,8 +5438,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         function _scroll_view() {
           var _this4;
 
-          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
+          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
           }
 
           _this4 = _ScrollView.call.apply(_ScrollView, [this].concat(args)) || this;
@@ -4195,19 +5447,19 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           return _this4;
         }
 
-        var _proto3 = _scroll_view.prototype;
+        var _proto4 = _scroll_view.prototype;
         /**
          * 禁掉鼠标滚轮
          */
 
-        _proto3._onMouseWheel = function _onMouseWheel(event, captureListeners) {}
+        _proto4._onMouseWheel = function _onMouseWheel(event, captureListeners) {}
         /**
          * 准备开始惯性滚动
          * @param touchMoveVelocity 手势速度
          */
         ;
 
-        _proto3._startInertiaScroll = function _startInertiaScroll(touchMoveVelocity) {
+        _proto4._startInertiaScroll = function _startInertiaScroll(touchMoveVelocity) {
           _ScrollView.prototype._startInertiaScroll.call(this, touchMoveVelocity);
 
           if (this._yxOnStartInertiaScroll) {
@@ -4215,7 +5467,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto3._onTouchBegan = function _onTouchBegan(event, captureListeners) {
+        _proto4._onTouchBegan = function _onTouchBegan(event, captureListeners) {
           if (this.node.getComponent(YXCollectionView).scrollEnabled == false) {
             return;
           }
@@ -4244,7 +5496,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           _ScrollView.prototype._onTouchBegan.call(this, event, captureListeners);
         };
 
-        _proto3._onTouchMoved = function _onTouchMoved(event, captureListeners) {
+        _proto4._onTouchMoved = function _onTouchMoved(event, captureListeners) {
           if (this.node.getComponent(YXCollectionView).scrollEnabled == false) {
             return;
           } // 处理嵌套冲突，每次只滚动需要滚动的列表
@@ -4257,20 +5509,20 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto3._onTouchCancelled = function _onTouchCancelled(event, captureListeners) {
+        _proto4._onTouchCancelled = function _onTouchCancelled(event, captureListeners) {
           _ScrollView.prototype._onTouchCancelled.call(this, event, captureListeners);
         };
 
-        _proto3._onTouchEnded = function _onTouchEnded(event, captureListeners) {
+        _proto4._onTouchEnded = function _onTouchEnded(event, captureListeners) {
           _ScrollView.prototype._onTouchEnded.call(this, event, captureListeners);
         };
 
-        _proto3._hasNestedViewGroup = function _hasNestedViewGroup(event, captureListeners) {
+        _proto4._hasNestedViewGroup = function _hasNestedViewGroup(event, captureListeners) {
           // 直接把所有的列表都标记为可滑动，具体滑动哪一个，去 _onTouchMoved 判断
           return false;
         };
 
-        _proto3._stopPropagationIfTargetIsMe = function _stopPropagationIfTargetIsMe(event) {
+        _proto4._stopPropagationIfTargetIsMe = function _stopPropagationIfTargetIsMe(event) {
           if (this._touchMoved) {
             event.propagationStopped = true;
             return;
@@ -4283,7 +5535,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto3._yxGetScrollTarget = function _yxGetScrollTarget(event, captureListeners) {
+        _proto4._yxGetScrollTarget = function _yxGetScrollTarget(event, captureListeners) {
           // 尝试获取本次已经确定了的滚动节点
           var cache = event.target["_yx_scroll_target"];
 
@@ -4437,14 +5689,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this.attributes = [];
         }
 
-        var _proto4 = YXLayout.prototype;
+        var _proto5 = YXLayout.prototype;
         /**
          * @optional
          * 列表在首次更新数据后会执行这个方法
          * 在这个方法里设置滚动视图的初始偏移量
          */
 
-        _proto4.initOffset = function initOffset(collectionView) {}
+        _proto5.initOffset = function initOffset(collectionView) {}
         /**
          * @optional
          * 当一次手势拖动结束后会立即调用此方法
@@ -4455,7 +5707,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto4.targetOffset = function targetOffset(collectionView, touchMoveVelocity, startOffset) {
+        _proto5.targetOffset = function targetOffset(collectionView, touchMoveVelocity, startOffset) {
           return null;
         }
         /**
@@ -4465,18 +5717,28 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto4.onScrollEnded = function onScrollEnded(collectionView) {}
+        _proto5.onScrollEnded = function onScrollEnded(collectionView) {}
         /**
          * @optional
          * 返回区域内可见的节点属性，并实时的调整这些节点变换效果 (如果在这个方法里调整了节点变换属性，需要重写 shouldUpdateAttributesForBoundsChange 以支持实时变换)
          * 根据实际的布局情况，计算出当前屏幕内需要显示的布局属性
-         * 这个方法会直接影响到列表的性能，如果在自定义的时候对性能要求不高(比如明确知道数据量不多的情况下)，可以忽略此方法
+         * 这个方法会直接影响到列表的性能，如果在自定义的时候对性能要求不高(比如明确知道数据量不多的情况下)，可以忽略此方法 (默认会检查所有的布局属性并返回所有的处于可见范围内的单元格布局属性)
          * @param rect 当前滚动视图的可见区域
          */
         ;
 
-        _proto4.layoutAttributesForElementsInRect = function layoutAttributesForElementsInRect(rect, collectionView) {
-          return this.attributes;
+        _proto5.layoutAttributesForElementsInRect = function layoutAttributesForElementsInRect(rect, collectionView) {
+          var result = [];
+
+          for (var index = 0; index < this.attributes.length; index++) {
+            var attr = this.attributes[index];
+
+            if (rect.intersects(attr.frame) == true) {
+              result.push(attr);
+            }
+          }
+
+          return result;
         }
         /**
          * @optional
@@ -4486,7 +5748,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto4.layoutAttributesForItemAtIndexPath = function layoutAttributesForItemAtIndexPath(indexPath, collectionView) {
+        _proto5.layoutAttributesForItemAtIndexPath = function layoutAttributesForItemAtIndexPath(indexPath, collectionView) {
           return this.attributes.find(function (a) {
             return a.indexPath.equals(indexPath);
           });
@@ -4499,7 +5761,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto4.scrollTo = function scrollTo(indexPath, collectionView) {
+        _proto5.scrollTo = function scrollTo(indexPath, collectionView) {
           return null;
         }
         /**
@@ -4509,7 +5771,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto4.shouldUpdateAttributesZIndex = function shouldUpdateAttributesZIndex() {
+        _proto5.shouldUpdateAttributesZIndex = function shouldUpdateAttributesZIndex() {
           return false;
         }
         /**
@@ -4519,7 +5781,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto4.shouldUpdateAttributesOpacity = function shouldUpdateAttributesOpacity() {
+        _proto5.shouldUpdateAttributesOpacity = function shouldUpdateAttributesOpacity() {
           return false;
         }
         /**
@@ -4529,7 +5791,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto4.shouldUpdateAttributesForBoundsChange = function shouldUpdateAttributesForBoundsChange() {
+        _proto5.shouldUpdateAttributesForBoundsChange = function shouldUpdateAttributesForBoundsChange() {
           return false;
         };
 
@@ -4540,20 +5802,35 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
        * 节点的自定义组件可以通过这个接口跟 @NodePool 的重用业务关联起来
        */
 
+      /**
+       * 列表组件
+       */
+
       var YXCollectionView = exports('YXCollectionView', (_dec7 = ccclass('YXCollectionView'), _dec8 = disallowMultiple(true), _dec9 = executionOrder(-1), _dec10 = help("https://forum.cocos.org/t/topic/157984"), _dec11 = property({
         tooltip: "\u81EA\u52A8\u7ED9\u6302\u8F7D\u8282\u70B9\u6DFB\u52A0 mask \u7EC4\u4EF6"
       }), _dec12 = property({
         tooltip: "\u5141\u8BB8\u624B\u52BF\u6EDA\u52A8"
       }), _dec13 = property({
+        type: _yx_collection_view_list_mode,
+        tooltip: "\u865A\u62DF\u5217\u8868\u6A21\u5F0F (\u8BE6\u7EC6\u533A\u522B\u67E5\u770B\u679A\u4E3E\u6CE8\u91CA)\nRECYCLE: \u6839\u636E\u5217\u8868\u663E\u793A\u8303\u56F4\u52A0\u8F7D\u9700\u8981\u7684\u8282\u70B9\nONCE: \u8DDF RECYCLE \u6A21\u5F0F\u5DEE\u4E0D\u591A\uFF0C\u533A\u522B\u662F\u6B64\u6A21\u5F0F\u4E0B\u6BCF\u6761\u6570\u636E\u90FD\u4F1A\u5BF9\u5E94\u7684\u751F\u6210\u4E00\u4E2A\u8282\u70B9\u800C\u4E0D\u8FDB\u884C\u590D\u7528\nPRELOAD: \u76F4\u63A5\u52A0\u8F7D\u6240\u6709\u7684\u8282\u70B9"
+      }), _dec14 = property({
+        tooltip: "\u9884\u52A0\u8F7D\u6A21\u5F0F\u4E13\u7528\uFF0C\u6BCF\u591A\u5C11\u5E27\u6267\u884C\u4E00\u6B21\u9884\u52A0\u8F7D\uFF0C1 \u8868\u793A\u6BCF\u5E27\u90FD\u6267\u884C",
+        visible: function visible() {
+          return this.mode == _yx_collection_view_list_mode.PRELOAD;
+        }
+      }), _dec15 = property({
         type: _yx_collection_view_scroll_direction,
         tooltip: "\u5217\u8868\u6EDA\u52A8\u65B9\u5411"
-      }), _dec14 = property({
-        tooltip: "\u6BCF\u591A\u5C11\u5E27\u5237\u65B0\u4E00\u6B21\u53EF\u89C1\u8282\u70B9\uFF0C1 \u8868\u793A\u6BCF\u5E27\u90FD\u5237"
-      }), _dec15 = property({
-        tooltip: "\u6EDA\u52A8\u8FC7\u7A0B\u4E2D\uFF0C\u6BCF\u591A\u5C11\u5E27\u56DE\u6536\u4E00\u6B21\u4E0D\u53EF\u89C1\u8282\u70B9\uFF0C1\u8868\u793A\u6BCF\u5E27\u90FD\u56DE\u6536\uFF0C0\u8868\u793A\u4E0D\u5728\u6EDA\u52A8\u8FC7\u7A0B\u4E2D\u56DE\u6536\u4E0D\u53EF\u89C1\u8282\u70B9"
       }), _dec16 = property({
-        tooltip: "\u6B64\u5217\u8868\u4E0A\u7684 cell \u8282\u70B9\uFF0C\u662F\u5426\u662F 3d cell \u8282\u70B9"
+        type: _yx_collection_view_cell_item_pool_policy,
+        tooltip: "\u56DE\u6536\u8282\u70B9\u7B56\u7565\n\u5177\u4F53\u533A\u522B\u67E5\u770B\u679A\u4E3E\u6CE8\u91CA"
       }), _dec17 = property({
+        tooltip: "\u6BCF\u591A\u5C11\u5E27\u5237\u65B0\u4E00\u6B21\u53EF\u89C1\u8282\u70B9\uFF0C1 \u8868\u793A\u6BCF\u5E27\u90FD\u5237"
+      }), _dec18 = property({
+        tooltip: "\u6EDA\u52A8\u8FC7\u7A0B\u4E2D\uFF0C\u6BCF\u591A\u5C11\u5E27\u56DE\u6536\u4E00\u6B21\u4E0D\u53EF\u89C1\u8282\u70B9\uFF0C1\u8868\u793A\u6BCF\u5E27\u90FD\u56DE\u6536\uFF0C0\u8868\u793A\u4E0D\u5728\u6EDA\u52A8\u8FC7\u7A0B\u4E2D\u56DE\u6536\u4E0D\u53EF\u89C1\u8282\u70B9"
+      }), _dec19 = property({
+        tooltip: "\u6B64\u5217\u8868\u4E0A\u7684 cell \u8282\u70B9\uFF0C\u662F\u5426\u662F 3d cell \u8282\u70B9"
+      }), _dec20 = property({
         type: [_yx_editor_register_cell_info],
         visible: true,
         displayName: "Register Cells",
@@ -4564,8 +5841,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         function YXCollectionView() {
           var _this5;
 
-          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-            args[_key3] = arguments[_key3];
+          for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+            args[_key4] = arguments[_key4];
           }
 
           _this5 = _Component2.call.apply(_Component2, [this].concat(args)) || this;
@@ -4581,43 +5858,62 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _initializerDefineProperty(_this5, "scrollEnabled", _descriptor5, _assertThisInitialized(_this5));
           /**
-           * 列表滚动方向，默认垂直方向滚动
-           * 自定义 YXLayout 应该尽量根据这个配置来实现不同方向的布局业务
+           * 虚拟列表模式
+           */
+
+
+          _initializerDefineProperty(_this5, "mode", _descriptor6, _assertThisInitialized(_this5));
+          /**
+           * 预加载模式专用，每多少帧执行一次预加载，1 表示每帧都执行
+           */
+
+
+          _initializerDefineProperty(_this5, "preloadInterval", _descriptor7, _assertThisInitialized(_this5));
+          /**
+           * 列表滚动方向，默认垂直方向滚动  
+           * 自定义 YXLayout 应该尽量根据这个配置来实现不同方向的布局业务  
            * 注意: 如果使用的 YXLayout 未支持对应的滚动方向，则此配置不会生效
            */
 
 
-          _initializerDefineProperty(_this5, "scrollDirection", _descriptor6, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "scrollDirection", _descriptor8, _assertThisInitialized(_this5));
+          /**
+           * 回收节点策略  
+           * 必须在 register() 之前设置
+           */
+
+
+          _initializerDefineProperty(_this5, "recyclePolicy", _descriptor9, _assertThisInitialized(_this5));
           /**
            * 每多少帧刷新一次可见节点，1 表示每帧都刷
            */
 
 
-          _initializerDefineProperty(_this5, "frameInterval", _descriptor7, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "frameInterval", _descriptor10, _assertThisInitialized(_this5));
           /**
            * 滚动过程中，每多少帧回收一次不可见节点，1表示每帧都回收，0表示不在滚动过程中回收不可见节点
            * @bug 滚动过程中如果实时的回收不可见节点，有时候会收不到 scroll view 的 cancel 事件，导致 scroll view 的滚动状态不会更新 (且收不到滚动结束事件)
            * @fix 当这个属性设置为 0 时，只会在 `touch-up` 和 `scroll-ended` 里面回收不可见节点  
-           * 如果需要准确的监听 scroll 结束事件，把这个属性设为 0
+           * @fix recyclePolicy 设置为 UI_OPACITY 也可以避免这个问题  
            */
 
 
-          _initializerDefineProperty(_this5, "recycleInterval", _descriptor8, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "recycleInterval", _descriptor11, _assertThisInitialized(_this5));
           /**
-           * 此列表上的 cell 节点，是否是 3d cell 节点
-           * 3d 节点的点击事件，需要通过射线检测来做，外部自行配置碰撞体实现节点的点击事件，列表只做个排列展示
-           * https://docs.cocos.com/creator/manual/zh/engine/event/event-input.html#3d-%E7%89%A9%E4%BD%93%E7%9A%84%E8%A7%A6%E6%91%B8%E6%A3%80%E6%B5%8B
+           * 此列表上的 cell 节点，是否是 3d cell 节点  
+           * 3d 节点的点击事件，需要通过射线检测来做，外部自行配置碰撞体实现节点的点击事件，列表只做个排列展示  
+           * https://docs.cocos.com/creator/manual/zh/engine/event/event-input.html#3d-%E7%89%A9%E4%BD%93%E7%9A%84%E8%A7%A6%E6%91%B8%E6%A3%80%E6%B5%8B  
            * 备注: 暂时不支持 2d/3d 节点同时出现在同一个列表内，正确配置此属性避免页面节点事件错乱
            */
 
 
-          _initializerDefineProperty(_this5, "is3DCell", _descriptor9, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "is3DCell", _descriptor12, _assertThisInitialized(_this5));
           /**
            * 通过编辑器注册节点类型
            */
 
 
-          _initializerDefineProperty(_this5, "registerCellForEditor", _descriptor10, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "registerCellForEditor", _descriptor13, _assertThisInitialized(_this5));
           /**
            * 每个注册的标识符对应一个节点池
            */
@@ -4642,23 +5938,38 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           _this5.numberOfItems = 0;
           /**
            * 配置每块内容对应的 UI 节点
-           * 在这个方法里，只需要关心 @indexPath 这个位置对应的节点应该是用注册过的哪个类型的 Node 节点，然后通过 @dequeueReusableCell 生成对应的 Node
-           * 注意: 不要在这个方法里创建新的节点对象
+           * 在这个方法里，只需要关心 indexPath 这个位置对应的节点应该是用注册过的哪个类型的 Node 节点，然后通过 dequeueReusableCell 生成对应的 Node
            * @example
            * yourList.cellForItemAt = (indexPath, collectionView) => {
            *      return collectionView.dequeueReusableCell(`your identifier`)
            * }
-           * @returns 注意: 这个方法返回的 cell，必须是通过 @dequeueReusableCell 匹配到的 Node
+           * 
+           * 另外如果节点大小是确定好了的话，也可以直接在这里更新节点的 UI 内容
+           * @example
+           * yourList.cellForItemAt = (indexPath ,collectionView) => {
+           *      let cell = collectionView.dequeueReusableCell(`your identifier`)
+           *      let comp = cell.getComponent(YourCellComp)
+           *      comp.label.string = `${indexPath}`
+           *      return cell
+           * }
+           * 
+           * @returns 注意: 不要在这个方法里创建新的节点对象，这个方法返回的 Node，必须是通过 dequeueReusableCell 匹配到的 Node
            */
 
           _this5.cellForItemAt = null;
           /**
            * cell 添加到滚动视图上之后执行，在这个方法里更新 cell 显示的 UI 内容
+           * 如果确定节点大小没什么变化，可以直接在 cellForItemAt 里更新数据，省去这一步，这里主要是为了应付节点大小变化的情况
            * 可以通过 @indexPath 区分 cell 的种类
            * 重要: 如果 cell 的大小不是固定的，需要在这里重新调整子节点的位置，避免布局错乱
            */
 
           _this5.onCellDisplay = null;
+          /**
+           * 当 cell 移出当前可见范围后执行
+           */
+
+          _this5.onCellEndDisplay = null;
           /**
            * 点击到节点后调用
            * 仅支持 2D 节点
@@ -4671,13 +5982,15 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5.layout = null;
           /**
-           * @version 1.0.3 新增 ( key-value 结构替代原来的 visibleNodes 数组，减少查找复杂度)
-           * 保存列表上所有 cell 节点
-           * key = indexPath
-           * value = Node
+           * 记录当前正在显示的所有节点
            */
 
-          _this5.allCellNodes = {};
+          _this5.allVisibleNodes = {};
+          /**
+           * 非回收模式专用，记录已经实例化的所有节点  
+           */
+
+          _this5.allNodes = {};
           /**
            * 记录 @reloadData 执行了多少次了，用来区分刷新列表的时候是否是首次刷新列表
            */
@@ -4695,11 +6008,16 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            */
 
           _this5._late_recycle_invisible_node = false;
+          /**
+           * 预加载节点
+           */
+
+          _this5._late_preload_offset = null;
           _this5._scroll_offset_on_touch_start = null;
           return _this5;
         }
 
-        var _proto5 = YXCollectionView.prototype;
+        var _proto6 = YXCollectionView.prototype;
         /**
          * 注册 cell
          * 可多次注册不同种类的 cell，只要确保 @identifier 的唯一性就好
@@ -4708,12 +6026,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          * @param poolComp (可选) 节点自定义组件，可以通过这个组件跟 @NodePool 的重用业务关联起来
          */
 
-        _proto5.register = function register(identifier, maker, poolComp) {
+        _proto6.register = function register(identifier, maker, poolComp) {
           if (poolComp === void 0) {
             poolComp = null;
           }
 
-          var pool = new NodePool(poolComp);
+          var pool = new _yx_collection_view_cell_item_pool(poolComp, this.recyclePolicy);
           this.pools.set(identifier, pool);
           this.makers.set(identifier, maker);
         };
@@ -4724,14 +6042,18 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
 
 
-        _proto5.dequeueReusableCell = function dequeueReusableCell(identifier) {
+        _proto6.dequeueReusableCell = function dequeueReusableCell(identifier) {
           var pool = this.pools.get(identifier);
 
           if (pool == null) {
             throw new Error("YXCollectionView: \u672A\u6CE8\u518C\u6807\u8BC6\u7B26\u4E3A `" + identifier + "` \u7684 cell\uFF0C\u8BF7\u5148\u8C03\u7528 YXCollectionView \u7684 register() \u65B9\u6CD5\u6CE8\u518C cell \u8282\u70B9");
           }
 
-          var result = pool.get();
+          var result = null;
+
+          if (this.mode == _yx_collection_view_list_mode.RECYCLE) {
+            result = pool.get();
+          }
 
           if (result == null) {
             // 如果对应的重用池里没有的话，新生成一个
@@ -4755,7 +6077,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           return result;
         };
 
-        _proto5.onTouchItem = function onTouchItem(ev) {
+        _proto6.onTouchItem = function onTouchItem(ev) {
           if (this.onTouchItemAt) {
             var _cell2 = ev.target.getComponent(_cell_);
 
@@ -4768,8 +6090,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
 
 
-        _proto5.getVisibleNode = function getVisibleNode(indexPath) {
-          return this.allCellNodes[indexPath.toString()];
+        _proto6.getVisibleNode = function getVisibleNode(indexPath) {
+          return this.allVisibleNodes[indexPath.toString()];
         }
         /**
          * 获取指定节点的索引
@@ -4778,7 +6100,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.getVisibleNodeIndexPath = function getVisibleNodeIndexPath(node) {
+        _proto6.getVisibleNodeIndexPath = function getVisibleNodeIndexPath(node) {
           var cell = node.getComponent(_cell_);
 
           if (cell) {
@@ -4792,7 +6114,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.reloadData = function reloadData() {
+        _proto6.reloadData = function reloadData() {
           // 校验 layout 参数
           if (this.layout == null) {
             throw new Error("YXCollectionView: 参数错误，请正确配置 layout 以确定布局方案");
@@ -4801,13 +6123,21 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           this.scrollView.stopAutoScroll(); // 移除掉当前所有节点，准备刷新
 
-          for (var key in this.allCellNodes) {
-            var element = this.allCellNodes[key];
-            this.pools.get(element.getComponent(_cell_).identifier).put(element);
-            delete this.allCellNodes[key];
+          for (var key in this.allVisibleNodes) {
+            var element = this.allVisibleNodes[key];
+
+            var _cell3 = element.getComponent(_cell_);
+
+            this.pools.get(_cell3.identifier).put(element);
+            delete this.allVisibleNodes[key];
+
+            if (this.onCellEndDisplay) {
+              this.onCellEndDisplay(_cell3.node, _cell3.attributes.indexPath, this);
+            }
           }
 
-          this.allCellNodes = {}; // 记录一下当前的偏移量，保证数据更新之后位置也不会太偏
+          this.allVisibleNodes = {};
+          this.allNodes = {}; // 记录一下当前的偏移量，保证数据更新之后位置也不会太偏
 
           var offset = this.scrollView.getScrollOffset();
           offset.x = -offset.x; // 重新计算一遍布局属性
@@ -4826,21 +6156,37 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           } // 更新 cell 节点
 
 
+          if (this.mode == _yx_collection_view_list_mode.PRELOAD) {
+            this._late_preload_offset = new math.Vec2(0, 0);
+          }
+
           this.markForUpdateVisibleData(true);
           this.reloadDataCounter++;
         };
         /**
-         * 根据当前的可见区域调整需要显示的节点以及移除不需要显示的节点
+         * 根据当前的可见区域调整需要显示的节点
          */
 
 
-        _proto5.reloadVisibleCells = function reloadVisibleCells() {
-          // 获取当前可见区域
-          _rectOut.origin = this.scrollView.getScrollOffset();
-          _rectOut.x = -_rectOut.x;
-          _rectOut.size = this.scrollView.view.contentSize; // 根据可见区域，找出对应的布局属性
+        _proto6.reloadVisibleCells = function reloadVisibleCells(rect, isPreload) {
+          if (rect === void 0) {
+            rect = null;
+          }
 
-          var layoutAttributes = this.layout.layoutAttributesForElementsInRect(_rectOut, this); // 是否需要实时更新节点
+          if (isPreload === void 0) {
+            isPreload = false;
+          } // 获取当前可见区域
+
+
+          if (rect == null) {
+            _rectOut.origin = this.scrollView.getScrollOffset();
+            _rectOut.x = -_rectOut.x;
+            _rectOut.size = this.scrollView.view.contentSize;
+            rect = _rectOut;
+          } // 根据可见区域，找出对应的布局属性
+
+
+          var layoutAttributes = this.layout.layoutAttributesForElementsInRect(rect, this); // 是否需要实时更新节点
 
           var shouldUpdateAttributesForBoundsChange = this.layout.shouldUpdateAttributesForBoundsChange(); // 按 zIndex 排序
 
@@ -4867,25 +6213,29 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           for (var index = 0; index < layoutAttributes.length; index++) {
             var element = layoutAttributes[index];
-            /**
-             * @version 1.0.2
-             * 节点具体是否要添加到视图上，完全交给 layout 去控制，这里不再进行干预
-             * if (visibleRect.intersects(element.frame) == false) { continue } // 这里还是要确实的检查一下是否真正可见，防止未实现 layoutAttributesForElementsInRect 时的情况 (v1.0.2 之前)
-             */
-            // 需要显示并且正在显示的
 
-            var visibleNode = this.getVisibleNode(element.indexPath);
+            if (isPreload == false) {
+              // 需要显示并且正在显示的
+              var visibleNode = this.getVisibleNode(element.indexPath) || this.allNodes[element.indexPath.toString()];
 
-            if (visibleNode) {
-              if (shouldUpdateAttributesForBoundsChange) {
-                this.applyLayoutAttributes(visibleNode, element);
+              if (visibleNode && isPreload == false) {
+                this.restoreCellNodeIfNeeds(visibleNode); // 恢复节点状态
+
+                this.applyLayoutAttributes(visibleNode, element); // 更新节点变换
+
+                if (shouldUpdateAttributesZIndex) {
+                  visibleNode.setSiblingIndex(-1);
+                } // 调整节点层级
+
+
+                this.allVisibleNodes[element.indexPath.toString()] = visibleNode; // 标记此节点正在显示
+
+                continue;
               }
-
-              if (shouldUpdateAttributesZIndex) {
-                visibleNode.setSiblingIndex(-1);
+            } else {
+              if (this.getVisibleNode(element.indexPath)) {
+                continue; // 去重
               }
-
-              continue;
             }
             /**
              * 需要显示但是当前未显示出来的
@@ -4894,9 +6244,18 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
 
             var node = this.pools.size > 1 || this.cellForItemAt ? this.cellForItemAt(element.indexPath, this) : this.dequeueReusableCell(this.pools.keys().next().value);
-            node.parent = this.scrollView.content;
+
+            if (node.parent != this.scrollView.content) {
+              node.parent = this.scrollView.content;
+            }
+
             this.applyLayoutAttributes(node, element);
-            this.allCellNodes[element.indexPath.toString()] = node;
+            var key = element.indexPath.toString();
+            this.allVisibleNodes[key] = node; // 标记此节点正在显示
+
+            if (this.mode == _yx_collection_view_list_mode.PRELOAD || this.mode == _yx_collection_view_list_mode.ONCE) {
+              this.allNodes[key] = node; // 保存节点
+            }
 
             if (this.onCellDisplay) {
               this.onCellDisplay(node, element.indexPath, this);
@@ -4906,11 +6265,26 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           layoutAttributes = [];
         }
         /**
+         * 节点被回收后需要重新使用时，根据当前回收模式恢复节点的状态，保证节点可见
+         */
+        ;
+
+        _proto6.restoreCellNodeIfNeeds = function restoreCellNodeIfNeeds(node) {
+          if (this.recyclePolicy == _yx_collection_view_cell_item_pool_policy.REMOVE) {
+            if (node.parent != this.scrollView.content) {
+              node.parent = this.scrollView.content;
+            }
+          } else if (this.recyclePolicy == _yx_collection_view_cell_item_pool_policy.UI_OPACITY) {
+            var comp = node.getComponent(UIOpacity) || node.addComponent(UIOpacity);
+            comp.opacity = 255;
+          }
+        }
+        /**
          * 回收不可见节点
          */
         ;
 
-        _proto5.recycleInvisibleNodes = function recycleInvisibleNodes(visibleRect) {
+        _proto6.recycleInvisibleNodes = function recycleInvisibleNodes(visibleRect) {
           if (visibleRect === void 0) {
             visibleRect = null;
           }
@@ -4926,10 +6300,10 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           var _contentSize = this.scrollView.content.getComponent(UITransform).contentSize;
 
-          for (var key in this.allCellNodes) {
-            var element = this.allCellNodes[key];
+          for (var key in this.allVisibleNodes) {
+            var element = this.allVisibleNodes[key];
 
-            var _cell3 = element.getComponent(_cell_);
+            var _cell4 = element.getComponent(_cell_);
             /**
              * @version 1.0.2
              * 检查节点是否可见应该是通过变换后的位置来检查
@@ -4944,8 +6318,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             _realFrame.y = (_contentSize.height - _realFrame.height) * 0.5 - element.position.y;
 
             if (visibleRect.intersects(_realFrame) == false) {
-              this.pools.get(_cell3.identifier).put(element);
-              delete this.allCellNodes[key];
+              this.pools.get(_cell4.identifier).put(element);
+              delete this.allVisibleNodes[key];
+
+              if (this.onCellEndDisplay) {
+                this.onCellEndDisplay(_cell4.node, _cell4.attributes.indexPath, this);
+              }
             }
           }
         }
@@ -4954,7 +6332,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.applyLayoutAttributes = function applyLayoutAttributes(node, attributes) {
+        _proto6.applyLayoutAttributes = function applyLayoutAttributes(node, attributes) {
           var cell = node.getComponent(_cell_);
           cell.attributes = attributes;
           var transform = node.getComponent(UITransform) || node.addComponent(UITransform);
@@ -4988,7 +6366,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.scrollTo = function scrollTo(indexPath, timeInSecond, attenuated) {
+        _proto6.scrollTo = function scrollTo(indexPath, timeInSecond, attenuated) {
           if (timeInSecond === void 0) {
             timeInSecond = 0;
           }
@@ -5016,7 +6394,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.onLoad = function onLoad() {
+        _proto6.onLoad = function onLoad() {
           var _this6 = this;
 
           var _loop = function _loop() {
@@ -5038,13 +6416,13 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this._scrollView._yxOnStartInertiaScroll = this.onStartInertiaScroll.bind(this);
         };
 
-        _proto5.onDestroy = function onDestroy() {
+        _proto6.onDestroy = function onDestroy() {
           this.node.off(ScrollView.EventType.SCROLL_BEGAN, this.onScrollBegan, this);
           this.node.off(ScrollView.EventType.SCROLLING, this.onScrolling, this);
           this.node.off(ScrollView.EventType.TOUCH_UP, this.onScrollTouchUp, this);
           this.node.off(ScrollView.EventType.SCROLL_ENDED, this.onScrollEnded, this);
-          this.allCellNodes = {};
-          delete this.allCellNodes;
+          this.allVisibleNodes = {};
+          delete this.allVisibleNodes;
           this.pools.forEach(function (element) {
             element.clear();
           });
@@ -5056,13 +6434,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto5.update = function update(dt) {
+        _proto6.update = function update(dt) {
           this._frameIdx++;
           this.update_reloadVisibleCellsIfNeeds(dt);
           this.update_recycleInvisibleNodesIfNeeds(dt);
+          this.update_preloadItemsIfNeeds();
         };
 
-        _proto5.markForUpdateVisibleData = function markForUpdateVisibleData(force) {
+        _proto6.markForUpdateVisibleData = function markForUpdateVisibleData(force) {
           if (force === void 0) {
             force = false;
           }
@@ -5079,7 +6458,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.update_reloadVisibleCellsIfNeeds = function update_reloadVisibleCellsIfNeeds(dt) {
+        _proto6.update_reloadVisibleCellsIfNeeds = function update_reloadVisibleCellsIfNeeds(dt) {
           if (this.frameInterval <= 1 || this._frameIdx % this.frameInterval == 0) {
             if (this._late_update_visible_data) {
               this._late_update_visible_data = false;
@@ -5088,7 +6467,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto5.update_recycleInvisibleNodesIfNeeds = function update_recycleInvisibleNodesIfNeeds(dt) {
+        _proto6.update_recycleInvisibleNodesIfNeeds = function update_recycleInvisibleNodesIfNeeds(dt) {
           if (this.recycleInterval >= 1 && this._frameIdx % this.recycleInterval == 0) {
             if (this._late_recycle_invisible_node) {
               this._late_recycle_invisible_node = false;
@@ -5097,24 +6476,91 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto5.onScrollBegan = function onScrollBegan() {};
+        _proto6.update_preloadItemsIfNeeds = function update_preloadItemsIfNeeds() {
+          /**
+           * 预加载已完成
+           */
+          if (this._late_preload_offset == null) {
+            return;
+          }
+          /**
+           * 分帧加载
+           */
 
-        _proto5.onScrolling = function onScrolling() {
+
+          var preloadInterval = this.preloadInterval;
+
+          if (preloadInterval < 1) {
+            preloadInterval = 1;
+          }
+
+          if (this._frameIdx % preloadInterval != 0) {
+            return;
+          }
+          /**
+           * 只有在列表静止的时候才去执行预加载行为
+           */
+
+
+          if (this.scrollView.isScrolling()) {
+            return;
+          }
+
+          if (this.scrollView.isAutoScrolling()) {
+            return;
+          }
+          /**
+           * 预加载逻辑，暂定为每次加载一页的节点
+           */
+
+
+          var rect = _rectOut;
+          rect.size = this.scrollView.view.contentSize;
+
+          if (this.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
+            rect.x = this._late_preload_offset.x + rect.size.width;
+          }
+
+          if (this.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
+            rect.y = this._late_preload_offset.y + rect.size.height;
+          }
+
+          this.reloadVisibleCells(rect, true);
+          this._late_recycle_invisible_node = true;
+          this._late_preload_offset.x = rect.x;
+          this._late_preload_offset.y = rect.y;
+
+          if (this.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
+            if (rect.xMax > this.layout.contentSize.width) {
+              this._late_preload_offset = null;
+            }
+          }
+
+          if (this.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
+            if (rect.yMax > this.layout.contentSize.height) {
+              this._late_preload_offset = null;
+            }
+          }
+        };
+
+        _proto6.onScrollBegan = function onScrollBegan() {};
+
+        _proto6.onScrolling = function onScrolling() {
           this.markForUpdateVisibleData(this.layout.shouldUpdateAttributesForBoundsChange());
           this._late_recycle_invisible_node = true;
         };
 
-        _proto5.onScrollTouchUp = function onScrollTouchUp() {
+        _proto6.onScrollTouchUp = function onScrollTouchUp() {
           this.recycleInvisibleNodes();
         };
 
-        _proto5.onScrollEnded = function onScrollEnded() {
+        _proto6.onScrollEnded = function onScrollEnded() {
           this.markForUpdateVisibleData();
           this.recycleInvisibleNodes();
           this.layout.onScrollEnded(this);
         };
 
-        _proto5.onStartInertiaScroll = function onStartInertiaScroll(touchMoveVelocity) {
+        _proto6.onStartInertiaScroll = function onStartInertiaScroll(touchMoveVelocity) {
           var endValue = this.layout.targetOffset(this, touchMoveVelocity, this._scroll_offset_on_touch_start);
 
           if (endValue) {
@@ -5170,8 +6616,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           function get() {
             var result = [];
 
-            for (var key in this.allCellNodes) {
-              result.push(this.allCellNodes[key]);
+            for (var key in this.allVisibleNodes) {
+              result.push(this.allVisibleNodes[key]);
             }
 
             return result;
@@ -5185,12 +6631,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           get: function get() {
             var result = [];
 
-            for (var key in this.allCellNodes) {
-              var element = this.allCellNodes[key];
+            for (var key in this.allVisibleNodes) {
+              var element = this.allVisibleNodes[key];
 
-              var _cell4 = element.getComponent(_cell_);
+              var _cell5 = element.getComponent(_cell_);
 
-              result.push(_cell4.attributes.indexPath.clone());
+              result.push(_cell5.attributes.indexPath.clone());
             }
 
             return result;
@@ -5202,16 +6648,16 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            * 版本号
            */
           function get() {
-            return "1.1.0";
+            return "1.1.1";
           }
           /**
-           * 滚动方向枚举
+           * 访问定义的私有枚举
            */
 
         }]);
 
         return YXCollectionView;
-      }(Component), _class10.ScrollDirection = _yx_collection_view_scroll_direction, _class10), (_descriptor4 = _applyDecoratedDescriptor(_class9.prototype, "mask", [_dec11], {
+      }(Component), _class10.Mode = _yx_collection_view_list_mode, _class10.ScrollDirection = _yx_collection_view_scroll_direction, _class10.RecyclePolicy = _yx_collection_view_cell_item_pool_policy, _class10), (_descriptor4 = _applyDecoratedDescriptor(_class9.prototype, "mask", [_dec11], {
         configurable: true,
         enumerable: true,
         writable: true,
@@ -5225,35 +6671,56 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         initializer: function initializer() {
           return true;
         }
-      }), _descriptor6 = _applyDecoratedDescriptor(_class9.prototype, "scrollDirection", [_dec13], {
+      }), _descriptor6 = _applyDecoratedDescriptor(_class9.prototype, "mode", [_dec13], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return YXCollectionView.Mode.RECYCLE;
+        }
+      }), _descriptor7 = _applyDecoratedDescriptor(_class9.prototype, "preloadInterval", [_dec14], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 1;
+        }
+      }), _descriptor8 = _applyDecoratedDescriptor(_class9.prototype, "scrollDirection", [_dec15], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return YXCollectionView.ScrollDirection.VERTICAL;
         }
-      }), _descriptor7 = _applyDecoratedDescriptor(_class9.prototype, "frameInterval", [_dec14], {
+      }), _descriptor9 = _applyDecoratedDescriptor(_class9.prototype, "recyclePolicy", [_dec16], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return YXCollectionView.RecyclePolicy.REMOVE;
+        }
+      }), _descriptor10 = _applyDecoratedDescriptor(_class9.prototype, "frameInterval", [_dec17], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return 1;
         }
-      }), _descriptor8 = _applyDecoratedDescriptor(_class9.prototype, "recycleInterval", [_dec15], {
+      }), _descriptor11 = _applyDecoratedDescriptor(_class9.prototype, "recycleInterval", [_dec18], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return 1;
         }
-      }), _descriptor9 = _applyDecoratedDescriptor(_class9.prototype, "is3DCell", [_dec16], {
+      }), _descriptor12 = _applyDecoratedDescriptor(_class9.prototype, "is3DCell", [_dec19], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return false;
         }
-      }), _descriptor10 = _applyDecoratedDescriptor(_class9.prototype, "registerCellForEditor", [_dec17], {
+      }), _descriptor13 = _applyDecoratedDescriptor(_class9.prototype, "registerCellForEditor", [_dec20], {
         configurable: true,
         enumerable: true,
         writable: true,
@@ -5261,6 +6728,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           return [];
         }
       })), _class9)) || _class8) || _class8) || _class8) || _class8));
+
+      (function (_YXCollectionView) {})(YXCollectionView || (YXCollectionView = exports('YXCollectionView', {})));
 
       cclegacy._RF.pop();
     }
@@ -6092,6 +7561,604 @@ System.register("chunks:///_virtual/yx-masonry-flow-layout.ts", ['./rollupPlugin
 
         return YXMasonryFlowLayout;
       }(YXFlowLayout));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/yx-page-view.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, _createClass, cclegacy, _decorator, Node, ScrollView, Component, YXCollectionView, YXIndexPath, YXFlowLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+      _createClass = module.createClass;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      ScrollView = module.ScrollView;
+      Component = module.Component;
+    }, null, function (module) {
+      YXCollectionView = module.YXCollectionView;
+      YXIndexPath = module.YXIndexPath;
+    }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2, _class3;
+
+      cclegacy._RF.push({}, "96dd56aO5BGmZczD/xUC+Z/", "yx-page-view", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      /**
+       * 基于 YXCollectionView 和 YXFlowLayout 封装的一个简单的 PageView
+       * 请注意，这个组件更多是为了演示如何基于 YXCollectionView 来实现 PageView 相关的需求，并非完整的功能组件
+       * 如果这个组件符合业务的话可以直接拿来用，如果满足不了需求，可以根据实际业务，选择开放更多的配置或者直接使用 YXCollectionView
+       * 
+       * ---
+       * 此组件说明
+       * - 支持一般的 PageView 业务
+       * - 演示了如何封装页面变化事件
+       */
+
+      var YXPageView = exports('YXPageView', (_dec = ccclass('YXPageView'), _dec2 = property({
+        tooltip: "\u6EDA\u52A8\u65B9\u5411",
+        type: YXCollectionView.ScrollDirection,
+        visible: true
+      }), _dec3 = property({
+        tooltip: "\u662F\u5426\u5141\u8BB8\u624B\u52BF\u6EDA\u52A8",
+        visible: true
+      }), _dec(_class = (_class2 = (_class3 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(YXPageView, _Component);
+
+        function YXPageView() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+          /**
+           * 列表组件
+           */
+
+          _this.collectionView = null;
+          /**
+           * 滚动方向
+           */
+
+          _initializerDefineProperty(_this, "_scrollDirection", _descriptor, _assertThisInitialized(_this));
+          /**
+           * 是否允许手势滚动
+           * 关闭的话可以禁掉手势滚动业务，但仍然可以通过代码切换页面
+           */
+
+
+          _initializerDefineProperty(_this, "_scrollEnabled", _descriptor2, _assertThisInitialized(_this));
+          /**
+           * 保存所有的页面
+           */
+
+
+          _this.pages = [];
+          _this._late_update_pages = false;
+          _this.currentPageForOnScrolling = null;
+          _this.currentPageForOnScrollEnded = null;
+          return _this;
+        }
+
+        var _proto = YXPageView.prototype;
+        /**
+         * 获取所有页面
+         * @returns 
+         */
+
+        _proto.getPages = function getPages() {
+          return this.pages;
+        }
+        /**
+         * 新增页面到尾部
+         * @param page 
+         */
+        ;
+
+        _proto.addPage = function addPage(page) {
+          this.pages.push(page);
+          this._late_update_pages = true;
+        }
+        /**
+         * 获取当前页面索引
+         * @returns 
+         */
+        ;
+
+        _proto.getCurrentPageIndex = function getCurrentPageIndex() {
+          if (this.collectionView.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
+            var offset = this.collectionView.scrollView.getScrollOffset();
+            offset.x = -offset.x;
+            var idx = Math.round(offset.x / this.collectionView.scrollView.view.width);
+            return idx;
+          }
+
+          if (this.collectionView.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
+            var _offset = this.collectionView.scrollView.getScrollOffset();
+
+            var _idx = Math.round(_offset.y / this.collectionView.scrollView.view.height);
+
+            return _idx;
+          }
+
+          return null;
+        }
+        /**
+         * 设置当前要显示的页面
+         * 也可以视作 scrollToPage 方法
+         * @param index 
+         * @param timeInSecond 
+         */
+        ;
+
+        _proto.setCurrentPageIndex = function setCurrentPageIndex(index, timeInSecond) {
+          if (timeInSecond === void 0) {
+            timeInSecond = 0;
+          }
+
+          var indexPath = new YXIndexPath(0, index);
+          this.collectionView.scrollTo(indexPath, timeInSecond);
+        }
+        /**
+         * 插入一个新页面
+         * @param page 
+         * @param index 
+         */
+        ;
+
+        _proto.insertPage = function insertPage(page, index) {
+          this.pages.splice(index, 0, page);
+          this._late_update_pages = true;
+        }
+        /**
+         * 移除指定页面
+         * @param page 
+         * @returns 
+         */
+        ;
+
+        _proto.removePage = function removePage(page) {
+          for (var index = 0; index < this.pages.length; index++) {
+            var node = this.pages[index];
+
+            if (page === node) {
+              this.removePageAtIndex(index);
+              return;
+            }
+          }
+        }
+        /**
+         * 移除指定页面
+         * @param index 
+         */
+        ;
+
+        _proto.removePageAtIndex = function removePageAtIndex(index) {
+          this.pages.splice(index, 1);
+          this._late_update_pages = true;
+        }
+        /**
+         * 移除所有页面
+         */
+        ;
+
+        _proto.removeAllPages = function removeAllPages() {
+          this.pages = [];
+          this._late_update_pages = true;
+        }
+        /**
+         * 立即更新当前页面
+         */
+        ;
+
+        _proto.markForUpdatePages = function markForUpdatePages() {
+          this.collectionView.reloadData();
+          this.onScrolling();
+          this.onScrollEnded();
+        };
+
+        _proto.onLoad = function onLoad() {
+          var _this2 = this;
+
+          this.collectionView = this.node.getComponent(YXCollectionView) || this.node.addComponent(YXCollectionView);
+          this.collectionView.recycleInterval = 0;
+          this.collectionView.scrollEnabled = this._scrollEnabled;
+          this.collectionView.scrollDirection = this._scrollDirection;
+
+          this.collectionView.numberOfItems = function () {
+            return _this2.pages.length;
+          };
+
+          this.collectionView.register("cell", function () {
+            var result = new Node("yx-page");
+            result.layer = _this2.collectionView.node.layer;
+            return result;
+          });
+
+          this.collectionView.onCellDisplay = function (cell, indexPath, collectionView) {
+            cell.removeAllChildren();
+            var page = _this2.pages[indexPath.item];
+            page.parent = cell;
+          };
+
+          var layout = new YXFlowLayout();
+          layout.pagingEnabled = true;
+
+          layout.itemSize = function () {
+            return _this2.collectionView.scrollView.view.contentSize;
+          };
+
+          this.collectionView.layout = layout;
+          this.collectionView.node.on(ScrollView.EventType.SCROLLING, function () {
+            _this2.onScrolling();
+          });
+          this.collectionView.node.on(ScrollView.EventType.SCROLL_ENDED, function () {
+            _this2.onScrollEnded();
+          });
+        };
+
+        _proto.onDestroy = function onDestroy() {
+          this.pages = [];
+        };
+
+        _proto.update = function update(dt) {
+          if (this._late_update_pages) {
+            this._late_update_pages = false;
+            this.collectionView.reloadData();
+            this.onScrolling();
+            this.onScrollEnded();
+          }
+        };
+
+        _proto.onScrolling = function onScrolling() {
+          var getCurrentPageIndex = this.getCurrentPageIndex();
+
+          if (this.currentPageForOnScrolling != getCurrentPageIndex) {
+            this.currentPageForOnScrolling = getCurrentPageIndex;
+            this.node.emit(YXPageView.PAGE_CHANGE_EVENT1, this.currentPageForOnScrolling);
+          }
+        };
+
+        _proto.onScrollEnded = function onScrollEnded() {
+          var getCurrentPageIndex = this.getCurrentPageIndex();
+
+          if (this.currentPageForOnScrollEnded != getCurrentPageIndex) {
+            this.currentPageForOnScrollEnded = getCurrentPageIndex;
+            this.node.emit(YXPageView.PAGE_CHANGE_EVENT2, this.currentPageForOnScrollEnded);
+          }
+        };
+
+        _createClass(YXPageView, [{
+          key: "scrollDirection",
+          get: function get() {
+            return this.collectionView.scrollDirection;
+          },
+          set: function set(value) {
+            this.collectionView.scrollDirection = value;
+            this.collectionView.reloadData();
+          }
+        }, {
+          key: "scrollEnabled",
+          get: function get() {
+            return this.collectionView.scrollEnabled;
+          },
+          set: function set(value) {
+            this.collectionView.scrollEnabled = value;
+          }
+        }]);
+
+        return YXPageView;
+      }(Component), _class3.PAGE_CHANGE_EVENT1 = "YXPageView.PAGE_CHANGE_EVENT1", _class3.PAGE_CHANGE_EVENT2 = "YXPageView.PAGE_CHANGE_EVENT2", _class3), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "_scrollDirection", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return YXCollectionView.ScrollDirection.HORIZONTAL;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_scrollEnabled", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return true;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/yx-table-view.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Enum, Prefab, instantiate, UITransform, Component, math, YXIndexPath, YXCollectionView, YXEdgeInsets, YXFlowLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Enum = module.Enum;
+      Prefab = module.Prefab;
+      instantiate = module.instantiate;
+      UITransform = module.UITransform;
+      Component = module.Component;
+      math = module.math;
+    }, null, function (module) {
+      YXIndexPath = module.YXIndexPath;
+      YXCollectionView = module.YXCollectionView;
+      YXEdgeInsets = module.YXEdgeInsets;
+    }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _class3;
+
+      cclegacy._RF.push({}, "4fddd4eyllKcJchIPJqXAF+", "yx-table-view", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      /**
+       * 节点对齐方式枚举
+       */
+
+      var _yx_table_view_item_alignment = /*#__PURE__*/function (_yx_table_view_item_alignment) {
+        _yx_table_view_item_alignment[_yx_table_view_item_alignment["LEFT"] = 0] = "LEFT";
+        _yx_table_view_item_alignment[_yx_table_view_item_alignment["CENTER"] = 1] = "CENTER";
+        _yx_table_view_item_alignment[_yx_table_view_item_alignment["RIGHT"] = 2] = "RIGHT";
+        return _yx_table_view_item_alignment;
+      }(_yx_table_view_item_alignment || {});
+
+      Enum(_yx_table_view_item_alignment);
+      /**
+       * 节点大小模式每局
+       */
+
+      var _yx_table_view_item_size_mode = /*#__PURE__*/function (_yx_table_view_item_size_mode) {
+        _yx_table_view_item_size_mode[_yx_table_view_item_size_mode["USE_PREFAB_SIZE"] = 0] = "USE_PREFAB_SIZE";
+        _yx_table_view_item_size_mode[_yx_table_view_item_size_mode["CUSTOM"] = 1] = "CUSTOM";
+        return _yx_table_view_item_size_mode;
+      }(_yx_table_view_item_size_mode || {});
+
+      Enum(_yx_table_view_item_size_mode);
+      /**
+       * 基于 YXCollectionView 和 YXFlowLayout 封装的一个简单的 TableView
+       * 请注意，这个组件更多是为了演示如何基于 YXCollectionView 来实现自己需要的列表组件，并非完整的功能组件
+       * 如果这个组件符合业务的话可以直接拿来用，如果满足不了需求，可以根据实际业务，选择开放更多的配置或者直接使用 YXCollectionView
+       * 
+       * ---
+       * 此组件说明
+       * - 仅支持编辑器配置
+       * - 仅支持垂直方向滚动
+       * - 仅支持单类型 cell 节点样式
+       * - 仅支持固定的 cell 节点大小
+       * - 支持 cell 节点相对于列表的对齐方式，默认居中对齐
+       */
+
+      var YXTableView = exports('YXTableView', (_dec = ccclass('YXTableView'), _dec2 = property({
+        tooltip: "cell \u8282\u70B9\u9884\u5236\u4F53",
+        type: Prefab,
+        visible: true
+      }), _dec3 = property({
+        tooltip: "\u5982\u4F55\u914D\u7F6E cell \u8282\u70B9\u5927\u5C0F\nUSE_PREFAB_SIZE: \u81EA\u52A8\u8BFB\u53D6\u9884\u5236\u4F53\u5927\u5C0F\nCUSTOM: \u81EA\u5B9A\u4E49\u8282\u70B9\u5927\u5C0F",
+        type: _yx_table_view_item_size_mode,
+        visible: true
+      }), _dec4 = property({
+        tooltip: "cell \u8282\u70B9\u5927\u5C0F",
+        visible: function visible() {
+          return this.itemSizeMode == _yx_table_view_item_size_mode.CUSTOM;
+        }
+      }), _dec5 = property({
+        tooltip: "cell \u8282\u70B9\u5BF9\u9F50\u65B9\u5F0F",
+        type: _yx_table_view_item_alignment,
+        visible: true
+      }), _dec6 = property({
+        tooltip: "cell \u8282\u70B9\u4E4B\u95F4\u95F4\u8DDD",
+        visible: true
+      }), _dec7 = property({
+        tooltip: "\u9876\u90E8\u6700\u5927\u504F\u79FB\u8DDD\u79BB",
+        visible: true
+      }), _dec8 = property({
+        tooltip: "\u5E95\u90E8\u6700\u5927\u504F\u79FB\u8DDD\u79BB",
+        visible: true
+      }), _dec(_class = (_class2 = (_class3 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(YXTableView, _Component);
+
+        function YXTableView() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "cellPrefab", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "itemSizeMode", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "itemSize", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "alignment", _descriptor4, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "spacing", _descriptor5, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "top", _descriptor6, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "bottom", _descriptor7, _assertThisInitialized(_this));
+          /**
+           * 列表组件
+           */
+
+
+          _this.collectionView = null;
+          _this.data = null;
+          _this.updateCellCall = null;
+          return _this;
+        }
+
+        var _proto = YXTableView.prototype;
+        /**
+         * 更新列表数据
+         * @param data 列表绑定的数据源
+         */
+
+        _proto.setData = function setData(data) {
+          this.data = data;
+          this.reloadCollectionViewIfNeeds();
+        };
+        /**
+         * 更新 cell 节点
+         * @param call 
+         */
+
+
+        _proto.onCellDisplay = function onCellDisplay(call) {
+          this.updateCellCall = call;
+          this.reloadCollectionViewIfNeeds();
+        };
+        /**
+         * 滚动到指定节点位置
+         * @param idx 
+         */
+
+
+        _proto.scrollTo = function scrollTo(idx) {
+          var indexPath = new YXIndexPath(0, idx);
+          this.collectionView.scrollTo(indexPath);
+        }
+        /**
+         * 生命周期方法
+         */
+        ;
+
+        _proto.onLoad = function onLoad() {
+          var _this2 = this;
+
+          this.collectionView = this.node.getComponent(YXCollectionView) || this.node.addComponent(YXCollectionView);
+          this.collectionView.register("cell", function () {
+            return instantiate(_this2.cellPrefab);
+          });
+          this.collectionView.scrollDirection = YXCollectionView.ScrollDirection.VERTICAL;
+
+          this.collectionView.numberOfItems = function () {
+            return _this2.data.length;
+          };
+
+          this.collectionView.onCellDisplay = function (cell, indexPath, collectionView) {
+            if (_this2.updateCellCall) {
+              _this2.updateCellCall(cell, _this2.data[indexPath.item], indexPath.item);
+            }
+          };
+
+          var layout = new YXFlowLayout();
+          var itemSize = this.itemSize;
+
+          if (this.itemSizeMode == _yx_table_view_item_size_mode.USE_PREFAB_SIZE) {
+            itemSize = instantiate(this.cellPrefab).getComponent(UITransform).contentSize;
+          }
+
+          layout.itemSize = itemSize;
+          var left = 0;
+
+          if (this.alignment == YXTableView.Alignment.LEFT) {
+            left = 0;
+          }
+
+          if (this.alignment == YXTableView.Alignment.CENTER) {
+            left = (this.collectionView.scrollView.view.width - itemSize.width) * 0.5;
+          }
+
+          if (this.alignment == YXTableView.Alignment.RIGHT) {
+            left = (this.collectionView.scrollView.view.width - itemSize.width) * 1;
+          }
+
+          layout.sectionInset = new YXEdgeInsets(this.top, left, this.bottom, 0);
+          layout.verticalSpacing = this.spacing;
+          this.collectionView.layout = layout;
+        };
+
+        _proto.onDestroy = function onDestroy() {
+          this.data = [];
+        };
+
+        _proto.reloadCollectionViewIfNeeds = function reloadCollectionViewIfNeeds() {
+          // `数据源` 配置好后才去更新列表，没配置好的话更新没有意义
+          if (this.data == null) {
+            return;
+          }
+
+          this.collectionView.reloadData();
+        };
+
+        return YXTableView;
+      }(Component), _class3.Alignment = _yx_table_view_item_alignment, _class3), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "cellPrefab", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "itemSizeMode", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return _yx_table_view_item_size_mode.CUSTOM;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "itemSize", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return new math.Size(100, 100);
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "alignment", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return _yx_table_view_item_alignment.CENTER;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "spacing", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0;
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "top", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0;
+        }
+      }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "bottom", [_dec8], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0;
+        }
+      })), _class2)) || _class));
 
       cclegacy._RF.pop();
     }
