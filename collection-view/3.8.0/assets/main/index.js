@@ -728,8 +728,8 @@ System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-cover-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Toggle, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXCoverLayout;
+System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-cover-layout.ts', './yx-collection-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Toggle, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCoverLayout, YXCollectionView;
 
   return {
     setters: [function (module) {
@@ -752,9 +752,9 @@ System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelper
       math = module.math;
       Component = module.Component;
     }, null, function (module) {
-      YXCollectionView = module.YXCollectionView;
-    }, function (module) {
       YXCoverLayout = module.YXCoverLayout;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
@@ -877,8 +877,8 @@ System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-masonry-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXEdgeInsets, YXMasonryFlowLayout;
+System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-masonry-flow-layout.ts', './yx-collection-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXMasonryFlowLayout, YXCollectionView, YXEdgeInsets;
 
   return {
     setters: [function (module) {
@@ -900,10 +900,10 @@ System.register("chunks:///_virtual/demo13.ts", ['./rollupPluginModLoBabelHelper
       math = module.math;
       Component = module.Component;
     }, null, function (module) {
+      YXMasonryFlowLayout = module.YXMasonryFlowLayout;
+    }, function (module) {
       YXCollectionView = module.YXCollectionView;
       YXEdgeInsets = module.YXEdgeInsets;
-    }, function (module) {
-      YXMasonryFlowLayout = module.YXMasonryFlowLayout;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
@@ -1385,8 +1385,8 @@ System.register("chunks:///_virtual/demo15.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/Demo15Cell1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-masonry-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, instantiate, Label, randomRangeInt, Sprite, math, log, Component, YXCollectionView, YXEdgeInsets, YXMasonryFlowLayout;
+System.register("chunks:///_virtual/Demo15Cell1.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-masonry-flow-layout.ts', './yx-collection-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, instantiate, Label, randomRangeInt, Sprite, math, log, Component, YXMasonryFlowLayout, YXCollectionView, YXEdgeInsets;
 
   return {
     setters: [function (module) {
@@ -1406,10 +1406,10 @@ System.register("chunks:///_virtual/Demo15Cell1.ts", ['./rollupPluginModLoBabelH
       log = module.log;
       Component = module.Component;
     }, null, function (module) {
+      YXMasonryFlowLayout = module.YXMasonryFlowLayout;
+    }, function (module) {
       YXCollectionView = module.YXCollectionView;
       YXEdgeInsets = module.YXEdgeInsets;
-    }, function (module) {
-      YXMasonryFlowLayout = module.YXMasonryFlowLayout;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
@@ -1502,8 +1502,8 @@ System.register("chunks:///_virtual/Demo15Cell1.ts", ['./rollupPluginModLoBabelH
   };
 });
 
-System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts', './yx-cover-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, instantiate, Node, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXEdgeInsets, YXFlowLayout, YXCoverLayout;
+System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-cover-layout.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, instantiate, Node, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCoverLayout, YXCollectionView, YXEdgeInsets, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -1524,12 +1524,12 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
       math = module.math;
       Component = module.Component;
     }, null, function (module) {
+      YXCoverLayout = module.YXCoverLayout;
+    }, function (module) {
       YXCollectionView = module.YXCollectionView;
       YXEdgeInsets = module.YXEdgeInsets;
     }, function (module) {
       YXFlowLayout = module.YXFlowLayout;
-    }, function (module) {
-      YXCoverLayout = module.YXCoverLayout;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
@@ -1720,8 +1720,8 @@ System.register("chunks:///_virtual/Demo15Cell2.ts", ['./rollupPluginModLoBabelH
   };
 });
 
-System.register("chunks:///_virtual/demo16.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-carousel-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCollectionView, YXCarouselLayout;
+System.register("chunks:///_virtual/demo16.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-carousel-layout.ts', './yx-collection-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, Component, YXCarouselLayout, YXCollectionView;
 
   return {
     setters: [function (module) {
@@ -1743,9 +1743,9 @@ System.register("chunks:///_virtual/demo16.ts", ['./rollupPluginModLoBabelHelper
       math = module.math;
       Component = module.Component;
     }, null, function (module) {
-      YXCollectionView = module.YXCollectionView;
-    }, function (module) {
       YXCarouselLayout = module.YXCarouselLayout;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
@@ -1845,8 +1845,8 @@ System.register("chunks:///_virtual/demo16.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-cover-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Camera, geometry, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, PhysicsSystem, log, Component, YXCollectionView, YXCoverLayout;
+System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-cover-layout.ts', './yx-collection-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, Camera, geometry, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, PhysicsSystem, log, Component, YXCoverLayout, YXCollectionView;
 
   return {
     setters: [function (module) {
@@ -1872,9 +1872,9 @@ System.register("chunks:///_virtual/demo17.ts", ['./rollupPluginModLoBabelHelper
       log = module.log;
       Component = module.Component;
     }, null, function (module) {
-      YXCollectionView = module.YXCollectionView;
-    }, function (module) {
       YXCoverLayout = module.YXCoverLayout;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
     }],
     execute: function () {
       var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
@@ -2654,6 +2654,7 @@ System.register("chunks:///_virtual/demo20.ts", ['./rollupPluginModLoBabelHelper
           layout.horizontalSpacing = commonSpacing;
           layout.verticalSpacing = commonSpacing;
           layout.sectionInset = new YXEdgeInsets(20, 0, 0, 0);
+          layout.extraVisibleCount = 2;
 
           layout.itemSize = function (indexPath, flowLayout, collectionView) {
             var list_width = collectionView.scrollView.view.width;
@@ -2705,8 +2706,8 @@ System.register("chunks:///_virtual/demo20.ts", ['./rollupPluginModLoBabelHelper
   };
 });
 
-System.register("chunks:///_virtual/Demo20Cell0.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './Demo20Cell1.ts', './yx-collection-view.ts', './yx-cover-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, math, randomRangeInt, Component, Demo20Cell1, YXCollectionView, YXCoverLayout;
+System.register("chunks:///_virtual/Demo20Cell0.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './Demo20Cell1.ts', './index.ts', './yx-cover-layout.ts', './yx-collection-view.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, math, randomRangeInt, Component, Demo20Cell1, YXCoverLayout, YXCollectionView;
 
   return {
     setters: [function (module) {
@@ -2720,12 +2721,12 @@ System.register("chunks:///_virtual/Demo20Cell0.ts", ['./rollupPluginModLoBabelH
       math = module.math;
       randomRangeInt = module.randomRangeInt;
       Component = module.Component;
-    }, null, function (module) {
+    }, function (module) {
       Demo20Cell1 = module.Demo20Cell1;
+    }, null, function (module) {
+      YXCoverLayout = module.YXCoverLayout;
     }, function (module) {
       YXCollectionView = module.YXCollectionView;
-    }, function (module) {
-      YXCoverLayout = module.YXCoverLayout;
     }],
     execute: function () {
       var _dec, _dec2, _class, _class2, _descriptor;
@@ -3157,6 +3158,225 @@ System.register("chunks:///_virtual/Demo21Cell.ts", ['./rollupPluginModLoBabelHe
           return null;
         }
       }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "detailLabel", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/demo22.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Prefab, NodeEventType, director, instantiate, UITransform, Label, randomRangeInt, Sprite, math, ScrollBar, Component, YXCollectionView, YXEdgeInsets, YXFlowLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Prefab = module.Prefab;
+      NodeEventType = module.NodeEventType;
+      director = module.director;
+      instantiate = module.instantiate;
+      UITransform = module.UITransform;
+      Label = module.Label;
+      randomRangeInt = module.randomRangeInt;
+      Sprite = module.Sprite;
+      math = module.math;
+      ScrollBar = module.ScrollBar;
+      Component = module.Component;
+    }, null, function (module) {
+      YXCollectionView = module.YXCollectionView;
+      YXEdgeInsets = module.YXEdgeInsets;
+    }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+
+      cclegacy._RF.push({}, "8f980Obn2xCtoh/uKRuwT8R", "demo22", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var demo22 = exports('demo22', (_dec = ccclass('demo22'), _dec2 = property(YXCollectionView), _dec3 = property(Prefab), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo22, _Component);
+
+        function demo22() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "collectionView", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "cellPrefab", _descriptor2, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = demo22.prototype;
+
+        _proto.onLoad = function onLoad() {
+          this.initBackAction();
+        };
+
+        _proto.initBackAction = function initBackAction() {
+          this.node.once(NodeEventType.TOUCH_END, function () {
+            director.loadScene("home");
+          });
+        };
+
+        _proto.start = function start() {
+          var _this2 = this;
+
+          this.setupScrollBar();
+          this.collectionView.register("cell", function () {
+            return instantiate(_this2.cellPrefab);
+          });
+          this.collectionView.numberOfSections = 4;
+
+          this.collectionView.numberOfItems = function (section) {
+            if (section == 0) {
+              return 1;
+            }
+
+            if (section == 1) {
+              return 5;
+            }
+
+            if (section == 2) {
+              return 3;
+            }
+
+            return 100;
+          };
+
+          this.collectionView.cellForItemAt = function (indexPath, collectionView) {
+            return collectionView.dequeueReusableCell("cell");
+          };
+
+          this.collectionView.onCellDisplay = function (cell, indexPath, collectionView) {
+            var transform = cell.getComponent(UITransform);
+            cell.getChildByName("Bg").getComponent(UITransform).contentSize = transform.contentSize;
+            cell.getChildByName("Label").getComponent(Label).string = "" + indexPath;
+            var r = randomRangeInt(10, 150);
+            var g = randomRangeInt(10, 150);
+            var b = randomRangeInt(10, 150);
+            cell.getChildByName("Bg").getComponent(Sprite).color = new math.Color(r, g, b);
+          };
+
+          var layout = new YXFlowLayout();
+          layout.horizontalSpacing = 20;
+          layout.verticalSpacing = 20;
+          layout.sectionInset = new YXEdgeInsets(20, 0, 0, 0);
+
+          layout.itemSize = function (indexPath, flowLayout, collectionView) {
+            if (indexPath.section == 0) {
+              return new math.Size(collectionView.scrollView.view.width, 400);
+            }
+
+            if (indexPath.section == 1) {
+              return new math.Size(200, 200);
+            }
+
+            if (indexPath.section == 2) {
+              return new math.Size(collectionView.scrollView.view.width, 200);
+            }
+
+            return new math.Size(310, 200);
+          };
+
+          this.collectionView.layout = layout;
+          this.collectionView.reloadData();
+        }
+        /**
+         * 关联滑动条  
+         * 可以通过 YXCollectionView 的 scrollView 方法获取列表的 ScrollView 组件，配合 ScrollView 组件实现滑动条的交互逻辑
+         */
+        ;
+
+        _proto.setupScrollBar = function setupScrollBar() {
+          var _this3 = this;
+          /**
+           * 关联 ScrollBar 节点  
+           * 这个 ScrollBar 节点完全交给使用者自己管理，内部不会封装这个 (毕竟这个位置/样式自由度太高了)  
+           * 也就是在需要滑动条的时候要自己创建一个，然后通过 ScrollView 组件关联起来就好 (这个组件是区分方向的，需要注意方向配置统一)  
+           */
+
+
+          var scrollBar = this.node.getChildByName("scrollBar").getComponent(ScrollBar);
+          this.collectionView.scrollView.verticalScrollBar = scrollBar;
+          /**
+           * 另外如果滑动条还需要交互，也是需要自己来实现交互逻辑  
+           */
+
+          scrollBar.node.on(NodeEventType.TOUCH_END, function (ev) {
+            var touchWorldPos = ev.getUILocation();
+            var nodeWorldPos = scrollBar.node.worldPosition;
+            var nodeSize = scrollBar.node.getComponent(UITransform).contentSize;
+            var y = nodeWorldPos.y + nodeSize.height * 0.5;
+            var progress = (y - touchWorldPos.y) / nodeSize.height;
+
+            if (progress < 0) {
+              progress = 0;
+            }
+
+            if (progress > 1) {
+              progress = 1;
+            }
+
+            _this3.collectionView.scrollView.stopAutoScroll();
+
+            _this3.collectionView.scrollView.scrollToPercentVertical(1 - progress);
+
+            _this3.collectionView.markForUpdateVisibleData(true); // 更新当前可见节点
+
+          });
+          scrollBar.node.on(NodeEventType.TOUCH_MOVE, function (ev) {
+            var touchWorldPos = ev.getUILocation();
+            var nodeWorldPos = scrollBar.node.worldPosition;
+            var nodeSize = scrollBar.node.getComponent(UITransform).contentSize;
+            var y = nodeWorldPos.y + nodeSize.height * 0.5;
+            var progress = (y - touchWorldPos.y) / nodeSize.height;
+
+            if (progress < 0) {
+              progress = 0;
+            }
+
+            if (progress > 1) {
+              progress = 1;
+            }
+
+            _this3.collectionView.scrollView.stopAutoScroll();
+
+            _this3.collectionView.scrollView.scrollToPercentVertical(1 - progress);
+
+            _this3.collectionView.markForUpdateVisibleData(); // 更新当前可见节点
+
+          });
+        };
+
+        return demo22;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "collectionView", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "cellPrefab", [_dec3], {
         configurable: true,
         enumerable: true,
         writable: true,
@@ -4427,6 +4647,9 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
           }, {
             title: "\u5806\u53E0\u5361\u7247",
             scene: "demo21"
+          }, {
+            title: "ScrollBar",
+            scene: "demo22"
           }];
           var layout = new YXFlowLayout();
           layout.itemSize = new math.Size(600, 100);
@@ -4498,7 +4721,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
   };
 });
 
-System.register("chunks:///_virtual/index.ts", ['cc', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts', './yx-carousel-layout.ts'], function (exports) {
+System.register("chunks:///_virtual/index.ts", ['cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var cclegacy;
   return {
     setters: [function (module) {
@@ -4512,13 +4735,7 @@ System.register("chunks:///_virtual/index.ts", ['cc', './yx-collection-view.ts',
       _setter.YXLayoutAttributes = module.YXLayoutAttributes;
       exports(_setter);
     }, function (module) {
-      exports('YXCoverLayout', module.YXCoverLayout);
-    }, function (module) {
       exports('YXFlowLayout', module.YXFlowLayout);
-    }, function (module) {
-      exports('YXMasonryFlowLayout', module.YXMasonryFlowLayout);
-    }, function (module) {
-      exports('YXCarouselLayout', module.YXCarouselLayout);
     }],
     execute: function () {
       cclegacy._RF.push({}, "1e299YNYrBBRo6Zh9p5Ik3Z", "index", undefined);
@@ -4653,9 +4870,9 @@ System.register("chunks:///_virtual/LayoutCell.ts", ['./rollupPluginModLoBabelHe
   };
 });
 
-System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './Demo1Cell.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './Demo15Cell1.ts', './Demo15Cell2.ts', './LayoutCell.ts', './demo15.ts', './demo16.ts', './demo17.ts', './demo18.ts', './demo19.ts', './demo2.ts', './Demo20Cell0.ts', './Demo20Cell1.ts', './demo20.ts', './Demo21Cell.ts', './demo21.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './yx-card-page-layout.ts', './yx-page-view.ts', './yx-table-view.ts', './index.ts', './yx-carousel-layout.ts', './yx-collection-view.ts', './yx-cover-layout.ts', './yx-flow-layout.ts', './yx-masonry-flow-layout.ts'], function () {
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './Demo1Cell.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo13.ts', './demo14.ts', './Demo15Cell1.ts', './Demo15Cell2.ts', './LayoutCell.ts', './demo15.ts', './demo16.ts', './demo17.ts', './demo18.ts', './demo19.ts', './demo2.ts', './Demo20Cell0.ts', './Demo20Cell1.ts', './demo20.ts', './Demo21Cell.ts', './demo21.ts', './demo22.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './yx-card-page-layout.ts', './yx-carousel-layout.ts', './yx-cover-layout.ts', './yx-masonry-flow-layout.ts', './yx-page-view.ts', './yx-table-view.ts', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function () {
   return {
-    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     execute: function () {}
   };
 });
@@ -5806,7 +6023,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
        * 列表组件
        */
 
-      var YXCollectionView = exports('YXCollectionView', (_dec7 = ccclass('YXCollectionView'), _dec8 = disallowMultiple(true), _dec9 = executionOrder(-1), _dec10 = help("https://forum.cocos.org/t/topic/157984"), _dec11 = property({
+      var YXCollectionView = exports('YXCollectionView', (_dec7 = ccclass('YXCollectionView'), _dec8 = disallowMultiple(true), _dec9 = executionOrder(-1), _dec10 = help("https://gitee.com/568071718/creator-collection-view-doc"), _dec11 = property({
         tooltip: "\u81EA\u52A8\u7ED9\u6302\u8F7D\u8282\u70B9\u6DFB\u52A0 mask \u7EC4\u4EF6"
       }), _dec12 = property({
         tooltip: "\u5141\u8BB8\u624B\u52BF\u6EDA\u52A8"
@@ -5958,7 +6175,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5.cellForItemAt = null;
           /**
-           * cell 添加到滚动视图上之后执行，在这个方法里更新 cell 显示的 UI 内容
+           * cell 触发复用之后执行，在这个方法里更新 cell 显示的 UI 内容
            * 如果确定节点大小没什么变化，可以直接在 cellForItemAt 里更新数据，省去这一步，这里主要是为了应付节点大小变化的情况
            * 可以通过 @indexPath 区分 cell 的种类
            * 重要: 如果 cell 的大小不是固定的，需要在这里重新调整子节点的位置，避免布局错乱
@@ -6438,7 +6655,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this._frameIdx++;
           this.update_reloadVisibleCellsIfNeeds(dt);
           this.update_recycleInvisibleNodesIfNeeds(dt);
-          this.update_preloadItemsIfNeeds();
+          this.update_preloadItemsIfNeeds(dt);
         };
 
         _proto6.markForUpdateVisibleData = function markForUpdateVisibleData(force) {
@@ -6452,6 +6669,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
 
           this._late_update_visible_data = true;
+          this._late_recycle_invisible_node = true;
         }
         /**
          * 更新可见区域节点逻辑
@@ -6476,7 +6694,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto6.update_preloadItemsIfNeeds = function update_preloadItemsIfNeeds() {
+        _proto6.update_preloadItemsIfNeeds = function update_preloadItemsIfNeeds(dt) {
           /**
            * 预加载已完成
            */
@@ -6736,8 +6954,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
   };
 });
 
-System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _inheritsLoose, cclegacy, _decorator, math, YXEdgeInsets, YXCollectionView, YXFlowLayout;
+System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-flow-layout.ts', './yx-collection-view.ts'], function (exports) {
+  var _inheritsLoose, cclegacy, _decorator, math, YXFlowLayout, YXEdgeInsets, YXCollectionView;
 
   return {
     setters: [function (module) {
@@ -6747,10 +6965,10 @@ System.register("chunks:///_virtual/yx-cover-layout.ts", ['./rollupPluginModLoBa
       _decorator = module._decorator;
       math = module.math;
     }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }, function (module) {
       YXEdgeInsets = module.YXEdgeInsets;
       YXCollectionView = module.YXCollectionView;
-    }, function (module) {
-      YXFlowLayout = module.YXFlowLayout;
     }],
     execute: function () {
       cclegacy._RF.push({}, "ad37dvhcAhMyJOa2rW7s4sI", "yx-cover-layout", undefined);
@@ -6984,6 +7202,7 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
       var ccclass = _decorator.ccclass,
           property = _decorator.property;
       /**
+       * 流式布局
        * 支持水平/垂直方向排列滚动
        */
 
@@ -7276,31 +7495,34 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
             var horizontalSpacing = this.horizontalSpacing instanceof Function ? this.horizontalSpacing(_section, this, collectionView) : this.horizontalSpacing;
             var sectionInset = this.sectionInset instanceof Function ? this.sectionInset(_section, this, collectionView) : this.sectionInset;
             sectionMaxX += sectionInset.left;
-            var currentX = sectionMaxX;
-            var currentY = sectionInset.top;
-            var maxWidthInRow = 0;
+            var whole = new _yx_flow_layout_whole();
+            whole.verticalSpacing = verticalSpacing;
+            whole.horizontalSpacing = horizontalSpacing;
+            whole.sectionInset = sectionInset;
+            whole.offset = sectionMaxX;
+            whole.attrs = [];
+            whole.containerWidth = 0;
+            whole.containerHeight = contentSize.height;
 
             for (var item = 0; item < numberOfItems; item++) {
               var _indexPath = new YXIndexPath(_section, item);
 
               var itemSize = this.itemSize instanceof Function ? this.itemSize(_indexPath, this, collectionView) : this.itemSize;
-              var attributes = new YXLayoutAttributes();
-              attributes.indexPath = _indexPath;
+              var attr = whole.layout_horizontal_item(_indexPath, itemSize);
 
-              if (currentY + itemSize.height <= contentSize.height - sectionInset.bottom) {
-                attributes.frame = new math.Rect(currentX, currentY, itemSize.width, itemSize.height);
-                currentY = currentY + itemSize.height + verticalSpacing;
-                maxWidthInRow = Math.max(maxWidthInRow, itemSize.width);
-              } else {
-                currentX = currentX + maxWidthInRow + horizontalSpacing;
-                currentY = sectionInset.top;
-                attributes.frame = new math.Rect(currentX, currentY, itemSize.width, itemSize.height);
-                currentY = currentY + itemSize.height + verticalSpacing;
-                maxWidthInRow = itemSize.width;
+              if (attr == null) {
+                // 返回 null 表示摆不下了，需要换列排列
+                whole.offset = whole.offset + whole.containerWidth + horizontalSpacing;
+                whole.containerWidth = 0;
+                whole.attrs = [];
+                attr = whole.layout_horizontal_item(_indexPath, itemSize);
               }
 
-              allAttributes.push(attributes);
-              sectionMaxX = Math.max(sectionMaxX, attributes.frame.xMax);
+              if (attr) {
+                allAttributes.push(attr);
+              }
+
+              sectionMaxX = Math.max(sectionMaxX, whole.offset + whole.containerWidth);
             }
 
             sectionMaxX += sectionInset.right;
@@ -7325,31 +7547,34 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
             var horizontalSpacing = this.horizontalSpacing instanceof Function ? this.horizontalSpacing(_section2, this, collectionView) : this.horizontalSpacing;
             var sectionInset = this.sectionInset instanceof Function ? this.sectionInset(_section2, this, collectionView) : this.sectionInset;
             sectionMaxY += sectionInset.top;
-            var currentX = sectionInset.left;
-            var currentY = sectionMaxY;
-            var maxHeightInRow = 0;
+            var whole = new _yx_flow_layout_whole();
+            whole.verticalSpacing = verticalSpacing;
+            whole.horizontalSpacing = horizontalSpacing;
+            whole.sectionInset = sectionInset;
+            whole.offset = sectionMaxY;
+            whole.attrs = [];
+            whole.containerWidth = contentSize.width;
+            whole.containerHeight = 0;
 
             for (var item = 0; item < numberOfItems; item++) {
               var _indexPath2 = new YXIndexPath(_section2, item);
 
               var itemSize = this.itemSize instanceof Function ? this.itemSize(_indexPath2, this, collectionView) : this.itemSize;
-              var attributes = new YXLayoutAttributes();
-              attributes.indexPath = _indexPath2;
+              var attr = whole.layout_vertical_item(_indexPath2, itemSize);
 
-              if (currentX + itemSize.width <= contentSize.width - sectionInset.right) {
-                attributes.frame = new math.Rect(currentX, currentY, itemSize.width, itemSize.height);
-                currentX = currentX + itemSize.width + horizontalSpacing;
-                maxHeightInRow = Math.max(maxHeightInRow, itemSize.height);
-              } else {
-                currentX = sectionInset.left;
-                currentY = currentY + maxHeightInRow + verticalSpacing;
-                attributes.frame = new math.Rect(currentX, currentY, itemSize.width, itemSize.height);
-                currentX = currentX + itemSize.width + horizontalSpacing;
-                maxHeightInRow = itemSize.height;
+              if (attr == null) {
+                // 返回 null 表示摆不下了，需要换行排列
+                whole.offset = whole.offset + whole.containerHeight + verticalSpacing;
+                whole.containerHeight = 0;
+                whole.attrs = [];
+                attr = whole.layout_vertical_item(_indexPath2, itemSize);
               }
 
-              allAttributes.push(attributes);
-              sectionMaxY = Math.max(sectionMaxY, attributes.frame.yMax);
+              if (attr) {
+                allAttributes.push(attr);
+              }
+
+              sectionMaxY = Math.max(sectionMaxY, whole.offset + whole.containerHeight);
             }
 
             sectionMaxY += sectionInset.bottom;
@@ -7362,14 +7587,182 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
 
         return YXFlowLayout;
       }(YXLayout));
+      /**
+       * 这个类用来实现紧凑流式布局  
+       * 目前版本使用的策略: 贪心算法，遍历取当前整体内最优的位置  
+       * GPT: 水平/垂直扫描 和 贪心算法 是解决这种矩形排列问题的简单有效方法。它们通过从当前矩形的位置出发，逐步扫描周围空白区域来寻找新矩形的放置位置。虽然这种方法比较直观且易于实现，但在复杂情况下可能不是最优解。对于更高效的排列策略，可能需要结合更多的启发式方法或优化算法。  
+       * @todo 优化排列算法 (如果能想到更好的排列算法的话)  
+       */
+
+      var _yx_flow_layout_whole = /*#__PURE__*/function () {
+        function _yx_flow_layout_whole() {
+          /**
+           * 当前这块内容的起始位置
+           */
+          this.offset = void 0;
+          /**
+           * flow layout 部分参数
+           */
+
+          this.verticalSpacing = void 0;
+          this.horizontalSpacing = void 0;
+          this.sectionInset = void 0;
+          /**
+           * 容器相关的参数
+           */
+
+          this.containerWidth = void 0;
+          this.containerHeight = void 0;
+          /**
+           * 这块内容区域目前已经摆放的节点
+           */
+
+          this.attrs = [];
+        }
+
+        var _proto2 = _yx_flow_layout_whole.prototype;
+        /**
+         * 检查传进来的位置是否跟当前这块内容的其他节点重叠
+         */
+
+        _proto2.intersects = function intersects(rect) {
+          for (var index = 0; index < this.attrs.length; index++) {
+            var element = this.attrs[index];
+
+            if (element.frame.intersects(rect)) {
+              return true;
+            }
+          }
+
+          return false;
+        }
+        /**
+         * 垂直方向列表的节点的排列规则
+         */
+        ;
+
+        _proto2.layout_vertical_item = function layout_vertical_item(indexPath, itemSize) {
+          if (this.attrs.length <= 0) {
+            var attributes = new YXLayoutAttributes();
+            attributes.indexPath = indexPath;
+            attributes.frame = new math.Rect(this.sectionInset.left, this.offset, itemSize.width, itemSize.height);
+            this.attrs.push(attributes);
+            this.containerHeight = Math.max(this.containerHeight, attributes.frame.height);
+            return attributes;
+          }
+
+          var frame = new math.Rect();
+          frame.size = itemSize; // 检查所有节点的右边
+
+          for (var index = 0; index < this.attrs.length; index++) {
+            var element = this.attrs[index];
+            frame.x = element.frame.xMax + this.horizontalSpacing;
+            frame.y = element.frame.y;
+
+            if (frame.xMax <= this.containerWidth - this.sectionInset.right) {
+              if (this.intersects(frame) == false) {
+                var _attributes = new YXLayoutAttributes();
+
+                _attributes.indexPath = indexPath;
+                _attributes.frame = frame;
+                this.attrs.push(_attributes);
+                this.containerHeight = Math.max(this.containerHeight, _attributes.frame.height);
+                return _attributes;
+              }
+            }
+          } // 检测所有节点的下边
+
+
+          for (var _index = 0; _index < this.attrs.length; _index++) {
+            var _element = this.attrs[_index];
+            frame.x = _element.frame.x;
+            frame.y = _element.frame.yMax + this.verticalSpacing;
+
+            if (frame.yMax <= this.offset + this.containerHeight) {
+              if (this.intersects(frame) == false) {
+                var _attributes2 = new YXLayoutAttributes();
+
+                _attributes2.indexPath = indexPath;
+                _attributes2.frame = frame;
+                this.attrs.push(_attributes2);
+                this.containerHeight = Math.max(this.containerHeight, _attributes2.frame.height);
+                return _attributes2;
+              }
+            }
+          } // 走到这里表示这块内容区域已经摆不下了
+
+
+          return null;
+        }
+        /**
+         * 水平方向列表的节点的排列规则
+         */
+        ;
+
+        _proto2.layout_horizontal_item = function layout_horizontal_item(indexPath, itemSize) {
+          if (this.attrs.length <= 0) {
+            var attributes = new YXLayoutAttributes();
+            attributes.indexPath = indexPath;
+            attributes.frame = new math.Rect(this.offset, this.sectionInset.top, itemSize.width, itemSize.height);
+            this.attrs.push(attributes);
+            this.containerWidth = Math.max(this.containerWidth, attributes.frame.width);
+            return attributes;
+          }
+
+          var frame = new math.Rect();
+          frame.size = itemSize; // 检测所有节点的下边
+
+          for (var index = 0; index < this.attrs.length; index++) {
+            var element = this.attrs[index];
+            frame.x = element.frame.x;
+            frame.y = element.frame.yMax + this.verticalSpacing;
+
+            if (frame.yMax <= this.containerHeight - this.sectionInset.bottom) {
+              if (this.intersects(frame) == false) {
+                var _attributes3 = new YXLayoutAttributes();
+
+                _attributes3.indexPath = indexPath;
+                _attributes3.frame = frame;
+                this.attrs.push(_attributes3);
+                this.containerWidth = Math.max(this.containerWidth, _attributes3.frame.width);
+                return _attributes3;
+              }
+            }
+          } // 检查所有节点的右边
+
+
+          for (var _index2 = 0; _index2 < this.attrs.length; _index2++) {
+            var _element2 = this.attrs[_index2];
+            frame.x = _element2.frame.xMax + this.horizontalSpacing;
+            frame.y = _element2.frame.y;
+
+            if (frame.xMax <= this.offset + this.containerWidth) {
+              if (this.intersects(frame) == false) {
+                var _attributes4 = new YXLayoutAttributes();
+
+                _attributes4.indexPath = indexPath;
+                _attributes4.frame = frame;
+                this.attrs.push(_attributes4);
+                this.containerWidth = Math.max(this.containerWidth, _attributes4.frame.width);
+                return _attributes4;
+              }
+            }
+          } // 走到这里表示这块内容区域已经摆不下了
+
+
+          return null;
+        };
+
+        return _yx_flow_layout_whole;
+      }();
 
       cclegacy._RF.pop();
     }
   };
 });
 
-System.register("chunks:///_virtual/yx-masonry-flow-layout.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _inheritsLoose, cclegacy, _decorator, UITransform, math, YXCollectionView, YXIndexPath, YXLayoutAttributes, YXFlowLayout;
+System.register("chunks:///_virtual/yx-masonry-flow-layout.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './yx-flow-layout.ts', './yx-collection-view.ts'], function (exports) {
+  var _inheritsLoose, cclegacy, _decorator, UITransform, math, YXFlowLayout, YXCollectionView, YXIndexPath, YXLayoutAttributes;
 
   return {
     setters: [function (module) {
@@ -7380,11 +7773,11 @@ System.register("chunks:///_virtual/yx-masonry-flow-layout.ts", ['./rollupPlugin
       UITransform = module.UITransform;
       math = module.math;
     }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }, function (module) {
       YXCollectionView = module.YXCollectionView;
       YXIndexPath = module.YXIndexPath;
       YXLayoutAttributes = module.YXLayoutAttributes;
-    }, function (module) {
-      YXFlowLayout = module.YXFlowLayout;
     }],
     execute: function () {
       cclegacy._RF.push({}, "2b51dRMeF9LFoLitCy5wKXY", "yx-masonry-flow-layout", undefined);
@@ -7928,7 +8321,7 @@ System.register("chunks:///_virtual/yx-table-view.ts", ['./rollupPluginModLoBabe
 
       Enum(_yx_table_view_item_alignment);
       /**
-       * 节点大小模式每局
+       * 节点大小模式枚举
        */
 
       var _yx_table_view_item_size_mode = /*#__PURE__*/function (_yx_table_view_item_size_mode) {
