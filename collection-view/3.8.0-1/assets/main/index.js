@@ -2530,14 +2530,14 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
           };
 
           this.listComp.onTouchItemAt = function (indexPath, collectionView) {
-            home.LAST_OFFSET = collectionView.scrollView.getScrollOffset();
-            home.LAST_OFFSET.x = -home.LAST_OFFSET.x;
             var rowData = array[indexPath.item];
 
             if (rowData.is_header) {
               return;
             }
 
+            home.LAST_OFFSET = collectionView.scrollView.getScrollOffset();
+            home.LAST_OFFSET.x = -home.LAST_OFFSET.x;
             director.loadScene(rowData.scene);
           };
 
@@ -4195,9 +4195,17 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           for (var key in this.allVisibleNodes) {
             var element = this.allVisibleNodes[key];
-            element.removeFromParent();
 
             var _cell3 = element.getComponent(_cell_);
+            /** 内存泄漏 */
+
+
+            if (this.mode === _yx_collection_view_list_mode.RECYCLE) {
+              this.pools.get(_cell3.identifier).put(element);
+            } else {
+              element.removeFromParent();
+              element.destroy();
+            }
 
             delete this.allVisibleNodes[key];
 
@@ -4523,14 +4531,44 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this.node.off(ScrollView.EventType.SCROLL_BEGAN, this.onScrollBegan, this);
           this.node.off(ScrollView.EventType.SCROLLING, this.onScrolling, this);
           this.node.off(ScrollView.EventType.TOUCH_UP, this.onScrollTouchUp, this);
-          this.node.off(ScrollView.EventType.SCROLL_ENDED, this.onScrollEnded, this);
+          this.node.off(ScrollView.EventType.SCROLL_ENDED, this.onScrollEnded, this); // 销毁当前所有正在显示的节点
+
+          for (var key in this.allVisibleNodes) {
+            var element = this.allVisibleNodes[key];
+
+            if (element) {
+              element.removeFromParent();
+              element.destroy();
+            }
+
+            delete this.allVisibleNodes[key];
+          }
+
           this.allVisibleNodes = {};
-          delete this.allVisibleNodes;
+          delete this.allVisibleNodes; // 销毁已经实例化的所有节点  
+
+          for (var _key6 in this.allNodes) {
+            var _element3 = this.allNodes[_key6];
+
+            if (_element3) {
+              _element3.removeFromParent();
+
+              _element3.destroy();
+            }
+
+            delete this.allNodes[_key6];
+          }
+
+          this.allNodes = {};
+          delete this.allNodes; // 清空池子
+
           this.pools.forEach(function (element) {
             element.clear();
           });
           this.pools.clear();
+          this.pools = null;
           this.makers.clear();
+          this.makers = null;
 
           if (this.layout) {
             this.layout.attributes = [];
@@ -5557,7 +5595,7 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
             var element = this.attrs[index];
             math.Rect.intersection(_rectOut, element.frame, rect);
 
-            if (_rectOut.width * _rectOut.height > 0) {
+            if (_rectOut.width > 0 && _rectOut.height > 0) {
               return true;
             }
           }
@@ -5593,8 +5631,9 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
 
                 _attributes.indexPath = indexPath;
                 _attributes.frame = frame;
-                this.attrs.push(_attributes);
-                this.containerHeight = Math.max(this.containerHeight, _attributes.frame.height);
+                this.attrs.push(_attributes); // this.containerHeight = Math.max(this.containerHeight, attributes.frame.height)
+
+                this.containerHeight = Math.max(this.containerHeight, _attributes.frame.yMax - this.offset);
                 return _attributes;
               }
             }
@@ -5605,8 +5644,10 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
             var _element = this.attrs[_index];
             frame.x = _element.frame.x;
             frame.y = _element.frame.yMax + this.verticalSpacing;
+            var check_xMax = frame.xMax <= this.containerWidth - this.sectionInset.right;
+            var check_yMax = frame.yMax <= this.offset + this.containerHeight;
 
-            if (frame.yMax <= this.offset + this.containerHeight) {
+            if (check_xMax && check_yMax) {
               if (this.intersects(frame) == false) {
                 var _attributes2 = new YXLayoutAttributes();
 
@@ -5617,7 +5658,7 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
                 return _attributes2;
               }
             }
-          } // 走到这里表示这块内容区域已经摆不下了
+          } // 走到这里表示这块内容区域已经摆不下了，需要换行处理
 
 
           return null;
@@ -5651,8 +5692,9 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
 
                 _attributes3.indexPath = indexPath;
                 _attributes3.frame = frame;
-                this.attrs.push(_attributes3);
-                this.containerWidth = Math.max(this.containerWidth, _attributes3.frame.width);
+                this.attrs.push(_attributes3); // this.containerWidth = Math.max(this.containerWidth, attributes.frame.width)
+
+                this.containerWidth = Math.max(this.containerWidth, _attributes3.frame.xMax - this.offset);
                 return _attributes3;
               }
             }
@@ -5663,8 +5705,10 @@ System.register("chunks:///_virtual/yx-flow-layout.ts", ['./rollupPluginModLoBab
             var _element2 = this.attrs[_index2];
             frame.x = _element2.frame.xMax + this.horizontalSpacing;
             frame.y = _element2.frame.y;
+            var check_xMax = frame.xMax <= this.offset + this.containerWidth;
+            var check_yMax = frame.yMax <= this.containerHeight - this.sectionInset.bottom;
 
-            if (frame.xMax <= this.offset + this.containerWidth) {
+            if (check_xMax && check_yMax) {
               if (this.intersects(frame) == false) {
                 var _attributes4 = new YXLayoutAttributes();
 

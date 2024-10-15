@@ -107,10 +107,6 @@
         "ff80b18b-4525-4936-9ad9-964cfc254277@f9941"
     ],
     "paths": {
-        "d46e9730-4773-49a9-93f1-42565b2356d8": [
-            "db:/assets/home/home",
-            "cc.SceneAsset"
-        ],
         "e0d7a60b-4b6b-4ecc-8172-91837ea13bdb": [
             "db:/assets/demo1/demo1",
             "cc.SceneAsset"
@@ -147,6 +143,10 @@
             "db:/assets/demo9/demo9",
             "cc.SceneAsset"
         ],
+        "d46e9730-4773-49a9-93f1-42565b2356d8": [
+            "db:/assets/home/home",
+            "cc.SceneAsset"
+        ],
         "fd8ec536-a354-4a17-9c74-4f3883c378c8": [
             "db:/internal/default_renderpipeline/builtin-forward",
             "cc.RenderPipeline"
@@ -157,7 +157,6 @@
         ]
     },
     "scenes": {
-        "db://assets/home/home.scene": "d46e9730-4773-49a9-93f1-42565b2356d8",
         "db://assets/demo1/demo1.scene": "e0d7a60b-4b6b-4ecc-8172-91837ea13bdb",
         "db://assets/demo2/demo2.scene": "7b43db7d-4115-4ab8-b2fb-99992ff4fb2e",
         "db://assets/demo3/demo3.scene": "aec945c7-b48b-46d8-85cb-6a01ff3d1f58",
@@ -166,7 +165,8 @@
         "db://assets/demo6/demo6.scene": "31e0dc37-7299-4ff0-aead-12af879fc800",
         "db://assets/demo7/demo7.scene": "565bdee9-1351-4936-bc67-cc4a7580e2e6",
         "db://assets/demo8/demo8.scene": "57c0a42c-d542-4a13-a540-d7300f811c82",
-        "db://assets/demo9/demo9.scene": "756d1323-61fb-4641-866b-bf9df2ac3e87"
+        "db://assets/demo9/demo9.scene": "756d1323-61fb-4641-866b-bf9df2ac3e87",
+        "db://assets/home/home.scene": "d46e9730-4773-49a9-93f1-42565b2356d8"
     },
     "packs": {
         "05cc95f13": [
