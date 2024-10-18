@@ -1,3 +1,95 @@
+System.register("chunks:///_virtual/chat-cell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, Sprite, Node, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      Sprite = module.Sprite;
+      Node = module.Node;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+
+      cclegacy._RF.push({}, "409e4pl4hpHk5dwiC0nhyJm", "chat-cell", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var ChatCell = exports('ChatCell', (_dec = ccclass('ChatCell'), _dec2 = property(Label), _dec3 = property(Sprite), _dec4 = property(Sprite), _dec5 = property(Node), _dec6 = property(Node), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(ChatCell, _Component);
+
+        function ChatCell() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "textLabel", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "headIconSprite", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "bubbleSprite", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "headNode", _descriptor4, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "contentNode", _descriptor5, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        return ChatCell;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "textLabel", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "headIconSprite", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "bubbleSprite", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "headNode", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "contentNode", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
 System.register("chunks:///_virtual/common-cell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, Sprite, SpriteFrame, randomRangeInt, math, UIOpacity, Component;
 
@@ -122,98 +214,6 @@ System.register("chunks:///_virtual/common-cell.ts", ['./rollupPluginModLoBabelH
           return [];
         }
       })), _class2)) || _class));
-
-      cclegacy._RF.pop();
-    }
-  };
-});
-
-System.register("chunks:///_virtual/common-horizontal-cell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './common-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, log, math, Component, CommonCell, YXCollectionView, YXFlowLayout;
-
-  return {
-    setters: [function (module) {
-      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
-      _inheritsLoose = module.inheritsLoose;
-      _initializerDefineProperty = module.initializerDefineProperty;
-      _assertThisInitialized = module.assertThisInitialized;
-    }, function (module) {
-      cclegacy = module.cclegacy;
-      _decorator = module._decorator;
-      log = module.log;
-      math = module.math;
-      Component = module.Component;
-    }, null, function (module) {
-      CommonCell = module.CommonCell;
-    }, function (module) {
-      YXCollectionView = module.YXCollectionView;
-    }, function (module) {
-      YXFlowLayout = module.YXFlowLayout;
-    }],
-    execute: function () {
-      var _dec, _dec2, _class, _class2, _descriptor;
-
-      cclegacy._RF.push({}, "5e1e4Iug/xLaLiXVZSjkBFq", "common-horizontal-cell", undefined);
-
-      var ccclass = _decorator.ccclass,
-          property = _decorator.property;
-      var CommonHorizontalCell = exports('CommonHorizontalCell', (_dec = ccclass('CommonHorizontalCell'), _dec2 = property(YXCollectionView), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
-        _inheritsLoose(CommonHorizontalCell, _Component);
-
-        function CommonHorizontalCell() {
-          var _this;
-
-          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
-
-          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-
-          _initializerDefineProperty(_this, "list", _descriptor, _assertThisInitialized(_this));
-
-          _this.dataArray = [];
-          return _this;
-        }
-
-        var _proto = CommonHorizontalCell.prototype;
-
-        _proto.onLoad = function onLoad() {
-          var _this2 = this;
-
-          this.list.numberOfItems = function () {
-            return _this2.dataArray.length;
-          };
-
-          this.list.cellForItemAt = function (indexPath, collectionView) {
-            var cell = collectionView.dequeueReusableCell("cell");
-            var comp = cell.getComponent(CommonCell);
-            comp.label.string = "" + indexPath;
-            comp.randomIcon();
-            comp.randomStar();
-            comp.randomLevelSign();
-            comp.randomShapeColor();
-            return cell;
-          };
-
-          this.list.onTouchItemAt = function (indexPath) {
-            log("" + indexPath);
-          };
-
-          var layout = new YXFlowLayout();
-          layout.itemSize = new math.Size(130, 200);
-          layout.horizontalSpacing = 20;
-          this.list.layout = layout;
-        };
-
-        return CommonHorizontalCell;
-      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "list", [_dec2], {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        initializer: function initializer() {
-          return null;
-        }
-      }), _class2)) || _class));
 
       cclegacy._RF.pop();
     }
@@ -892,6 +892,606 @@ System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
+System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './chat-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, math, SpriteFrame, Prefab, NodeEventType, director, UITransform, instantiate, log, Component, Label, randomRangeInt, ChatCell, YXCollectionView, YXFlowLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      math = module.math;
+      SpriteFrame = module.SpriteFrame;
+      Prefab = module.Prefab;
+      NodeEventType = module.NodeEventType;
+      director = module.director;
+      UITransform = module.UITransform;
+      instantiate = module.instantiate;
+      log = module.log;
+      Component = module.Component;
+      Label = module.Label;
+      randomRangeInt = module.randomRangeInt;
+    }, null, function (module) {
+      ChatCell = module.ChatCell;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
+    }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+      cclegacy._RF.push({}, "793d5EHdv5KqoUNqnGn6QA2", "demo10", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+
+      var _posOut = new math.Vec3();
+      /**
+       * label 跟气泡的上下边距
+       */
+
+
+      var spacing1 = 10;
+      /**
+       * label 跟气泡的左右边距
+       */
+
+      var spacing2 = 20;
+      /**
+       * 头像跟气泡间距
+       */
+
+      var spacing3 = 10;
+      /**
+       * 限制文本最大宽度  
+       */
+
+      var maxTextWidth = 380;
+      /**
+       * 限制文本最小高度
+       */
+
+      var minTextHeight = 70;
+      /**
+       * 模拟数据
+       */
+
+      var Data = function Data() {
+        this.id = Data.ID++;
+        this.isSelf = Math.random() < 0.3;
+        this.content = randomChatMessage();
+      };
+
+      Data.ID = 0;
+      var demo10 = exports('demo10', (_dec = ccclass('demo10'), _dec2 = property(YXCollectionView), _dec3 = property(SpriteFrame), _dec4 = property(SpriteFrame), _dec5 = property(Prefab), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo10, _Component);
+
+        function demo10() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+          /**
+           * 列表组件
+           */
+
+          _initializerDefineProperty(_this, "listComp", _descriptor, _assertThisInitialized(_this));
+          /**
+           * 气泡
+           */
+
+
+          _initializerDefineProperty(_this, "leftBubble", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "rightBubble", _descriptor3, _assertThisInitialized(_this));
+          /**
+           * 测试数据源
+           */
+
+
+          _this.testData = [];
+          /**
+           * ===============================================================================================
+           * ===============================================================================================
+           * 计算高度相关的业务  
+           * 思路: 提前创建一个 cell 节点，提前赋值一遍数据然后计算出合适的大小  
+           * 缓存: 由于高度是要动态计算的，考虑到性能，在高度计算好之后可以做一个缓存避免刷新列表时多次计算，正常来说实际开发中的数据都应该都会有一个唯一标识字段，可以用唯一标识当做 key 把计算好的结果缓存起来  
+           * ===============================================================================================
+           * =============================================================================================== 
+           */
+
+          _initializerDefineProperty(_this, "cellPrefab", _descriptor4, _assertThisInitialized(_this)); // 列表用到的 cell 预制体，用来实例化计算高度的 cell
+
+
+          _this.templateCell = null; // 用来计算高度的 cell 实例
+
+          _this.textSizeCache = new Map();
+          return _this;
+        }
+
+        var _proto = demo10.prototype;
+
+        _proto.onLoad = function onLoad() {
+          this.node.getChildByName("back").once(NodeEventType.TOUCH_END, this.back, this);
+        };
+
+        _proto.back = function back() {
+          director.loadScene("home");
+        };
+        /**
+         * 模拟收到数据
+         */
+
+
+        _proto.receivedData = function receivedData() {
+          this.testData = [];
+
+          for (var index = 0; index < 10; index++) {
+            this.testData.push(new Data());
+          } // 更新列表
+
+
+          this.listComp.reloadData();
+          this.listComp.scrollView.scrollToBottom();
+          this.listComp.markForUpdateVisibleData();
+        }
+        /**
+         * 随机插入一条新数据
+         */
+        ;
+
+        _proto.randomNewMessage = function randomNewMessage() {
+          this.testData.push(new Data());
+          this.listComp.reloadData();
+          this.listComp.scrollView.scrollToBottom(0.25);
+          this.listComp.markForUpdateVisibleData();
+        };
+
+        _proto.start = function start() {
+          var _this2 = this; // 注册列表内需要使用的 cell 节点类型
+          // 这个演示是通过编辑器绑定的，可以查看场景内 list 节点里的 register cells 配置
+          // this.listComp.register(`cell`, () => instantiate('your cell prefab'))
+          // 确定列表内一共需要显示多少条内容   
+
+
+          this.listComp.numberOfItems = function () {
+            return _this2.testData.length;
+          };
+
+          this.listComp.cellForItemAt = function (indexPath, collectionView) {
+            // 通过下标可以获取到对应的数据
+            var rowData = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
+
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据
+
+            var comp = cell.getComponent(ChatCell);
+            comp.textLabel.string = rowData.content;
+
+            if (rowData.isSelf) {
+              comp.bubbleSprite.color = new math.Color("87AA60");
+              comp.bubbleSprite.spriteFrame = _this2.rightBubble;
+            } else {
+              comp.bubbleSprite.color = new math.Color("63A6C0");
+              comp.bubbleSprite.spriteFrame = _this2.leftBubble;
+            }
+
+            return cell; // 返回这个节点给列表显示
+          };
+
+          this.listComp.onCellDisplay = function (cell, indexPath) {
+            // 在这里调整子节点的位置
+            var rowData = _this2.testData[indexPath.item];
+            var key = "" + rowData.id;
+
+            var textSize = _this2.textSizeCache.get(key);
+
+            var cellUITrans = cell.getComponent(UITransform);
+            var comp = cell.getComponent(ChatCell);
+            var senderHeadUITrans = comp.headNode.getComponent(UITransform); // 更新 label 大小
+
+            comp.textLabel.node.getComponent(UITransform).contentSize = textSize; // 更新气泡大小
+
+            var contentUITrans = comp.contentNode.getComponent(UITransform);
+            contentUITrans.height = cellUITrans.height;
+            contentUITrans.width = textSize.width + spacing2 + spacing2; // 左右气泡边距
+            // 更新气泡位置
+
+            _posOut.set(comp.contentNode.position);
+
+            _posOut.x = -cellUITrans.width * 0.5 + contentUITrans.width * 0.5 + senderHeadUITrans.width + spacing3;
+
+            if (rowData.isSelf) {
+              _posOut.x = -_posOut.x;
+            }
+
+            comp.contentNode.position = _posOut; // 更新头像的位置
+
+            _posOut.set(comp.headNode.position);
+
+            _posOut.x = -cellUITrans.width * 0.5 + senderHeadUITrans.width * 0.5;
+
+            if (rowData.isSelf) {
+              _posOut.x = -_posOut.x;
+            }
+
+            _posOut.y = cellUITrans.height * 0.5 - senderHeadUITrans.height * 0.5;
+            comp.headNode.position = _posOut;
+          }; // 配置 layout 布局规则
+
+
+          var layout = new YXFlowLayout();
+          layout.verticalSpacing = 20;
+          var width = this.listComp.node.getComponent(UITransform).width;
+
+          layout.itemSize = function (indexPath) {
+            var rowData = _this2.testData[indexPath.item];
+
+            var rowHeight = _this2.getRowHeight(rowData);
+
+            return new math.Size(width, rowHeight);
+          };
+
+          this.listComp.layout = layout; // 模拟获取数据
+
+          this.receivedData();
+        }; // 缓存，key = 数据唯一标识，value = 对应的文本大小
+
+
+        _proto.getRowHeight = function getRowHeight(rowData) {
+          var key = "" + rowData.id;
+          var textSize = this.textSizeCache.get(key);
+
+          if (textSize == null) {
+            // 用来计算高度的 cell 创建一次就好，可以反复用
+            if (this.templateCell == null) {
+              this.templateCell = instantiate(this.cellPrefab);
+            }
+
+            var comp = this.templateCell.getComponent(ChatCell);
+            comp.textLabel.string = rowData.content;
+
+            try {
+              textSize = calculateLabelSize(comp.textLabel, maxTextWidth);
+            } catch (error) {
+              log(error);
+            } // 缓存起来
+
+
+            this.textSizeCache.set(key, textSize);
+          } // 到这里拿到的是文本大小，还需要加上气泡上下边距
+
+
+          var result = textSize.height + spacing1 + spacing1; // 限定一个最低高度
+
+          result = Math.max(result, minTextHeight);
+          return result;
+        };
+
+        return demo10;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "listComp", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "leftBubble", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "rightBubble", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "cellPrefab", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+      /**
+       * 计算 label 实际大小
+       * @param label 
+       * @param maxWidth 文本最大宽度
+       * @returns 
+       */
+
+      function calculateLabelSize(label, maxWidth) {
+        label.overflow = Label.Overflow.NONE;
+        label.updateRenderData(true);
+
+        if (label.getComponent(UITransform).width <= maxWidth) {
+          return label.getComponent(UITransform).contentSize.clone();
+        }
+
+        label.overflow = Label.Overflow.RESIZE_HEIGHT;
+        label.getComponent(UITransform).width = maxWidth;
+        label.updateRenderData(true);
+        return label.getComponent(UITransform).contentSize.clone();
+      }
+
+      var _chat_message = ["只因你太美", "哇真的是你呀", "你干嘛，哎呦", "哈哈", "你好，我叫萧黑梓", "你好，我叫吕诗涵", "你好，我叫姬泰美", "唱，跳，rap，🏀，谬zk...", "迎面走来的你让我如此蠢蠢欲动", "这种感觉我从未有 Cause I got a crush on you", "再多一眼看一眼就会爆炸", "再近一点靠近点快被融化", "食不食油饼", "🌹🌹", "一天，邹忌照了照镜子，对着他的妻子说：“吾熟与城北蔡徐坤美？”其妻曰“忌你太美。”", "虞姬的皮肤好好看啊，忍不住我想作诗一首：既有歌舞惊云霄，霓裳羽衣漫窈窕。抬指一挥转天籁，美酒佳肴共逍遥。", "不能让恶俗的网络烂梗毒害孩子。网络时代，出现网言网语很正常。但是，网言网语不等于奇言怪语，也不等于胡言乱语，更不等于污言秽语。", "恶俗烂梗并非“无足轻重”，更不可“放任自由”。"];
+
+      function randomChatMessage() {
+        return _chat_message[randomRangeInt(0, _chat_message.length)];
+      }
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './common-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, NodeEventType, director, log, UITransform, ScrollView, Component, CommonCell, YXCollectionView, YXIndexPath, YXFlowLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      NodeEventType = module.NodeEventType;
+      director = module.director;
+      log = module.log;
+      UITransform = module.UITransform;
+      ScrollView = module.ScrollView;
+      Component = module.Component;
+    }, null, function (module) {
+      CommonCell = module.CommonCell;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
+      YXIndexPath = module.YXIndexPath;
+    }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+
+      cclegacy._RF.push({}, "1cca85+M29MvotX2BQpaB3c", "demo11", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var demo11 = exports('demo11', (_dec = ccclass('demo11'), _dec2 = property(YXCollectionView), _dec3 = property(Label), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo11, _Component);
+
+        function demo11() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+          /**
+           * 列表组件
+           */
+
+          _initializerDefineProperty(_this, "listComp", _descriptor, _assertThisInitialized(_this));
+          /**
+           * 分页指示器
+           */
+
+
+          _initializerDefineProperty(_this, "pageLabel", _descriptor2, _assertThisInitialized(_this));
+          /**
+           * 测试数据源
+           */
+
+
+          _this.testData = [];
+          /**
+           * 记录当前页面
+           */
+
+          _this.pageIdx = -1;
+          /**
+           * 默认选中的页面
+           */
+
+          _this.defaltPageIdx = 0;
+          /**
+           * 实现自动滚动逻辑  
+           */
+
+          _this.timer = 0;
+          _this.autoScrollTimeInterval = 3;
+          return _this;
+        }
+
+        var _proto = demo11.prototype;
+
+        _proto.onLoad = function onLoad() {
+          this.node.getChildByName("back").once(NodeEventType.TOUCH_END, this.back, this);
+        };
+
+        _proto.back = function back() {
+          director.loadScene("home");
+        };
+        /**
+         * 转换为真实索引  
+         * 列表数量大小为 3 倍实际数据数量，需要通过求余方式获取数据，避免数组越界
+         */
+
+
+        _proto.originIndex = function originIndex(index) {
+          return index % this.testData.length;
+        };
+        /**
+         * 模拟收到数据
+         */
+
+
+        _proto.receivedData = function receivedData() {
+          this.testData = [];
+          this.testData.push("第 1 条数据");
+          this.testData.push("第 2 条数据");
+          this.testData.push("第 3 条数据");
+          this.testData.push("第 4 条数据");
+          this.testData.push("第 5 条数据"); // 更新列表
+
+          this.listComp.reloadData(); // 默认显示某个页面
+
+          if (this.defaltPageIdx && this.defaltPageIdx < this.testData.length) {
+            this.listComp.scrollTo(new YXIndexPath(0, this.defaltPageIdx));
+            this.defaltPageIdx = null;
+          } // 复位到中间区域
+
+
+          this.resetOffset(); // 数据源更新，手动通知一下通知页面变化
+
+          this.checkPageChange();
+        };
+
+        _proto.start = function start() {
+          var _this2 = this;
+          /**
+           * 无限轮播实现思路
+           * 列表容器总体大小为 数据条数 * 3 的大小，每次在滚动结束的时候，偏移量总是复位到中间的位置，以此来实现无限滚动  
+           * 比如原始数据 [ 0,1,2 ]，实际上在列表中为 [ 0,1,2, 0,1,2, 0,1,2 ]，每次滑动结束之后位置总是复位到中间区域  
+           */
+          // 注册列表内需要使用的 cell 节点类型
+          // 这个演示是通过编辑器绑定的，可以查看场景内 list 节点里的 register cells 配置
+          // this.listComp.register(`cell`, () => instantiate('your cell prefab'))
+          // 确定列表内一共需要显示多少条内容   
+
+
+          this.listComp.numberOfItems = function () {
+            return _this2.testData.length * 3;
+          };
+
+          this.listComp.cellForItemAt = function (indexPath, collectionView) {
+            // 通过下标可以获取到对应的数据
+            var data = _this2.testData[_this2.originIndex(indexPath.item)]; // 通过标识符获取重用池内的节点
+
+
+            var cell = collectionView.dequeueReusableCell("cell");
+            var comp = cell.getComponent(CommonCell);
+            comp.label.string = data;
+            return cell;
+          };
+
+          this.listComp.onTouchItemAt = function (indexPath) {
+            log(indexPath);
+
+            var data = _this2.testData[_this2.originIndex(indexPath.item)];
+          }; // 配置 layout 布局规则
+
+
+          var layout = new YXFlowLayout();
+          layout.verticalSpacing = 20;
+          layout.pagingEnabled = true;
+          layout.itemSize = this.listComp.node.getComponent(UITransform).contentSize;
+          this.listComp.layout = layout;
+          this.listComp.recycleInterval = 0;
+          this.listComp.scrollView.node.on(ScrollView.EventType.SCROLLING, this.checkPageChange, this);
+          this.listComp.scrollView.node.on(ScrollView.EventType.SCROLL_ENDED, this.resetOffset, this); // 模拟获取数据
+
+          this.receivedData();
+        };
+
+        _proto.update = function update(dt) {
+          this.update_autoScroll(dt);
+        }
+        /**
+         * 获取当前页面索引
+         * @returns 
+         */
+        ;
+
+        _proto.getCurrentPageIndex = function getCurrentPageIndex() {
+          var offset = this.listComp.scrollView.getScrollOffset();
+          offset.x = -offset.x;
+          var idx = Math.round(offset.x / this.listComp.scrollView.view.width);
+          return idx;
+        }
+        /**
+         * 检查页面变化
+         */
+        ;
+
+        _proto.checkPageChange = function checkPageChange() {
+          var idx = this.getCurrentPageIndex();
+
+          if (this.pageIdx !== idx) {
+            this.pageIdx = idx; // 走到这里表示页面发生变化，可以处理需要处理的逻辑
+
+            this.pageLabel.string = this.originIndex(this.pageIdx) + 1 + "/" + this.testData.length;
+          }
+        }
+        /**
+         * 使列表复位到中间区域
+         */
+        ;
+
+        _proto.resetOffset = function resetOffset() {
+          var offset = this.listComp.scrollView.getScrollOffset();
+          offset.x = -offset.x;
+          var idx = Math.round(offset.x / this.listComp.scrollView.view.width) % this.testData.length;
+          offset.x = this.listComp.scrollView.view.width * (this.testData.length + idx);
+          this.listComp.scrollView.scrollToOffset(offset); // 直接设置滚动位置不会触发刷新，这里强制刷新一下
+
+          this.listComp.markForUpdateVisibleData(true);
+        };
+
+        _proto.update_autoScroll = function update_autoScroll(dt) {
+          if (this.listComp.scrollView.isScrolling()) {
+            return;
+          }
+
+          this.timer += dt;
+
+          if (this.timer >= this.autoScrollTimeInterval) {
+            this.timer = 0;
+            var offset = this.listComp.scrollView.getScrollOffset();
+            offset.x = -offset.x;
+            var idx = Math.round(offset.x / this.listComp.scrollView.view.width) + 1;
+            offset.x = this.listComp.scrollView.view.width * idx;
+            this.listComp.scrollView.scrollToOffset(offset, 0.5);
+          }
+        };
+
+        return demo11;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "listComp", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "pageLabel", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
 System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './common-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, randomRangeInt, UITransform, math, Component, CommonCell, YXCollectionView, YXEdgeInsets, YXFlowLayout;
 
@@ -1181,8 +1781,8 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './common-horizontal-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, randomRangeInt, math, Component, CommonHorizontalCell, YXCollectionView, YXFlowLayout;
+System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './horizontal-list-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, randomRangeInt, math, Component, HorizontalListCell, YXCollectionView, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -1199,7 +1799,7 @@ System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers
       math = module.math;
       Component = module.Component;
     }, null, function (module) {
-      CommonHorizontalCell = module.CommonHorizontalCell;
+      HorizontalListCell = module.HorizontalListCell;
     }, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
@@ -1285,11 +1885,12 @@ System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
             var cell = collectionView.dequeueReusableCell("cell");
-            var comp = cell.getComponent(CommonHorizontalCell);
+            var comp = cell.getComponent(HorizontalListCell);
             comp.dataArray = data;
             comp.list.reloadData();
             comp.list.scrollView.scrollToLeft(); // 恢复到最左边，因为有复用逻辑，位置会错乱
 
+            comp.list.markForUpdateVisibleData();
             return cell;
           }; // 配置 layout 布局规则
 
@@ -1453,6 +2054,7 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
             comp.list.reloadData();
             comp.list.scrollView.scrollToTop(); // 恢复到最上边，因为有复用逻辑，位置会错乱
 
+            comp.list.markForUpdateVisibleData();
             return cell;
           }; // 配置 layout 布局规则
 
@@ -1464,7 +2066,7 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
           this.listComp.layout = layout;
           this.listComp.recycleInterval = 0;
           /**
-           * 二选一，一个是滑动过程中检查，一个是仅在滑动结束的时候检测
+           * 二选一，一个是滑动过程中检查，一个是仅在滑动结束的时候检查
            */
 
           this.listComp.scrollView.node.on(ScrollView.EventType.SCROLLING, this.checkPageChange, this); // this.listComp.scrollView.node.on(ScrollView.EventType.SCROLL_ENDED, this.checkPageChange, this)
@@ -1521,8 +2123,8 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './common-horizontal-cell.ts', './common-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, Label, math, Component, randomRangeInt, CommonHorizontalCell, CommonCell, YXCollectionView, YXFlowLayout;
+System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './common-cell.ts', './horizontal-list-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, NodeEventType, director, Label, math, Component, randomRangeInt, CommonCell, HorizontalListCell, YXCollectionView, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -1540,9 +2142,9 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
       Component = module.Component;
       randomRangeInt = module.randomRangeInt;
     }, null, function (module) {
-      CommonHorizontalCell = module.CommonHorizontalCell;
-    }, function (module) {
       CommonCell = module.CommonCell;
+    }, function (module) {
+      HorizontalListCell = module.HorizontalListCell;
     }, function (module) {
       YXCollectionView = module.YXCollectionView;
     }, function (module) {
@@ -1635,7 +2237,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
 
             if (data.type == 0) {
               var cell = collectionView.dequeueReusableCell("hor-cell");
-              var comp = cell.getComponent(CommonHorizontalCell);
+              var comp = cell.getComponent(HorizontalListCell);
               comp.dataArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
               comp.list.reloadData();
               comp.list.scrollView.scrollToLeft();
@@ -2378,7 +2980,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
 
         _proto.updateLayout = function updateLayout() {
           var layout = new YXCarouselLayout();
-          layout.itemSize = new math.Size(200, 250);
+          layout.itemSize = new math.Size(200, 260);
           layout.radius = this.radiusSlider.progress * 380;
           layout.angleX = this.angleSlider.progress * 360;
           this.listComp.layout = layout;
@@ -2491,6 +3093,12 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
             name: '同列表多种 cell 类型',
             scene: 'demo5'
           }, {
+            name: '计算高度(简易聊天页面)',
+            scene: 'demo10'
+          }, {
+            name: '无限轮播',
+            scene: 'demo11'
+          }, {
             name: '自定义 Layout',
             is_header: true
           }, {
@@ -2581,6 +3189,98 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
   };
 });
 
+System.register("chunks:///_virtual/horizontal-list-cell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './common-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, log, math, Component, CommonCell, YXCollectionView, YXFlowLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      log = module.log;
+      math = module.math;
+      Component = module.Component;
+    }, null, function (module) {
+      CommonCell = module.CommonCell;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
+    }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "5e1e4Iug/xLaLiXVZSjkBFq", "horizontal-list-cell", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var HorizontalListCell = exports('HorizontalListCell', (_dec = ccclass('HorizontalListCell'), _dec2 = property(YXCollectionView), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(HorizontalListCell, _Component);
+
+        function HorizontalListCell() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "list", _descriptor, _assertThisInitialized(_this));
+
+          _this.dataArray = [];
+          return _this;
+        }
+
+        var _proto = HorizontalListCell.prototype;
+
+        _proto.onLoad = function onLoad() {
+          var _this2 = this;
+
+          this.list.numberOfItems = function () {
+            return _this2.dataArray.length;
+          };
+
+          this.list.cellForItemAt = function (indexPath, collectionView) {
+            var cell = collectionView.dequeueReusableCell("cell");
+            var comp = cell.getComponent(CommonCell);
+            comp.label.string = "" + indexPath;
+            comp.randomIcon();
+            comp.randomStar();
+            comp.randomLevelSign();
+            comp.randomShapeColor();
+            return cell;
+          };
+
+          this.list.onTouchItemAt = function (indexPath) {
+            log("" + indexPath);
+          };
+
+          var layout = new YXFlowLayout();
+          layout.itemSize = new math.Size(130, 200);
+          layout.horizontalSpacing = 20;
+          this.list.layout = layout;
+        };
+
+        return HorizontalListCell;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "list", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
 System.register("chunks:///_virtual/index.ts", ['cc', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
   var cclegacy;
   return {
@@ -2605,9 +3305,9 @@ System.register("chunks:///_virtual/index.ts", ['cc', './yx-collection-view.ts',
   };
 });
 
-System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './common-cell.ts', './common-horizontal-cell.ts', './vertical-list-cell.ts', './demo1.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './custom-grid-flow-layout.ts', './yx-card-page-layout.ts', './yx-carousel-layout.ts', './yx-cover-layout.ts', './yx-masonry-flow-layout.ts', './yx-page-view.ts', './yx-table-view.ts', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function () {
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './chat-cell.ts', './common-cell.ts', './horizontal-list-cell.ts', './vertical-list-cell.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './custom-grid-flow-layout.ts', './yx-card-page-layout.ts', './yx-carousel-layout.ts', './yx-cover-layout.ts', './yx-masonry-flow-layout.ts', './yx-page-view.ts', './yx-table-view.ts', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function () {
   return {
-    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     execute: function () {}
   };
 });
@@ -3139,16 +3839,17 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
       var ccclass = _decorator.ccclass,
           property = _decorator.property,
-          requireComponent = _decorator.requireComponent,
           executionOrder = _decorator.executionOrder,
           disallowMultiple = _decorator.disallowMultiple,
           help = _decorator.help;
 
-      var _vec2Out = new math.Vec2();
-
       var _vec3Out = new math.Vec3();
 
       var _rectOut = new math.Rect();
+
+      var _recycleInvisibleNodes_visibleRect = new math.Rect();
+
+      var _recycleInvisibleNodes_realFrame = new math.Rect();
       /**
        * 定义列表的滚动方向  
        */
@@ -3249,10 +3950,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         ;
 
         _proto.get = function get() {
-          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
-
           for (var _iterator = _createForOfIteratorHelperLoose(this.nodes), _step; !(_step = _iterator()).done;) {
             var obj = _step.value;
 
@@ -3451,8 +4148,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         function _cell_() {
           var _this3;
 
-          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
           }
 
           _this3 = _Component.call.apply(_Component, [this].concat(args)) || this;
@@ -3484,8 +4181,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         function _scroll_view() {
           var _this4;
 
-          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-            args[_key3] = arguments[_key3];
+          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
           }
 
           _this4 = _ScrollView.call.apply(_ScrollView, [this].concat(args)) || this;
@@ -3887,8 +4584,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         function YXCollectionView() {
           var _this5;
 
-          for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-            args[_key4] = arguments[_key4];
+          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
           }
 
           _this5 = _Component2.call.apply(_Component2, [this].concat(args)) || this;
@@ -4197,8 +4894,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             var element = this.allVisibleNodes[key];
 
             var _cell3 = element.getComponent(_cell_);
-            /** 内存泄漏 */
-
 
             if (this.mode === _yx_collection_view_list_mode.RECYCLE) {
               this.pools.get(_cell3.identifier).put(element);
@@ -4216,12 +4911,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           this.allVisibleNodes = {}; // 移除掉已经实例化的所有节点  
 
-          for (var _key5 in this.allNodes) {
-            var _element2 = this.allNodes[_key5];
+          for (var _key4 in this.allNodes) {
+            var _element2 = this.allNodes[_key4];
 
             _element2.removeFromParent();
 
-            delete this.allNodes[_key5];
+            delete this.allNodes[_key4];
           }
 
           this.allNodes = {}; // 清除缓存池 
@@ -4401,14 +5096,13 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
 
           if (visibleRect == null) {
-            visibleRect = new math.Rect();
+            visibleRect = _recycleInvisibleNodes_visibleRect;
             visibleRect.origin = this.scrollView.getScrollOffset();
             visibleRect.x = -visibleRect.x;
             visibleRect.size = this.scrollView.view.contentSize;
           }
 
-          var _realFrame = new math.Rect();
-
+          var _realFrame = _recycleInvisibleNodes_realFrame;
           var _contentSize = this.scrollView.content.getComponent(UITransform).contentSize;
 
           for (var key in this.allVisibleNodes) {
@@ -4547,8 +5241,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this.allVisibleNodes = {};
           delete this.allVisibleNodes; // 销毁已经实例化的所有节点  
 
-          for (var _key6 in this.allNodes) {
-            var _element3 = this.allNodes[_key6];
+          for (var _key5 in this.allNodes) {
+            var _element3 = this.allNodes[_key5];
 
             if (_element3) {
               _element3.removeFromParent();
@@ -4556,7 +5250,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
               _element3.destroy();
             }
 
-            delete this.allNodes[_key6];
+            delete this.allNodes[_key5];
           }
 
           this.allNodes = {};
