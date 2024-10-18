@@ -3036,7 +3036,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
 });
 
 System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './common-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
-  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, director, UITransform, math, Component, CommonCell, YXCollectionView, YXFlowLayout;
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, ProgressBar, director, log, UITransform, math, ScrollBar, NodeEventType, Component, CommonCell, YXCollectionView, YXFlowLayout;
 
   return {
     setters: [function (module) {
@@ -3048,9 +3048,13 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
       cclegacy = module.cclegacy;
       _decorator = module._decorator;
       Label = module.Label;
+      ProgressBar = module.ProgressBar;
       director = module.director;
+      log = module.log;
       UITransform = module.UITransform;
       math = module.math;
+      ScrollBar = module.ScrollBar;
+      NodeEventType = module.NodeEventType;
       Component = module.Component;
     }, null, function (module) {
       CommonCell = module.CommonCell;
@@ -3088,7 +3092,18 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
 
         var _proto = home.prototype;
 
+        _proto.onLoad = function onLoad() {
+          this.node.getChildByName("loading").active = false;
+        };
+
         _proto.start = function start() {
+          var _this2 = this;
+          /**
+           * scroll bar 使用演示
+           */
+
+
+          this.setupScrollBar();
           var array = [{
             name: 'Flow Layout',
             is_header: true
@@ -3161,7 +3176,24 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
 
             home.LAST_OFFSET = collectionView.scrollView.getScrollOffset();
             home.LAST_OFFSET.x = -home.LAST_OFFSET.x;
-            director.loadScene(rowData.scene);
+
+            var loading = _this2.node.getChildByName("loading");
+
+            var progressBar = loading.getChildByName("progressBar").getComponent(ProgressBar);
+            loading.active = true;
+            var progress = 0;
+            director.preloadScene(rowData.scene, function (a, b) {
+              progress = Math.max(progress, a / b);
+              progressBar.progress = progress;
+            }, function (err) {
+              if (err == null) {
+                director.loadScene(rowData.scene);
+              } else {
+                loading.active = false;
+                progressBar.progress = 0;
+                log(err);
+              }
+            });
           };
 
           var layout = new YXFlowLayout();
@@ -3187,6 +3219,72 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
             this.listComp.scrollView.scrollToOffset(home.LAST_OFFSET);
             this.listComp.markForUpdateVisibleData();
           }
+        }
+        /**
+         * 关联滑动条  
+         * 可以通过 YXCollectionView 的 scrollView 方法获取列表的 ScrollView 组件，配合 ScrollView 组件实现滑动条的交互逻辑
+         */
+        ;
+
+        _proto.setupScrollBar = function setupScrollBar() {
+          var _this3 = this;
+          /**
+           * 关联 ScrollBar 节点  
+           * 这个 ScrollBar 节点完全交给使用者自己管理，内部不会封装这个 (毕竟这个位置/样式自由度太高了)  
+           * 也就是在需要滑动条的时候要自己创建一个，然后通过 ScrollView 组件关联起来就好 (这个组件是区分方向的，需要注意方向配置统一)  
+           */
+
+
+          var scrollBar = this.node.getChildByName("scrollBar").getComponent(ScrollBar);
+          this.listComp.scrollView.verticalScrollBar = scrollBar;
+          /**
+           * 另外如果滑动条还需要交互，也是需要自己来实现交互逻辑  
+           */
+
+          scrollBar.node.on(NodeEventType.TOUCH_END, function (ev) {
+            var touchWorldPos = ev.getUILocation();
+            var nodeWorldPos = scrollBar.node.worldPosition;
+            var nodeSize = scrollBar.node.getComponent(UITransform).contentSize;
+            var y = nodeWorldPos.y + nodeSize.height * 0.5;
+            var progress = (y - touchWorldPos.y) / nodeSize.height;
+
+            if (progress < 0) {
+              progress = 0;
+            }
+
+            if (progress > 1) {
+              progress = 1;
+            }
+
+            _this3.listComp.scrollView.stopAutoScroll();
+
+            _this3.listComp.scrollView.scrollToPercentVertical(1 - progress);
+
+            _this3.listComp.markForUpdateVisibleData(true); // 更新当前可见节点
+
+          });
+          scrollBar.node.on(NodeEventType.TOUCH_MOVE, function (ev) {
+            var touchWorldPos = ev.getUILocation();
+            var nodeWorldPos = scrollBar.node.worldPosition;
+            var nodeSize = scrollBar.node.getComponent(UITransform).contentSize;
+            var y = nodeWorldPos.y + nodeSize.height * 0.5;
+            var progress = (y - touchWorldPos.y) / nodeSize.height;
+
+            if (progress < 0) {
+              progress = 0;
+            }
+
+            if (progress > 1) {
+              progress = 1;
+            }
+
+            _this3.listComp.scrollView.stopAutoScroll();
+
+            _this3.listComp.scrollView.scrollToPercentVertical(1 - progress);
+
+            _this3.listComp.markForUpdateVisibleData(); // 更新当前可见节点
+
+          });
         };
 
         return home;
