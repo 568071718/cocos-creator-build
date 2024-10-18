@@ -1013,7 +1013,7 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
 
           _this.templateCell = null; // 用来计算高度的 cell 实例
 
-          _this.textSizeCache = new Map();
+          _this.labelStatusCache = new Map();
           return _this;
         }
 
@@ -1091,17 +1091,18 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
             var rowData = _this2.testData[indexPath.item];
             var key = "" + rowData.id;
 
-            var textSize = _this2.textSizeCache.get(key);
+            var labelStatus = _this2.labelStatusCache.get(key);
 
             var cellUITrans = cell.getComponent(UITransform);
             var comp = cell.getComponent(ChatCell);
             var senderHeadUITrans = comp.headNode.getComponent(UITransform); // 更新 label 大小
 
-            comp.textLabel.node.getComponent(UITransform).contentSize = textSize; // 更新气泡大小
+            comp.textLabel.overflow = labelStatus.overflow;
+            comp.textLabel.node.getComponent(UITransform).contentSize = labelStatus.size; // 更新气泡大小
 
             var contentUITrans = comp.contentNode.getComponent(UITransform);
             contentUITrans.height = cellUITrans.height;
-            contentUITrans.width = textSize.width + spacing2 + spacing2; // 左右气泡边距
+            contentUITrans.width = labelStatus.size.width + spacing2 + spacing2; // 左右气泡边距
             // 更新气泡位置
 
             _posOut.set(comp.contentNode.position);
@@ -1142,14 +1143,21 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
           this.listComp.layout = layout; // 模拟获取数据
 
           this.receivedData();
-        }; // 缓存，key = 数据唯一标识，value = 对应的文本大小
+        };
+
+        _proto.onDestroy = function onDestroy() {
+          this.labelStatusCache.clear();
+          this.labelStatusCache = null;
+          this.templateCell.destroy();
+          this.templateCell = null;
+        }; // 缓存
 
 
         _proto.getRowHeight = function getRowHeight(rowData) {
           var key = "" + rowData.id;
-          var textSize = this.textSizeCache.get(key);
+          var labelStatus = this.labelStatusCache.get(key);
 
-          if (textSize == null) {
+          if (labelStatus == null) {
             // 用来计算高度的 cell 创建一次就好，可以反复用
             if (this.templateCell == null) {
               this.templateCell = instantiate(this.cellPrefab);
@@ -1159,17 +1167,17 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
             comp.textLabel.string = rowData.content;
 
             try {
-              textSize = calculateLabelSize(comp.textLabel, maxTextWidth);
+              labelStatus = calculateLabelSize(comp.textLabel, maxTextWidth);
             } catch (error) {
               log(error);
             } // 缓存起来
 
 
-            this.textSizeCache.set(key, textSize);
+            this.labelStatusCache.set(key, labelStatus);
           } // 到这里拿到的是文本大小，还需要加上气泡上下边距
 
 
-          var result = textSize.height + spacing1 + spacing1; // 限定一个最低高度
+          var result = labelStatus.size.height + spacing1 + spacing1; // 限定一个最低高度
 
           result = Math.max(result, minTextHeight);
           return result;
@@ -1213,17 +1221,24 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
        */
 
       function calculateLabelSize(label, maxWidth) {
+        var uiTrans = label.getComponent(UITransform);
         label.overflow = Label.Overflow.NONE;
         label.updateRenderData(true);
 
-        if (label.getComponent(UITransform).width <= maxWidth) {
-          return label.getComponent(UITransform).contentSize.clone();
+        if (uiTrans.width <= maxWidth) {
+          return {
+            overflow: label.overflow,
+            size: uiTrans.contentSize.clone()
+          };
         }
 
         label.overflow = Label.Overflow.RESIZE_HEIGHT;
-        label.getComponent(UITransform).width = maxWidth;
+        uiTrans.width = maxWidth;
         label.updateRenderData(true);
-        return label.getComponent(UITransform).contentSize.clone();
+        return {
+          overflow: label.overflow,
+          size: uiTrans.contentSize.clone()
+        };
       }
 
       var _chat_message = ["只因你太美", "哇真的是你呀", "你干嘛，哎呦", "哈哈", "你好，我叫萧黑梓", "你好，我叫吕诗涵", "你好，我叫姬泰美", "唱，跳，rap，🏀，谬zk...", "迎面走来的你让我如此蠢蠢欲动", "这种感觉我从未有 Cause I got a crush on you", "再多一眼看一眼就会爆炸", "再近一点靠近点快被融化", "食不食油饼", "🌹🌹", "一天，邹忌照了照镜子，对着他的妻子说：“吾熟与城北蔡徐坤美？”其妻曰“忌你太美。”", "虞姬的皮肤好好看啊，忍不住我想作诗一首：既有歌舞惊云霄，霓裳羽衣漫窈窕。抬指一挥转天籁，美酒佳肴共逍遥。", "不能让恶俗的网络烂梗毒害孩子。网络时代，出现网言网语很正常。但是，网言网语不等于奇言怪语，也不等于胡言乱语，更不等于污言秽语。", "恶俗烂梗并非“无足轻重”，更不可“放任自由”。"];
