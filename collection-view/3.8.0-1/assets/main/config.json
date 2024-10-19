@@ -5,6 +5,7 @@
     "deps": [],
     "uuids": [
         "000321a2-592b-4b9c-b3a0-06420569fbc2",
+        "0460bc08a",
         "04e244dfb",
         "04eb5d5cc",
         "06035d92-28cb-4689-9d9c-f942fc3bf7c8",
@@ -13,7 +14,6 @@
         "077754450",
         "082007c63",
         "0842dc548",
-        "08d4a28a7",
         "096c7897-c20d-4c2d-bde9-d90f68d24eb5",
         "096c7897-c20d-4c2d-bde9-d90f68d24eb5@6c48a",
         "096c7897-c20d-4c2d-bde9-d90f68d24eb5@f9941",
@@ -23,6 +23,7 @@
         "0e9d3862-5abd-49d5-88c3-3c00a6633f75",
         "0e9d3862-5abd-49d5-88c3-3c00a6633f75@6c48a",
         "0e9d3862-5abd-49d5-88c3-3c00a6633f75@f9941",
+        "0f25bad10",
         "21b06644-031e-4f6a-868e-028102ec490e",
         "21b06644-031e-4f6a-868e-028102ec490e@6c48a",
         "21b06644-031e-4f6a-868e-028102ec490e@f9941",
@@ -76,11 +77,13 @@
         "7d6b73f8-6cb0-4b4c-b9c7-51553fb6beaf",
         "7d6b73f8-6cb0-4b4c-b9c7-51553fb6beaf@6c48a",
         "7d6b73f8-6cb0-4b4c-b9c7-51553fb6beaf@f9941",
+        "853edcbf-cb4a-4644-a539-1e45a8e8f32e",
         "874df167-2963-4cb2-998c-2113402187f4",
         "874df167-2963-4cb2-998c-2113402187f4@6c48a",
         "874df167-2963-4cb2-998c-2113402187f4@f9941",
         "8d1e421e-05e6-4983-a4c5-e1fcdc67d685",
         "91ef3c5d-2f74-4db2-9730-bd60e4c01cdb",
+        "939656ed-7386-4487-ba1f-54e09e50f479",
         "959ef826-dcde-4b64-80ea-b49c97c6f48a",
         "959ef826-dcde-4b64-80ea-b49c97c6f48a@6c48a",
         "959ef826-dcde-4b64-80ea-b49c97c6f48a@f9941",
@@ -147,6 +150,10 @@
             "db:/assets/demo11/demo11",
             "cc.SceneAsset"
         ],
+        "939656ed-7386-4487-ba1f-54e09e50f479": [
+            "db:/assets/demo12/demo12",
+            "cc.SceneAsset"
+        ],
         "7b43db7d-4115-4ab8-b2fb-99992ff4fb2e": [
             "db:/assets/demo2/demo2",
             "cc.SceneAsset"
@@ -196,6 +203,7 @@
         "db://assets/demo1/demo1.scene": "e0d7a60b-4b6b-4ecc-8172-91837ea13bdb",
         "db://assets/demo10/demo10.scene": "423d8a1f-f6da-4982-94e4-0bac2beea7c2",
         "db://assets/demo11/demo11.scene": "256b326e-74c7-4d46-8f4b-e068a96f2b85",
+        "db://assets/demo12/demo12.scene": "939656ed-7386-4487-ba1f-54e09e50f479",
         "db://assets/demo2/demo2.scene": "7b43db7d-4115-4ab8-b2fb-99992ff4fb2e",
         "db://assets/demo3/demo3.scene": "aec945c7-b48b-46d8-85cb-6a01ff3d1f58",
         "db://assets/demo4/demo4.scene": "30fde64f-6ca8-4562-aed0-bf1bcdaa4c2a",
@@ -294,12 +302,16 @@
             "8d1e421e-05e6-4983-a4c5-e1fcdc67d685",
             "91ef3c5d-2f74-4db2-9730-bd60e4c01cdb"
         ],
-        "08d4a28a7": [
+        "0460bc08a": [
             "24a704da-2867-446d-8d1a-5e920c75e09d@f9941",
+            "853edcbf-cb4a-4644-a539-1e45a8e8f32e",
+            "939656ed-7386-4487-ba1f-54e09e50f479",
+            "9fd900dd-221b-4f89-8f2c-fba34243c835@f9941"
+        ],
+        "0f25bad10": [
             "399b6012-47c4-42d3-8dc1-c765640c092b@f9941",
             "4c15b6b3-5390-452d-bd4e-b55c4f5d06c0@f9941",
             "7827bf3b-80eb-4b4d-a5aa-8fd339de26a5",
-            "9fd900dd-221b-4f89-8f2c-fba34243c835@f9941",
             "bf8595d9-a758-4867-b4ff-2ef4b2b209a0@f9941",
             "d46e9730-4773-49a9-93f1-42565b2356d8"
         ]
@@ -479,6 +491,10 @@
         "7d6b73f8-6cb0-4b4c-b9c7-51553fb6beaf@f9941": [
             "7d6b73f8-6cb0-4b4c-b9c7-51553fb6beaf@6c48a"
         ],
+        "853edcbf-cb4a-4644-a539-1e45a8e8f32e": [
+            "d59c29d8-2943-4cf8-ac21-9cfbe635e7fd@f9941",
+            "4839ae62-a5da-4965-b2cd-75afe7052dd3@f9941"
+        ],
         "874df167-2963-4cb2-998c-2113402187f4@6c48a": [
             "874df167-2963-4cb2-998c-2113402187f4"
         ],
@@ -495,6 +511,13 @@
             "98baf860-4dd7-48cf-bcbb-1d8bfcd236cb",
             "2c95ba65-ae7a-4d17-a784-dcab95ec43af",
             "444f1a22-1721-48dd-84e2-26e78c286858"
+        ],
+        "939656ed-7386-4487-ba1f-54e09e50f479": [
+            "b91d4f39-5259-4c4d-94c8-991e319cea2f@f9941",
+            "959ef826-dcde-4b64-80ea-b49c97c6f48a@f9941",
+            "24a704da-2867-446d-8d1a-5e920c75e09d@f9941",
+            "9fd900dd-221b-4f89-8f2c-fba34243c835@f9941",
+            "853edcbf-cb4a-4644-a539-1e45a8e8f32e"
         ],
         "959ef826-dcde-4b64-80ea-b49c97c6f48a@6c48a": [
             "959ef826-dcde-4b64-80ea-b49c97c6f48a"

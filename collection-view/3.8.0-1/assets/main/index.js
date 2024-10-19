@@ -803,7 +803,7 @@ System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -1076,7 +1076,7 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
             // 通过下标可以获取到对应的数据
             var rowData = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据
 
             var comp = cell.getComponent(ChatCell);
             comp.textLabel.string = rowData.content;
@@ -1405,7 +1405,7 @@ System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelper
             var data = _this2.testData[_this2.originIndex(indexPath.item)]; // 通过标识符获取重用池内的节点
 
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath);
+            var cell = collectionView.dequeueReusableCell("cell");
             var comp = cell.getComponent(CommonCell);
             comp.label.string = data;
             return cell;
@@ -1500,6 +1500,202 @@ System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelper
           return null;
         }
       }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "pageLabel", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/demo12.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './index.ts', './none-label-cell.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, ProgressBar, Label, NodeEventType, director, UITransform, math, Component, NoneLabelCell, YXCollectionView, YXFlowLayout;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      ProgressBar = module.ProgressBar;
+      Label = module.Label;
+      NodeEventType = module.NodeEventType;
+      director = module.director;
+      UITransform = module.UITransform;
+      math = module.math;
+      Component = module.Component;
+    }, null, function (module) {
+      NoneLabelCell = module.NoneLabelCell;
+    }, function (module) {
+      YXCollectionView = module.YXCollectionView;
+    }, function (module) {
+      YXFlowLayout = module.YXFlowLayout;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
+
+      cclegacy._RF.push({}, "b9241abaMlMb5a14JyojB1Q", "demo12", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var demo12 = exports('demo12', (_dec = ccclass('demo12'), _dec2 = property(YXCollectionView), _dec3 = property(ProgressBar), _dec4 = property(Label), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(demo12, _Component);
+
+        function demo12() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+          /**
+           * 列表组件
+           */
+
+          _initializerDefineProperty(_this, "listComp", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "preloadProgressBar", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "preloadProgressLabel", _descriptor3, _assertThisInitialized(_this));
+          /**
+           * 测试数据源
+           */
+
+
+          _this.testData = [];
+          _this.column = 3;
+          return _this;
+        }
+
+        var _proto = demo12.prototype;
+
+        _proto.onLoad = function onLoad() {
+          this.node.getChildByName("back").once(NodeEventType.TOUCH_END, this.back, this);
+        };
+
+        _proto.back = function back() {
+          director.loadScene("home");
+        };
+        /**
+         * 模拟收到数据
+         */
+
+
+        _proto.receivedData = function receivedData() {
+          this.testData = [];
+
+          for (var index = 0; index < 1000; index++) {
+            this.testData.push(index);
+          }
+
+          if (this.listComp.mode != YXCollectionView.Mode.PRELOAD) {
+            this.preloadProgressLabel.string = "---/---";
+            this.preloadProgressBar.progress = 0;
+          } // 更新列表
+
+
+          this.listComp.reloadData();
+        };
+
+        _proto.start = function start() {
+          var _this2 = this;
+          /**
+           * 监听预加载进度  
+           */
+
+
+          this.listComp.preloadProgress = function (a, b) {
+            _this2.preloadProgressLabel.string = a + "/" + b;
+            _this2.preloadProgressBar.progress = a / b;
+          }; // 注册列表内需要使用的 cell 节点类型
+          // 这个演示是通过编辑器绑定的，可以查看场景内 list 节点里的 register cells 配置
+          // this.listComp.register(`cell`, () => instantiate('your cell prefab'))
+          // 确定列表内一共需要显示多少条内容   
+
+
+          this.listComp.numberOfItems = function () {
+            return _this2.testData.length;
+          };
+
+          this.listComp.cellForItemAt = function (indexPath, collectionView) {
+            // 通过下标可以获取到对应的数据
+            var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
+
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
+
+            var comp = cell.getComponent(NoneLabelCell);
+            comp.random();
+            return cell; // 返回这个节点给列表显示
+          }; // 配置 layout 布局规则
+
+
+          this.updateFlowLayout(); // 模拟获取数据
+
+          this.receivedData();
+        };
+
+        _proto.updateFlowLayout = function updateFlowLayout(column) {
+          if (column === void 0) {
+            column = this.column;
+          }
+
+          var layout = new YXFlowLayout();
+          layout.horizontalSpacing = 10;
+          layout.verticalSpacing = 10;
+          var width = (this.listComp.node.getComponent(UITransform).width - layout.horizontalSpacing * (column - 1)) / column;
+          layout.itemSize = new math.Size(width, 200);
+          this.listComp.layout = layout;
+        };
+
+        _proto.addColumn = function addColumn() {
+          this.column++;
+
+          if (this.column > 6) {
+            this.column = 6;
+            return;
+          }
+
+          this.updateFlowLayout();
+          this.listComp.reloadData();
+        };
+
+        _proto.subColumn = function subColumn() {
+          this.column--;
+
+          if (this.column < 1) {
+            this.column = 1;
+            return;
+          }
+
+          this.updateFlowLayout();
+          this.listComp.reloadData();
+        };
+
+        return demo12;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "listComp", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "preloadProgressBar", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "preloadProgressLabel", [_dec4], {
         configurable: true,
         enumerable: true,
         writable: true,
@@ -1657,7 +1853,7 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据 (先通过区索引读，再通过元素索引读)
             var data = _this2.testData[indexPath.section][indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -1905,7 +2101,7 @@ System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath);
+            var cell = collectionView.dequeueReusableCell("cell");
             var comp = cell.getComponent(HorizontalListCell);
             comp.dataArray = data;
             comp.list.reloadData();
@@ -2069,7 +2265,7 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath);
+            var cell = collectionView.dequeueReusableCell("cell");
             var comp = cell.getComponent(VerticalListCell);
             comp.dataArray = data;
             comp.list.reloadData();
@@ -2257,7 +2453,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
             if (data.type == 0) {
-              var cell = collectionView.dequeueReusableCell("hor-cell", indexPath);
+              var cell = collectionView.dequeueReusableCell("hor-cell");
               var comp = cell.getComponent(HorizontalListCell);
               comp.dataArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
               comp.list.reloadData();
@@ -2267,7 +2463,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
             }
 
             if (data.type == 1) {
-              var _cell = collectionView.dequeueReusableCell("cell", indexPath);
+              var _cell = collectionView.dequeueReusableCell("cell");
 
               var _comp = _cell.getComponent(CommonCell);
 
@@ -2285,7 +2481,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
             }
 
             if (data.type == 2) {
-              var _cell2 = collectionView.dequeueReusableCell("empty-1", indexPath);
+              var _cell2 = collectionView.dequeueReusableCell("empty-1");
 
               var label = _cell2.getChildByPath("content/label").getComponent(Label);
 
@@ -2294,7 +2490,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
             }
 
             if (data.type == 3) {
-              var _cell3 = collectionView.dequeueReusableCell("empty-2", indexPath);
+              var _cell3 = collectionView.dequeueReusableCell("empty-2");
 
               return _cell3;
             }
@@ -2441,7 +2637,7 @@ System.register("chunks:///_virtual/demo6.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -2616,7 +2812,7 @@ System.register("chunks:///_virtual/demo7.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -2821,7 +3017,7 @@ System.register("chunks:///_virtual/demo8.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -2983,7 +3179,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -3136,6 +3332,9 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
             name: '无限轮播',
             scene: 'demo11'
           }, {
+            name: 'Label 卡顿优化(分帧预加载)',
+            scene: 'demo12'
+          }, {
             name: '自定义 Layout',
             is_header: true
           }, {
@@ -3160,7 +3359,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
             var rowData = array[indexPath.item];
 
             if (rowData.is_header) {
-              var _cell = collectionView.dequeueReusableCell("header", indexPath);
+              var _cell = collectionView.dequeueReusableCell("header");
 
               var label = _cell.getChildByPath("content/label").getComponent(Label);
 
@@ -3168,7 +3367,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
               return _cell;
             }
 
-            var cell = collectionView.dequeueReusableCell("cell", indexPath);
+            var cell = collectionView.dequeueReusableCell("cell");
             var comp = cell.getComponent(CommonCell);
             comp.label.string = rowData.name;
             return cell;
@@ -3366,7 +3565,7 @@ System.register("chunks:///_virtual/horizontal-list-cell.ts", ['./rollupPluginMo
           };
 
           this.list.cellForItemAt = function (indexPath, collectionView) {
-            var cell = collectionView.dequeueReusableCell("cell", indexPath);
+            var cell = collectionView.dequeueReusableCell("cell");
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
             comp.randomIcon();
@@ -3425,10 +3624,101 @@ System.register("chunks:///_virtual/index.ts", ['cc', './yx-collection-view.ts',
   };
 });
 
-System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './chat-cell.ts', './common-cell.ts', './horizontal-list-cell.ts', './vertical-list-cell.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './custom-grid-flow-layout.ts', './yx-card-page-layout.ts', './yx-carousel-layout.ts', './yx-cover-layout.ts', './yx-masonry-flow-layout.ts', './yx-page-view.ts', './yx-table-view.ts', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function () {
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './chat-cell.ts', './common-cell.ts', './horizontal-list-cell.ts', './none-label-cell.ts', './vertical-list-cell.ts', './demo1.ts', './demo10.ts', './demo11.ts', './demo12.ts', './demo2.ts', './demo3.ts', './demo4.ts', './demo5.ts', './demo6.ts', './demo7.ts', './demo8.ts', './demo9.ts', './home.ts', './custom-grid-flow-layout.ts', './yx-card-page-layout.ts', './yx-carousel-layout.ts', './yx-cover-layout.ts', './yx-masonry-flow-layout.ts', './yx-page-view.ts', './yx-table-view.ts', './index.ts', './yx-collection-view.ts', './yx-flow-layout.ts'], function () {
   return {
-    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     execute: function () {}
+  };
+});
+
+System.register("chunks:///_virtual/none-label-cell.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, randomRangeInt, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      randomRangeInt = module.randomRangeInt;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+      cclegacy._RF.push({}, "9f679QJWJ1Ay7VxLBDWjJLh", "none-label-cell", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var NoneLabelCell = exports('NoneLabelCell', (_dec = ccclass('NoneLabelCell'), _dec2 = property(Label), _dec3 = property(Label), _dec4 = property(Label), _dec5 = property(Label), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(NoneLabelCell, _Component);
+
+        function NoneLabelCell() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "label1", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "label2", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "label3", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "label4", _descriptor4, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = NoneLabelCell.prototype;
+
+        _proto.random = function random() {
+          this.label1.string = "\u6D4B\u8BD5: " + randomRangeInt(10, 100);
+          this.label2.string = "\u7ECF\u9A8C: " + randomRangeInt(10, 100);
+          this.label3.string = "\u7B49\u7EA7: " + randomRangeInt(10, 100);
+          this.label4.string = "\u6B66\u529B: " + randomRangeInt(10, 100);
+        };
+
+        return NoneLabelCell;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "label1", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "label2", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "label3", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "label4", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
   };
 });
 
@@ -3490,7 +3780,7 @@ System.register("chunks:///_virtual/vertical-list-cell.ts", ['./rollupPluginModL
           };
 
           this.list.cellForItemAt = function (indexPath, collectionView) {
-            var cell = collectionView.dequeueReusableCell("cell", indexPath);
+            var cell = collectionView.dequeueReusableCell("cell");
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
             comp.randomIcon();
@@ -4613,9 +4903,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _initializerDefineProperty(_this5, "preloadNodesLimitPerFrame", _descriptor8, _assertThisInitialized(_this5));
           /**
-           * 每多少帧刷新一次可见节点，1 表示每帧都刷
+           * 预加载进度  
            */
 
+
+          _this5.preloadProgress = null;
+          /**
+           * 每多少帧刷新一次可见节点，1 表示每帧都刷
+           */
 
           _initializerDefineProperty(_this5, "frameInterval", _descriptor9, _assertThisInitialized(_this5));
           /**
@@ -4660,7 +4955,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
            * 
            * @example
            * yourList.cellForItemAt = (indexPath ,collectionView) => {
-           *      let cell = collectionView.dequeueReusableCell(`your identifier`, indexPath)
+           *      let cell = collectionView.dequeueReusableCell(`your identifier`)
            *      let comp = cell.getComponent(YourCellComp)
            *      comp.label.string = `${indexPath}`
            *      return cell
@@ -4699,6 +4994,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           _this5.visibleNodesMap = new Map();
           /**
            * 记录预加载的所有节点
+           * 相当于是 preload 模式下的节点缓存池子  
            */
 
           _this5.preloadNodesMap = new Map();
@@ -4761,32 +5057,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
 
 
-        _proto5.dequeueReusableCell = function dequeueReusableCell(identifier, indexPath) {
+        _proto5.dequeueReusableCell = function dequeueReusableCell(identifier) {
           var pool = this.pools.get(identifier);
 
           if (pool == null) {
             throw new Error("YXCollectionView: \u672A\u6CE8\u518C\u6807\u8BC6\u7B26\u4E3A `" + identifier + "` \u7684 cell\uFF0C\u8BF7\u5148\u8C03\u7528 YXCollectionView \u7684 register() \u65B9\u6CD5\u6CE8\u518C cell \u8282\u70B9");
           }
 
-          var result = null; // 检查节点是否正在显示
-
-          if (result == null) {
-            var node = this.getVisibleNode(indexPath);
-
-            if (node) {
-              var cellComp = node.getComponent(_cell_);
-
-              if (cellComp.identifier === identifier) {
-                // 此位置的节点类型跟刷新之前已经存在的节点类型一致，可以直接拿来使用  
-                result = node;
-              } else {
-                // 此位置的节点类型发生了变化，这个节点已经没用了，直接回收掉
-                this.pools.get(cellComp.identifier).put(node);
-                this.visibleNodesMap["delete"](indexPath.toString());
-              }
-            }
-          } // 尝试从重用池获取
-
+          var result = null; // 尝试从重用池获取
 
           if (result == null) {
             result = pool.get();
@@ -4866,6 +5144,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         };
 
         _proto5._reloadData = function _reloadData() {
+          var _this6 = this;
+
           this._late_reload_data = false;
           this.reloadVisibleCellsCounter = 0; // 校验 layout 参数
 
@@ -4874,11 +5154,28 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           } // 立即停止当前滚动，准备刷新
 
 
-          this.scrollView.stopAutoScroll(); // 池子清一下
+          this.scrollView.stopAutoScroll(); // 池子先清一下，可能会累积很多暂时用不到的节点  
 
           this.pools.forEach(function (element) {
             element.clear();
-          }); // 如果是预加载模式，需要清空当前显示的所有节点以及已经预加载过的所有节点
+          }); // 回收模式下，移除掉正在显示的节点并加到池子里 (不需要销毁)
+
+          if (this.mode == _yx_collection_view_list_mode.RECYCLE) {
+            this.visibleNodesMap.forEach(function (value, key) {
+              var cell = value.getComponent(_cell_);
+
+              _this6.pools.get(cell.identifier).put(value);
+
+              _this6.visibleNodesMap["delete"](key); // 从可见节点里删除
+
+
+              if (_this6.onCellEndDisplay) {
+                _this6.onCellEndDisplay(cell.node, cell.attributes.indexPath, _this6);
+              }
+            });
+            this.visibleNodesMap.clear();
+          } // 预加载模式下，需要清空当前显示的所有节点以及已经预加载过的所有节点 (全部销毁)
+
 
           if (this.mode == _yx_collection_view_list_mode.PRELOAD) {
             // 销毁当前所有正在显示的节点
@@ -4919,9 +5216,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           } // 更新 cell 节点
 
 
-          this.markForUpdateVisibleData(true); // 偶现 bug: 列表节点有时候不正常显示，这里标记下帧再更新一下列表
-
-          this.markForUpdateVisibleData();
+          this.markForUpdateVisibleData(true);
           this.reloadDataCounter++;
         };
         /**
@@ -4972,7 +5267,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             } // 检查节点是否正在显示了
 
 
-            if (this.reloadVisibleCellsCounter > 0 && cellNode == null) {
+            if (cellNode == null) {
               cellNode = this.getVisibleNode(element.indexPath);
             } // 尝试通过注册标识符从节点池获取节点
 
@@ -4997,9 +5292,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
 
             this.visibleNodesMap.set(element.indexPath.toString(), cellNode); // 通知 onCellDisplay 
-            // reloadVisibleCellsCounter 为 0 时候节点大小可能会发生变化，也一并通知一下
 
-            if (restoreStatus == 1 || this.reloadVisibleCellsCounter == 0) {
+            if (restoreStatus == 1) {
               if (this.onCellDisplay) {
                 this.onCellDisplay(cellNode, element.indexPath, this);
               }
@@ -5047,7 +5341,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         ;
 
         _proto5.recycleInvisibleNodes = function recycleInvisibleNodes(visibleRect) {
-          var _this6 = this;
+          var _this7 = this;
 
           if (visibleRect === void 0) {
             visibleRect = null;
@@ -5075,17 +5369,19 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             _realFrame.y = (_contentSize.height - _realFrame.height) * 0.5 - value.position.y;
 
             if (visibleRect.intersects(_realFrame) == false) {
-              if (_this6.mode == _yx_collection_view_list_mode.PRELOAD) {
+              if (_this7.mode == _yx_collection_view_list_mode.PRELOAD) {
                 value.getComponent(UIOpacity).opacity = 0;
+
+                _this7.preloadNodesMap.set(cell.attributes.indexPath.toString(), value);
               } else {
-                _this6.pools.get(cell.identifier).put(value);
+                _this7.pools.get(cell.identifier).put(value);
               }
 
-              _this6.visibleNodesMap["delete"](key); // 从可见节点里删除
+              _this7.visibleNodesMap["delete"](key); // 从可见节点里删除
 
 
-              if (_this6.onCellEndDisplay) {
-                _this6.onCellEndDisplay(cell.node, cell.attributes.indexPath, _this6);
+              if (_this7.onCellEndDisplay) {
+                _this7.onCellEndDisplay(cell.node, cell.attributes.indexPath, _this7);
               }
             }
           });
@@ -5158,12 +5454,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         ;
 
         _proto5.onLoad = function onLoad() {
-          var _this7 = this;
+          var _this8 = this;
 
           var _loop = function _loop() {
-            var element = _this7.registerCellForEditor[index];
+            var element = _this8.registerCellForEditor[index];
 
-            _this7.register(element.identifier, function () {
+            _this8.register(element.identifier, function () {
               return instantiate(element.prefab);
             }, element.comp);
           };
@@ -5275,9 +5571,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             return;
           }
 
-          var num = this.preloadNodesLimitPerFrame;
+          if (this.preloadNodesLimitPerFrame <= 0) {
+            return;
+          }
 
-          for (var index = num; index > 0; index--) {
+          var index = 0;
+          var stop = false;
+
+          while (!stop && index < this.preloadNodesLimitPerFrame) {
             var attr = this.layout.attributes[this.preloadIdx];
             var key = attr.indexPath.toString();
             var node = null; // 检查节点是否正在显示
@@ -5304,6 +5605,13 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             this.preloadNodesMap.set(key, node); // 更新预加载索引
 
             this.preloadIdx++;
+            index++;
+
+            if (this.preloadProgress) {
+              this.preloadProgress(this.preloadIdx, this.layout.attributes.length);
+            }
+
+            stop = this.preloadIdx >= this.layout.attributes.length;
           }
         };
 
@@ -5481,7 +5789,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         enumerable: true,
         writable: true,
         initializer: function initializer() {
-          return 1;
+          return 2;
         }
       }), _descriptor9 = _applyDecoratedDescriptor(_class9.prototype, "frameInterval", [_dec16], {
         configurable: true,
