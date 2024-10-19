@@ -803,7 +803,7 @@ System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -832,6 +832,12 @@ System.register("chunks:///_virtual/demo1.ts", ['./rollupPluginModLoBabelHelpers
             }).to(0.1, {
               scale: scale
             }).start();
+          };
+
+          this.listComp.onCellDisplay = function (cell, indexPath) {// log(`onCellDisplay ${indexPath}`)
+          };
+
+          this.listComp.onCellEndDisplay = function (cell, indexPath) {// log(`onCellEndDisplay ${indexPath}`)
           }; // 配置 layout 布局规则
 
 
@@ -1051,7 +1057,7 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
         _proto.randomNewMessage = function randomNewMessage() {
           this.testData.push(new Data());
           this.listComp.reloadData();
-          this.listComp.scrollView.scrollToBottom(0.25);
+          this.listComp.scrollView.scrollToBottom(0.5);
           this.listComp.markForUpdateVisibleData();
         };
 
@@ -1070,7 +1076,7 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
             // 通过下标可以获取到对应的数据
             var rowData = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据
+            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据
 
             var comp = cell.getComponent(ChatCell);
             comp.textLabel.string = rowData.content;
@@ -1241,7 +1247,7 @@ System.register("chunks:///_virtual/demo10.ts", ['./rollupPluginModLoBabelHelper
         };
       }
 
-      var _chat_message = ["只因你太美", "哇真的是你呀", "你干嘛，哎呦", "哈哈", "你好，我叫萧黑梓", "你好，我叫吕诗涵", "你好，我叫姬泰美", "唱，跳，rap，🏀，谬zk...", "迎面走来的你让我如此蠢蠢欲动", "这种感觉我从未有 Cause I got a crush on you", "再多一眼看一眼就会爆炸", "再近一点靠近点快被融化", "食不食油饼", "🌹🌹", "一天，邹忌照了照镜子，对着他的妻子说：“吾熟与城北蔡徐坤美？”其妻曰“忌你太美。”", "虞姬的皮肤好好看啊，忍不住我想作诗一首：既有歌舞惊云霄，霓裳羽衣漫窈窕。抬指一挥转天籁，美酒佳肴共逍遥。", "不能让恶俗的网络烂梗毒害孩子。网络时代，出现网言网语很正常。但是，网言网语不等于奇言怪语，也不等于胡言乱语，更不等于污言秽语。", "恶俗烂梗并非“无足轻重”，更不可“放任自由”。"];
+      var _chat_message = ["只因你太美", "哇真的是你呀", "你干嘛，哎呦", "哈哈", "你好，我叫萧黑梓", "你好，我叫吕诗涵", "你好，我叫姬泰美", "如果你也可以像我一样会打篮球，那我觉得这件事情，泰裤辣！", "唱，跳，rap，🏀，谬zk...", "迎面走来的你让我如此蠢蠢欲动", "这种感觉我从未有 Cause I got a crush on you", "再多一眼看一眼就会爆炸", "再近一点靠近点快被融化", "食不食油饼", "🌹🌹", "一天，邹忌照了照镜子，对着他的妻子说：“吾熟与城北蔡徐坤美？”其妻曰“忌你太美。”", "虞姬的皮肤好好看啊，忍不住我想作诗一首：既有歌舞惊云霄，霓裳羽衣漫窈窕。抬指一挥转天籁，美酒佳肴共逍遥。", "不能让恶俗的网络烂梗毒害孩子。网络时代，出现网言网语很正常。但是，网言网语不等于奇言怪语，也不等于胡言乱语，更不等于污言秽语。", "恶俗烂梗并非“无足轻重”，更不可“放任自由”。"];
 
       function randomChatMessage() {
         return _chat_message[randomRangeInt(0, _chat_message.length)];
@@ -1399,7 +1405,7 @@ System.register("chunks:///_virtual/demo11.ts", ['./rollupPluginModLoBabelHelper
             var data = _this2.testData[_this2.originIndex(indexPath.item)]; // 通过标识符获取重用池内的节点
 
 
-            var cell = collectionView.dequeueReusableCell("cell");
+            var cell = collectionView.dequeueReusableCell("cell", indexPath);
             var comp = cell.getComponent(CommonCell);
             comp.label.string = data;
             return cell;
@@ -1651,7 +1657,7 @@ System.register("chunks:///_virtual/demo2.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据 (先通过区索引读，再通过元素索引读)
             var data = _this2.testData[indexPath.section][indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -1899,7 +1905,7 @@ System.register("chunks:///_virtual/demo3.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell");
+            var cell = collectionView.dequeueReusableCell("cell", indexPath);
             var comp = cell.getComponent(HorizontalListCell);
             comp.dataArray = data;
             comp.list.reloadData();
@@ -2063,7 +2069,7 @@ System.register("chunks:///_virtual/demo4.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell");
+            var cell = collectionView.dequeueReusableCell("cell", indexPath);
             var comp = cell.getComponent(VerticalListCell);
             comp.dataArray = data;
             comp.list.reloadData();
@@ -2251,16 +2257,17 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
             if (data.type == 0) {
-              var cell = collectionView.dequeueReusableCell("hor-cell");
+              var cell = collectionView.dequeueReusableCell("hor-cell", indexPath);
               var comp = cell.getComponent(HorizontalListCell);
               comp.dataArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
               comp.list.reloadData();
               comp.list.scrollView.scrollToLeft();
+              comp.list.markForUpdateVisibleData();
               return cell;
             }
 
             if (data.type == 1) {
-              var _cell = collectionView.dequeueReusableCell("cell");
+              var _cell = collectionView.dequeueReusableCell("cell", indexPath);
 
               var _comp = _cell.getComponent(CommonCell);
 
@@ -2278,7 +2285,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
             }
 
             if (data.type == 2) {
-              var _cell2 = collectionView.dequeueReusableCell("empty-1");
+              var _cell2 = collectionView.dequeueReusableCell("empty-1", indexPath);
 
               var label = _cell2.getChildByPath("content/label").getComponent(Label);
 
@@ -2287,7 +2294,7 @@ System.register("chunks:///_virtual/demo5.ts", ['./rollupPluginModLoBabelHelpers
             }
 
             if (data.type == 3) {
-              var _cell3 = collectionView.dequeueReusableCell("empty-2");
+              var _cell3 = collectionView.dequeueReusableCell("empty-2", indexPath);
 
               return _cell3;
             }
@@ -2434,7 +2441,7 @@ System.register("chunks:///_virtual/demo6.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -2609,7 +2616,7 @@ System.register("chunks:///_virtual/demo7.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -2814,7 +2821,7 @@ System.register("chunks:///_virtual/demo8.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -2976,7 +2983,7 @@ System.register("chunks:///_virtual/demo9.ts", ['./rollupPluginModLoBabelHelpers
             // 通过下标可以获取到对应的数据
             var data = _this2.testData[indexPath.item]; // 通过标识符获取重用池内的节点
 
-            var cell = collectionView.dequeueReusableCell("cell"); // 更新数据显示
+            var cell = collectionView.dequeueReusableCell("cell", indexPath); // 更新数据显示
 
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
@@ -3153,7 +3160,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
             var rowData = array[indexPath.item];
 
             if (rowData.is_header) {
-              var _cell = collectionView.dequeueReusableCell("header");
+              var _cell = collectionView.dequeueReusableCell("header", indexPath);
 
               var label = _cell.getChildByPath("content/label").getComponent(Label);
 
@@ -3161,7 +3168,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
               return _cell;
             }
 
-            var cell = collectionView.dequeueReusableCell("cell");
+            var cell = collectionView.dequeueReusableCell("cell", indexPath);
             var comp = cell.getComponent(CommonCell);
             comp.label.string = rowData.name;
             return cell;
@@ -3217,7 +3224,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
 
           if (home.LAST_OFFSET) {
             this.listComp.scrollView.scrollToOffset(home.LAST_OFFSET);
-            this.listComp.markForUpdateVisibleData();
+            this.listComp.markForUpdateVisibleData(true);
           }
         }
         /**
@@ -3231,7 +3238,7 @@ System.register("chunks:///_virtual/home.ts", ['./rollupPluginModLoBabelHelpers.
           /**
            * 关联 ScrollBar 节点  
            * 这个 ScrollBar 节点完全交给使用者自己管理，内部不会封装这个 (毕竟这个位置/样式自由度太高了)  
-           * 也就是在需要滑动条的时候要自己创建一个，然后通过 ScrollView 组件关联起来就好 (这个组件是区分方向的，需要注意方向配置统一)  
+           * 也就是在需要滑动条的时候要自己创建一个，然后通过 ScrollView 组件关联起来就好 ( ScrollBar 这个组件是区分方向的，需要注意方向配置统一)  
            */
 
 
@@ -3359,7 +3366,7 @@ System.register("chunks:///_virtual/horizontal-list-cell.ts", ['./rollupPluginMo
           };
 
           this.list.cellForItemAt = function (indexPath, collectionView) {
-            var cell = collectionView.dequeueReusableCell("cell");
+            var cell = collectionView.dequeueReusableCell("cell", indexPath);
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
             comp.randomIcon();
@@ -3483,7 +3490,7 @@ System.register("chunks:///_virtual/vertical-list-cell.ts", ['./rollupPluginModL
           };
 
           this.list.cellForItemAt = function (indexPath, collectionView) {
-            var cell = collectionView.dequeueReusableCell("cell");
+            var cell = collectionView.dequeueReusableCell("cell", indexPath);
             var comp = cell.getComponent(CommonCell);
             comp.label.string = "" + indexPath;
             comp.randomIcon();
@@ -3919,7 +3926,7 @@ System.register("chunks:///_virtual/yx-carousel-layout.ts", ['./rollupPluginModL
 });
 
 System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
-  var _applyDecoratedDescriptor, _initializerDefineProperty, _inheritsLoose, _createClass, _assertThisInitialized, _createForOfIteratorHelperLoose, cclegacy, _decorator, math, Enum, Prefab, ValueType, NodeEventType, UITransform, UIOpacity, ScrollView, Component, instantiate, Node, Mask;
+  var _applyDecoratedDescriptor, _initializerDefineProperty, _inheritsLoose, _createClass, _assertThisInitialized, cclegacy, _decorator, math, Enum, Prefab, ValueType, NodePool, NodeEventType, UITransform, UIOpacity, ScrollView, Component, instantiate, Node, Mask;
 
   return {
     setters: [function (module) {
@@ -3928,7 +3935,6 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
       _inheritsLoose = module.inheritsLoose;
       _createClass = module.createClass;
       _assertThisInitialized = module.assertThisInitialized;
-      _createForOfIteratorHelperLoose = module.createForOfIteratorHelperLoose;
     }, function (module) {
       cclegacy = module.cclegacy;
       _decorator = module._decorator;
@@ -3936,6 +3942,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
       Enum = module.Enum;
       Prefab = module.Prefab;
       ValueType = module.ValueType;
+      NodePool = module.NodePool;
       NodeEventType = module.NodeEventType;
       UITransform = module.UITransform;
       UIOpacity = module.UIOpacity;
@@ -3946,7 +3953,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
       Mask = module.Mask;
     }],
     execute: function () {
-      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _dec5, _class4, _class5, _dec6, _class6, _class7, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _class8, _class9, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _class10;
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _dec5, _class4, _class5, _dec6, _class6, _class7, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _class8, _class9, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _class10;
 
       cclegacy._RF.push({}, "f2c14q0UedOp7pnWIKia8C+", "yx-collection-view", undefined);
 
@@ -3958,9 +3965,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
       var _vec3Out = new math.Vec3();
 
-      var _rectOut = new math.Rect();
-
-      var _recycleInvisibleNodes_visibleRect = new math.Rect();
+      var _scroll_view_visible_rect = new math.Rect();
 
       var _recycleInvisibleNodes_realFrame = new math.Rect();
       /**
@@ -3976,141 +3981,19 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
       Enum(_yx_collection_view_scroll_direction);
       /**
-       * 虚拟列表实现模式
+       * 列表节点加载模式
        */
 
       var _yx_collection_view_list_mode = /*#__PURE__*/function (_yx_collection_view_list_mode) {
         _yx_collection_view_list_mode[_yx_collection_view_list_mode["RECYCLE"] = 0] = "RECYCLE";
-        _yx_collection_view_list_mode[_yx_collection_view_list_mode["ONCE"] = 1] = "ONCE";
-        _yx_collection_view_list_mode[_yx_collection_view_list_mode["PRELOAD"] = 2] = "PRELOAD";
+        _yx_collection_view_list_mode[_yx_collection_view_list_mode["PRELOAD"] = 1] = "PRELOAD";
         return _yx_collection_view_list_mode;
       }(_yx_collection_view_list_mode || {});
 
       Enum(_yx_collection_view_list_mode);
       /**
-       * 节点池回收策略
-       */
-
-      var _yx_collection_view_cell_item_pool_policy = /*#__PURE__*/function (_yx_collection_view_cell_item_pool_policy) {
-        _yx_collection_view_cell_item_pool_policy[_yx_collection_view_cell_item_pool_policy["NONE"] = 0] = "NONE";
-        _yx_collection_view_cell_item_pool_policy[_yx_collection_view_cell_item_pool_policy["REMOVE"] = 1] = "REMOVE";
-        _yx_collection_view_cell_item_pool_policy[_yx_collection_view_cell_item_pool_policy["UI_OPACITY"] = 2] = "UI_OPACITY";
-        return _yx_collection_view_cell_item_pool_policy;
-      }(_yx_collection_view_cell_item_pool_policy || {});
-
-      Enum(_yx_collection_view_cell_item_pool_policy);
-      /**
-       * 节点池  
-       * 跟一般的节点池业务差不多，区别是这个 put 行为不会直接将节点从父节点移除，而是提供一个可选策略  
-       * https://github.com/cocos/cocos-engine/blob/v3.8.0/extensions/ccpool/node-pool.ts
-       */
-
-      var _yx_collection_view_cell_item_pool = /*#__PURE__*/function () {
-        function _yx_collection_view_cell_item_pool(poolHandlerComp, policy) {
-          if (policy === void 0) {
-            policy = _yx_collection_view_cell_item_pool_policy.REMOVE;
-          }
-          /**
-           * 管理当前所有的可用节点
-           */
-
-
-          this.nodes = new Set();
-          /**
-           * 同 cc 的 NodePool 组件
-           */
-
-          this.poolHandlerComp = null;
-          /**
-           * put 回收策略
-           */
-
-          this.policy = void 0;
-          this.poolHandlerComp = poolHandlerComp;
-          this.policy = policy;
-        }
-        /**
-         * 获取当前缓冲池的可用对象数量
-         */
-
-
-        var _proto = _yx_collection_view_cell_item_pool.prototype;
-        /**
-         * 将一个 node 节点添加到节点池
-         * @param obj 
-         */
-
-        _proto.put = function put(obj) {
-          if (this.policy == _yx_collection_view_cell_item_pool_policy.REMOVE) {
-            obj.removeFromParent();
-          } else if (this.policy == _yx_collection_view_cell_item_pool_policy.UI_OPACITY) {
-            var comp = obj.getComponent(UIOpacity) || obj.addComponent(UIOpacity);
-            comp.opacity = 0;
-          } // @ts-ignore
-
-
-          var handler = this.poolHandlerComp ? obj.getComponent(this.poolHandlerComp) : null;
-
-          if (handler && handler.unuse) {
-            handler.unuse();
-          }
-
-          this.nodes.add(obj);
-        }
-        /**
-         * 获取对象池中的对象，如果对象池没有可用对象，则返回空。
-         */
-        ;
-
-        _proto.get = function get() {
-          for (var _iterator = _createForOfIteratorHelperLoose(this.nodes), _step; !(_step = _iterator()).done;) {
-            var obj = _step.value;
-
-            if (this.policy == _yx_collection_view_cell_item_pool_policy.UI_OPACITY) {
-              var comp = obj.getComponent(UIOpacity) || obj.addComponent(UIOpacity);
-              comp.opacity = 255;
-            }
-
-            this.nodes["delete"](obj); // @ts-ignore
-
-            var handler = this.poolHandlerComp ? obj.getComponent(this.poolHandlerComp) : null;
-
-            if (handler && handler.reuse) {
-              handler.reuse(arguments);
-            }
-
-            return obj;
-          }
-
-          return null;
-        }
-        /**
-         * 销毁对象池中缓存的所有节点
-         */
-        ;
-
-        _proto.clear = function clear() {
-          for (var _iterator2 = _createForOfIteratorHelperLoose(this.nodes), _step2; !(_step2 = _iterator2()).done;) {
-            var obj = _step2.value;
-            obj.destroy();
-          }
-
-          this.nodes.clear();
-        };
-
-        _createClass(_yx_collection_view_cell_item_pool, [{
-          key: "size",
-          get: function get() {
-            return this.nodes.size;
-          }
-        }]);
-
-        return _yx_collection_view_cell_item_pool;
-      }();
-      /**
        * 定义通过编辑器注册节点时的结构体
        */
-
 
       var _yx_editor_register_cell_info = (_dec = ccclass("_yx_editor_register_cell_info"), _dec2 = property({
         type: Prefab,
@@ -4174,22 +4057,22 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           return _this;
         }
 
-        var _proto2 = YXIndexPath.prototype;
+        var _proto = YXIndexPath.prototype;
 
-        _proto2.clone = function clone() {
+        _proto.clone = function clone() {
           return new YXIndexPath(this.section, this.item);
         };
 
-        _proto2.equals = function equals(other) {
+        _proto.equals = function equals(other) {
           return this.section == other.section && this.item == other.item;
         };
 
-        _proto2.set = function set(other) {
+        _proto.set = function set(other) {
           this.section = other.section;
           this.item = other.item;
         };
 
-        _proto2.toString = function toString() {
+        _proto.toString = function toString() {
           return this.section + " - " + this.item;
         };
 
@@ -4227,24 +4110,24 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           return _this2;
         }
 
-        var _proto3 = YXEdgeInsets.prototype;
+        var _proto2 = YXEdgeInsets.prototype;
 
-        _proto3.clone = function clone() {
+        _proto2.clone = function clone() {
           return new YXEdgeInsets(this.top, this.left, this.bottom, this.right);
         };
 
-        _proto3.equals = function equals(other) {
+        _proto2.equals = function equals(other) {
           return this.top == other.top && this.left == other.left && this.bottom == other.bottom && this.right == other.right;
         };
 
-        _proto3.set = function set(other) {
+        _proto2.set = function set(other) {
           this.top = other.top;
           this.left = other.left;
           this.bottom = other.bottom;
           this.right = other.right;
         };
 
-        _proto3.toString = function toString() {
+        _proto2.toString = function toString() {
           return "[ " + this.top + ", " + this.left + ", " + this.bottom + ", " + this.right + " ]";
         };
 
@@ -4303,19 +4186,19 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           return _this4;
         }
 
-        var _proto4 = _scroll_view.prototype;
+        var _proto3 = _scroll_view.prototype;
         /**
          * 禁掉鼠标滚轮
          */
 
-        _proto4._onMouseWheel = function _onMouseWheel(event, captureListeners) {}
+        _proto3._onMouseWheel = function _onMouseWheel(event, captureListeners) {}
         /**
          * 准备开始惯性滚动
          * @param touchMoveVelocity 手势速度
          */
         ;
 
-        _proto4._startInertiaScroll = function _startInertiaScroll(touchMoveVelocity) {
+        _proto3._startInertiaScroll = function _startInertiaScroll(touchMoveVelocity) {
           _ScrollView.prototype._startInertiaScroll.call(this, touchMoveVelocity);
 
           if (this._yxOnStartInertiaScroll) {
@@ -4323,7 +4206,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto4._onTouchBegan = function _onTouchBegan(event, captureListeners) {
+        _proto3._onTouchBegan = function _onTouchBegan(event, captureListeners) {
           if (this.node.getComponent(YXCollectionView).scrollEnabled == false) {
             return;
           }
@@ -4352,7 +4235,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           _ScrollView.prototype._onTouchBegan.call(this, event, captureListeners);
         };
 
-        _proto4._onTouchMoved = function _onTouchMoved(event, captureListeners) {
+        _proto3._onTouchMoved = function _onTouchMoved(event, captureListeners) {
           if (this.node.getComponent(YXCollectionView).scrollEnabled == false) {
             return;
           } // 处理嵌套冲突，每次只滚动需要滚动的列表
@@ -4365,20 +4248,20 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto4._onTouchCancelled = function _onTouchCancelled(event, captureListeners) {
+        _proto3._onTouchCancelled = function _onTouchCancelled(event, captureListeners) {
           _ScrollView.prototype._onTouchCancelled.call(this, event, captureListeners);
         };
 
-        _proto4._onTouchEnded = function _onTouchEnded(event, captureListeners) {
+        _proto3._onTouchEnded = function _onTouchEnded(event, captureListeners) {
           _ScrollView.prototype._onTouchEnded.call(this, event, captureListeners);
         };
 
-        _proto4._hasNestedViewGroup = function _hasNestedViewGroup(event, captureListeners) {
+        _proto3._hasNestedViewGroup = function _hasNestedViewGroup(event, captureListeners) {
           // 直接把所有的列表都标记为可滑动，具体滑动哪一个，去 _onTouchMoved 判断
           return false;
         };
 
-        _proto4._stopPropagationIfTargetIsMe = function _stopPropagationIfTargetIsMe(event) {
+        _proto3._stopPropagationIfTargetIsMe = function _stopPropagationIfTargetIsMe(event) {
           if (this._touchMoved) {
             event.propagationStopped = true;
             return;
@@ -4391,7 +4274,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto4._yxGetScrollTarget = function _yxGetScrollTarget(event, captureListeners) {
+        _proto3._yxGetScrollTarget = function _yxGetScrollTarget(event, captureListeners) {
           // 尝试获取本次已经确定了的滚动节点
           var cache = event.target["_yx_scroll_target"];
 
@@ -4545,14 +4428,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this.attributes = [];
         }
 
-        var _proto5 = YXLayout.prototype;
+        var _proto4 = YXLayout.prototype;
         /**
          * @optional
          * 列表在首次更新数据后会执行这个方法
          * 在这个方法里设置滚动视图的初始偏移量
          */
 
-        _proto5.initOffset = function initOffset(collectionView) {}
+        _proto4.initOffset = function initOffset(collectionView) {}
         /**
          * @optional
          * 当一次手势拖动结束后会立即调用此方法
@@ -4563,7 +4446,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.targetOffset = function targetOffset(collectionView, touchMoveVelocity, startOffset) {
+        _proto4.targetOffset = function targetOffset(collectionView, touchMoveVelocity, startOffset) {
           return null;
         }
         /**
@@ -4573,7 +4456,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.onScrollEnded = function onScrollEnded(collectionView) {}
+        _proto4.onScrollEnded = function onScrollEnded(collectionView) {}
         /**
          * @optional
          * 返回区域内可见的节点属性，并实时的调整这些节点变换效果 (如果在这个方法里调整了节点变换属性，需要重写 shouldUpdateAttributesForBoundsChange 以支持实时变换)
@@ -4583,7 +4466,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.layoutAttributesForElementsInRect = function layoutAttributesForElementsInRect(rect, collectionView) {
+        _proto4.layoutAttributesForElementsInRect = function layoutAttributesForElementsInRect(rect, collectionView) {
           var result = [];
 
           for (var index = 0; index < this.attributes.length; index++) {
@@ -4604,7 +4487,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.layoutAttributesForItemAtIndexPath = function layoutAttributesForItemAtIndexPath(indexPath, collectionView) {
+        _proto4.layoutAttributesForItemAtIndexPath = function layoutAttributesForItemAtIndexPath(indexPath, collectionView) {
           return this.attributes.find(function (a) {
             return a.indexPath.equals(indexPath);
           });
@@ -4617,7 +4500,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.scrollTo = function scrollTo(indexPath, collectionView) {
+        _proto4.scrollTo = function scrollTo(indexPath, collectionView) {
           return null;
         }
         /**
@@ -4627,7 +4510,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.shouldUpdateAttributesZIndex = function shouldUpdateAttributesZIndex() {
+        _proto4.shouldUpdateAttributesZIndex = function shouldUpdateAttributesZIndex() {
           return false;
         }
         /**
@@ -4637,7 +4520,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.shouldUpdateAttributesOpacity = function shouldUpdateAttributesOpacity() {
+        _proto4.shouldUpdateAttributesOpacity = function shouldUpdateAttributesOpacity() {
           return false;
         }
         /**
@@ -4647,7 +4530,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto5.shouldUpdateAttributesForBoundsChange = function shouldUpdateAttributesForBoundsChange() {
+        _proto4.shouldUpdateAttributesForBoundsChange = function shouldUpdateAttributesForBoundsChange() {
           return false;
         };
 
@@ -4655,7 +4538,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
       }());
       /**
        * @see NodePool.poolHandlerComp
-       * 节点的自定义组件可以通过这个接口跟 @NodePool 的重用业务关联起来
+       * 节点的自定义组件可以通过这个接口跟 NodePool 的重用业务关联起来
        */
 
       /**
@@ -4663,30 +4546,26 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
        */
 
       var YXCollectionView = exports('YXCollectionView', (_dec7 = ccclass('YXCollectionView'), _dec8 = disallowMultiple(true), _dec9 = executionOrder(-1), _dec10 = help("https://gitee.com/568071718/creator-collection-view-doc"), _dec11 = property({
-        tooltip: "\u81EA\u52A8\u7ED9\u6302\u8F7D\u8282\u70B9\u6DFB\u52A0 mask \u7EC4\u4EF6"
+        tooltip: "\u81EA\u52A8\u7ED9\u6302\u8F7D\u8282\u70B9\u6DFB\u52A0 mask \u7EC4\u4EF6",
+        visible: true
       }), _dec12 = property({
         tooltip: "\u5141\u8BB8\u624B\u52BF\u6EDA\u52A8"
       }), _dec13 = property({
-        type: _yx_collection_view_list_mode,
-        tooltip: "\u865A\u62DF\u5217\u8868\u6A21\u5F0F (\u8BE6\u7EC6\u533A\u522B\u67E5\u770B\u679A\u4E3E\u6CE8\u91CA)\nRECYCLE: \u6839\u636E\u5217\u8868\u663E\u793A\u8303\u56F4\u52A0\u8F7D\u9700\u8981\u7684\u8282\u70B9\nONCE: \u8DDF RECYCLE \u6A21\u5F0F\u5DEE\u4E0D\u591A\uFF0C\u533A\u522B\u662F\u6B64\u6A21\u5F0F\u4E0B\u6BCF\u6761\u6570\u636E\u90FD\u4F1A\u5BF9\u5E94\u7684\u751F\u6210\u4E00\u4E2A\u8282\u70B9\u800C\u4E0D\u8FDB\u884C\u590D\u7528\nPRELOAD: \u76F4\u63A5\u52A0\u8F7D\u6240\u6709\u7684\u8282\u70B9"
+        type: _yx_collection_view_scroll_direction,
+        tooltip: "\u5217\u8868\u6EDA\u52A8\u65B9\u5411"
       }), _dec14 = property({
-        tooltip: "\u9884\u52A0\u8F7D\u6A21\u5F0F\u4E13\u7528\uFF0C\u6BCF\u591A\u5C11\u5E27\u6267\u884C\u4E00\u6B21\u9884\u52A0\u8F7D\uFF0C1 \u8868\u793A\u6BCF\u5E27\u90FD\u6267\u884C",
+        type: _yx_collection_view_list_mode,
+        tooltip: "\u5217\u8868\u5355\u5143\u8282\u70B9\u52A0\u8F7D\u6A21\u5F0F (\u8BE6\u7EC6\u533A\u522B\u67E5\u770B\u679A\u4E3E\u6CE8\u91CA)\nRECYCLE: \u6839\u636E\u5217\u8868\u663E\u793A\u8303\u56F4\u52A0\u8F7D\u9700\u8981\u7684\u8282\u70B9\uFF0C\u540C\u7C7B\u578B\u7684\u8282\u70B9\u4F1A\u8FDB\u884C\u590D\u7528\nPRELOAD: \u4F1A\u5B9E\u4F8B\u5316\u6240\u6709\u8282\u70B9\uFF0C\u5E76\u975E\u771F\u6B63\u7684\u865A\u62DF\u5217\u8868\uFF0C\u4EC5\u4EC5\u662F\u628A\u663E\u793A\u8303\u56F4\u5916\u7684\u8282\u70B9\u900F\u660E\u4E86\uFF0C\u5982\u679C\u5217\u8868\u6570\u636E\u91CF\u5F88\u5927\u4ECD\u7136\u4F1A\u5361"
+      }), _dec15 = property({
+        tooltip: "\u9884\u52A0\u8F7D\u6A21\u5F0F\u4E0B\u6BCF\u5E27\u52A0\u8F7D\u591A\u5C11\u4E2A\u8282\u70B9",
         visible: function visible() {
           return this.mode == _yx_collection_view_list_mode.PRELOAD;
         }
-      }), _dec15 = property({
-        type: _yx_collection_view_scroll_direction,
-        tooltip: "\u5217\u8868\u6EDA\u52A8\u65B9\u5411"
       }), _dec16 = property({
-        type: _yx_collection_view_cell_item_pool_policy,
-        tooltip: "\u56DE\u6536\u8282\u70B9\u7B56\u7565\n\u5177\u4F53\u533A\u522B\u67E5\u770B\u679A\u4E3E\u6CE8\u91CA"
-      }), _dec17 = property({
         tooltip: "\u6BCF\u591A\u5C11\u5E27\u5237\u65B0\u4E00\u6B21\u53EF\u89C1\u8282\u70B9\uFF0C1 \u8868\u793A\u6BCF\u5E27\u90FD\u5237"
-      }), _dec18 = property({
+      }), _dec17 = property({
         tooltip: "\u6EDA\u52A8\u8FC7\u7A0B\u4E2D\uFF0C\u6BCF\u591A\u5C11\u5E27\u56DE\u6536\u4E00\u6B21\u4E0D\u53EF\u89C1\u8282\u70B9\uFF0C1\u8868\u793A\u6BCF\u5E27\u90FD\u56DE\u6536\uFF0C0\u8868\u793A\u4E0D\u5728\u6EDA\u52A8\u8FC7\u7A0B\u4E2D\u56DE\u6536\u4E0D\u53EF\u89C1\u8282\u70B9"
-      }), _dec19 = property({
-        tooltip: "\u6B64\u5217\u8868\u4E0A\u7684 cell \u8282\u70B9\uFF0C\u662F\u5426\u662F 3d cell \u8282\u70B9"
-      }), _dec20 = property({
+      }), _dec18 = property({
         type: [_yx_editor_register_cell_info],
         visible: true,
         displayName: "Register Cells",
@@ -4703,7 +4582,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5 = _Component2.call.apply(_Component2, [this].concat(args)) || this;
           /**
-           * 自动给挂载节点添加 mask 组件
+           * 自动给挂载节点添加 mask 组件  
            */
 
           _initializerDefineProperty(_this5, "mask", _descriptor4, _assertThisInitialized(_this5));
@@ -4714,62 +4593,45 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _initializerDefineProperty(_this5, "scrollEnabled", _descriptor5, _assertThisInitialized(_this5));
           /**
-           * 虚拟列表模式
-           */
-
-
-          _initializerDefineProperty(_this5, "mode", _descriptor6, _assertThisInitialized(_this5));
-          /**
-           * 预加载模式专用，每多少帧执行一次预加载，1 表示每帧都执行
-           */
-
-
-          _initializerDefineProperty(_this5, "preloadInterval", _descriptor7, _assertThisInitialized(_this5));
-          /**
            * 列表滚动方向，默认垂直方向滚动  
            * 自定义 YXLayout 应该尽量根据这个配置来实现不同方向的布局业务  
            * 注意: 如果使用的 YXLayout 未支持对应的滚动方向，则此配置不会生效
            */
 
 
-          _initializerDefineProperty(_this5, "scrollDirection", _descriptor8, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "scrollDirection", _descriptor6, _assertThisInitialized(_this5));
           /**
-           * 回收节点策略  
-           * 必须在 register() 之前设置
+           * 列表单元节点加载模式
            */
 
 
-          _initializerDefineProperty(_this5, "recyclePolicy", _descriptor9, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "mode", _descriptor7, _assertThisInitialized(_this5));
+          /**
+           * 预加载模式下每帧加载多少个节点
+           */
+
+
+          _initializerDefineProperty(_this5, "preloadNodesLimitPerFrame", _descriptor8, _assertThisInitialized(_this5));
           /**
            * 每多少帧刷新一次可见节点，1 表示每帧都刷
            */
 
 
-          _initializerDefineProperty(_this5, "frameInterval", _descriptor10, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "frameInterval", _descriptor9, _assertThisInitialized(_this5));
           /**
            * 滚动过程中，每多少帧回收一次不可见节点，1表示每帧都回收，0表示不在滚动过程中回收不可见节点
            * @bug 滚动过程中如果实时的回收不可见节点，有时候会收不到 scroll view 的 cancel 事件，导致 scroll view 的滚动状态不会更新 (且收不到滚动结束事件)
            * @fix 当这个属性设置为 0 时，只会在 `touch-up` 和 `scroll-ended` 里面回收不可见节点  
-           * @fix recyclePolicy 设置为 UI_OPACITY 也可以避免这个问题  
            */
 
 
-          _initializerDefineProperty(_this5, "recycleInterval", _descriptor11, _assertThisInitialized(_this5));
-          /**
-           * 此列表上的 cell 节点，是否是 3d cell 节点  
-           * 3d 节点的点击事件，需要通过射线检测来做，外部自行配置碰撞体实现节点的点击事件，列表只做个排列展示  
-           * https://docs.cocos.com/creator/manual/zh/engine/event/event-input.html#3d-%E7%89%A9%E4%BD%93%E7%9A%84%E8%A7%A6%E6%91%B8%E6%A3%80%E6%B5%8B  
-           * 备注: 暂时不支持 2d/3d 节点同时出现在同一个列表内，正确配置此属性避免页面节点事件错乱
-           */
-
-
-          _initializerDefineProperty(_this5, "is3DCell", _descriptor12, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "recycleInterval", _descriptor10, _assertThisInitialized(_this5));
           /**
            * 通过编辑器注册节点类型
            */
 
 
-          _initializerDefineProperty(_this5, "registerCellForEditor", _descriptor13, _assertThisInitialized(_this5));
+          _initializerDefineProperty(_this5, "registerCellForEditor", _descriptor11, _assertThisInitialized(_this5));
           /**
            * 每个注册的标识符对应一个节点池
            */
@@ -4793,17 +4655,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5.numberOfItems = 0;
           /**
-           * 配置每块内容对应的 UI 节点
-           * 在这个方法里，只需要关心 indexPath 这个位置对应的节点应该是用注册过的哪个类型的 Node 节点，然后通过 dequeueReusableCell 生成对应的 Node
-           * @example
-           * yourList.cellForItemAt = (indexPath, collectionView) => {
-           *      return collectionView.dequeueReusableCell(`your identifier`)
-           * }
+           * 配置每块内容对应的 UI 节点  
+           * 在这个方法里，需要确定 indexPath 这个位置对应的节点应该是用注册过的哪个类型的 Node 节点，然后通过 dequeueReusableCell 生成对应的 Node
            * 
-           * 另外如果节点大小是确定好了的话，也可以直接在这里更新节点的 UI 内容
            * @example
            * yourList.cellForItemAt = (indexPath ,collectionView) => {
-           *      let cell = collectionView.dequeueReusableCell(`your identifier`)
+           *      let cell = collectionView.dequeueReusableCell(`your identifier`, indexPath)
            *      let comp = cell.getComponent(YourCellComp)
            *      comp.label.string = `${indexPath}`
            *      return cell
@@ -4814,10 +4671,8 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5.cellForItemAt = null;
           /**
-           * cell 触发复用之后执行，在这个方法里更新 cell 显示的 UI 内容
-           * 如果确定节点大小没什么变化，可以直接在 cellForItemAt 里更新数据，省去这一步，这里主要是为了应付节点大小变化的情况
-           * 可以通过 @indexPath 区分 cell 的种类
-           * 重要: 如果 cell 的大小不是固定的，需要在这里重新调整子节点的位置，避免布局错乱
+           * 当 cell 进入当前可见范围后执行    
+           * 如果同类型的节点大小可能不一样，可以在这里调整子节点的位置   
            */
 
           _this5.onCellDisplay = null;
@@ -4827,8 +4682,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5.onCellEndDisplay = null;
           /**
-           * 点击到节点后调用
-           * 仅支持 2D 节点
+           * 点击到节点后执行这个方法  
            */
 
           _this5.onTouchItemAt = null;
@@ -4839,20 +4693,27 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           _this5.layout = null;
           /**
            * 记录当前正在显示的所有节点
+           * 通过 Map 结构实现，减少查找复杂度，key = indexpath.string  value = 对应的节点  
            */
 
-          _this5.allVisibleNodes = {};
+          _this5.visibleNodesMap = new Map();
           /**
-           * 非回收模式专用，记录已经实例化的所有节点  
+           * 记录预加载的所有节点
            */
 
-          _this5.allNodes = {};
+          _this5.preloadNodesMap = new Map();
           _this5._late_reload_data = false;
           /**
            * 记录 @reloadData 执行了多少次了，用来区分刷新列表的时候是否是首次刷新列表
            */
 
           _this5.reloadDataCounter = 0;
+          /**
+           * 记录在 @reloadData 之后 @reloadVisibleCells 执行了多少次了
+           * 每次在开始执行 @reloadData 时重置为 0
+           */
+
+          _this5.reloadVisibleCellsCounter = 0;
           _this5._frameIdx = 0;
           /**
            * 刷新当前可见节点
@@ -4866,15 +4727,15 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           _this5._late_recycle_invisible_node = false;
           /**
-           * 预加载节点
+           * 预加载节点逻辑
            */
 
-          _this5._late_preload_offset = null;
+          _this5.preloadIdx = null;
           _this5._scroll_offset_on_touch_start = null;
           return _this5;
         }
 
-        var _proto6 = YXCollectionView.prototype;
+        var _proto5 = YXCollectionView.prototype;
         /**
          * 注册 cell
          * 可多次注册不同种类的 cell，只要确保 @identifier 的唯一性就好
@@ -4883,58 +4744,66 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          * @param poolComp (可选) 节点自定义组件，可以通过这个组件跟 @NodePool 的重用业务关联起来
          */
 
-        _proto6.register = function register(identifier, maker, poolComp) {
+        _proto5.register = function register(identifier, maker, poolComp) {
           if (poolComp === void 0) {
             poolComp = null;
           }
 
-          var pool = new _yx_collection_view_cell_item_pool(poolComp, this.recyclePolicy);
+          var pool = new NodePool(poolComp);
           this.pools.set(identifier, pool);
           this.makers.set(identifier, maker);
         };
         /**
          * 通过标识符从重用池里取出一个可用的 cell 节点
          * @param identifier 注册时候的标识符
+         * @param indexPath 节点当前位置索引，内部用来比对此位置已经存在的节点类型是否跟需求的节点类型一致
          * @returns 
          */
 
 
-        _proto6.dequeueReusableCell = function dequeueReusableCell(identifier) {
+        _proto5.dequeueReusableCell = function dequeueReusableCell(identifier, indexPath) {
           var pool = this.pools.get(identifier);
 
           if (pool == null) {
             throw new Error("YXCollectionView: \u672A\u6CE8\u518C\u6807\u8BC6\u7B26\u4E3A `" + identifier + "` \u7684 cell\uFF0C\u8BF7\u5148\u8C03\u7528 YXCollectionView \u7684 register() \u65B9\u6CD5\u6CE8\u518C cell \u8282\u70B9");
           }
 
-          var result = null;
-
-          if (this.mode == _yx_collection_view_list_mode.RECYCLE) {
-            result = pool.get();
-          }
+          var result = null; // 检查节点是否正在显示
 
           if (result == null) {
-            // 如果对应的重用池里没有的话，新生成一个
-            var maker = this.makers.get(identifier);
+            var node = this.getVisibleNode(indexPath);
 
-            if (maker instanceof Function == false) {
-              throw new Error("YXCollectionView: register() \u53C2\u6570\u9519\u8BEF\uFF0C\u8BF7\u6B63\u786E\u914D\u7F6E maker \u56DE\u8C03\u51FD\u6570\u4EE5\u751F\u6210\u6807\u8BC6\u5BF9\u5E94\u7684\u8282\u70B9");
+            if (node) {
+              var cellComp = node.getComponent(_cell_);
+
+              if (cellComp.identifier === identifier) {
+                result = node; // 此位置的节点类型跟刷新之前已经存在的节点类型一致，可以直接拿来使用  
+              } else {
+                this.pools.get(cellComp.identifier).put(node); // 此位置的节点类型发生了变化，这个节点已经没用了，直接回收掉  
+              }
             }
+          } // 尝试从重用池获取
 
+
+          if (result == null) {
+            result = pool.get();
+          } // 重新生成一个  
+
+
+          if (result == null) {
+            var maker = this.makers.get(identifier);
             result = maker();
 
             var _cell = result.getComponent(_cell_) || result.addComponent(_cell_);
 
             _cell.identifier = identifier;
-
-            if (this.is3DCell == false) {
-              result.on(NodeEventType.TOUCH_END, this.onTouchItem, this);
-            }
+            result.on(NodeEventType.TOUCH_END, this.onTouchItem, this);
           }
 
           return result;
         };
 
-        _proto6.onTouchItem = function onTouchItem(ev) {
+        _proto5.onTouchItem = function onTouchItem(ev) {
           if (this.onTouchItemAt) {
             var _cell2 = ev.target.getComponent(_cell_);
 
@@ -4947,12 +4816,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
 
 
-        _proto6.getVisibleNode = function getVisibleNode(indexPath) {
-          return this.allVisibleNodes[indexPath.toString()];
+        _proto5.getVisibleNode = function getVisibleNode(indexPath) {
+          return this.visibleNodesMap.get(indexPath.toString());
         };
 
-        _proto6.getVisibleCell = function getVisibleCell(indexPath) {
-          var node = this.allVisibleNodes[indexPath.toString()];
+        _proto5.getVisibleCell = function getVisibleCell(indexPath) {
+          var node = this.getVisibleNode(indexPath);
 
           if (node == null) {
             return null;
@@ -4965,7 +4834,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto6.getCellComp = function getCellComp(node) {
+        _proto5.getCellComp = function getCellComp(node) {
           if (node == null) {
             return null;
           }
@@ -4977,7 +4846,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto6.reloadData = function reloadData() {
+        _proto5.reloadData = function reloadData() {
           if (this.node.activeInHierarchy && this.node.parent) {
             this._reloadData();
           } else {
@@ -4985,7 +4854,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto6.update_reloadDataIfNeeds = function update_reloadDataIfNeeds(dt) {
+        _proto5.update_reloadDataIfNeeds = function update_reloadDataIfNeeds(dt) {
           if (this._late_reload_data == false) {
             return;
           }
@@ -4993,51 +4862,40 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this._reloadData();
         };
 
-        _proto6._reloadData = function _reloadData() {
-          this._late_reload_data = false; // 校验 layout 参数
+        _proto5._reloadData = function _reloadData() {
+          this._late_reload_data = false;
+          this.reloadVisibleCellsCounter = 0; // 校验 layout 参数
 
           if (this.layout == null) {
             throw new Error("YXCollectionView: 参数错误，请正确配置 layout 以确定布局方案");
           } // 立即停止当前滚动，准备刷新
 
 
-          this.scrollView.stopAutoScroll(); // 移除掉当前所有正在显示的节点
+          this.scrollView.stopAutoScroll(); // 池子清一下
 
-          for (var key in this.allVisibleNodes) {
-            var element = this.allVisibleNodes[key];
+          this.pools.forEach(function (element) {
+            element.clear();
+          }); // 如果是预加载模式，需要清空当前显示的所有节点以及已经预加载过的所有节点
 
-            var _cell3 = element.getComponent(_cell_);
-
-            if (this.mode === _yx_collection_view_list_mode.RECYCLE) {
-              this.pools.get(_cell3.identifier).put(element);
-            } else {
-              element.removeFromParent();
-              element.destroy();
-            }
-
-            delete this.allVisibleNodes[key];
-
-            if (this.onCellEndDisplay) {
-              this.onCellEndDisplay(_cell3.node, _cell3.attributes.indexPath, this);
-            }
-          }
-
-          this.allVisibleNodes = {}; // 移除掉已经实例化的所有节点  
-
-          for (var _key4 in this.allNodes) {
-            var _element2 = this.allNodes[_key4];
-
-            _element2.removeFromParent();
-
-            delete this.allNodes[_key4];
-          }
-
-          this.allNodes = {}; // 清除缓存池 
-
-          if (this.mode !== YXCollectionView.Mode.RECYCLE) {
-            this.pools.forEach(function (a) {
-              a.clear();
+          if (this.mode == _yx_collection_view_list_mode.PRELOAD) {
+            // 销毁当前所有正在显示的节点
+            this.visibleNodesMap.forEach(function (value, key) {
+              if (value) {
+                value.removeFromParent();
+                value.destroy();
+              }
             });
+            this.visibleNodesMap.clear(); // 销毁所有预加载的节点
+
+            this.preloadNodesMap.forEach(function (value, key) {
+              if (value) {
+                value.removeFromParent();
+                value.destroy();
+              }
+            });
+            this.preloadNodesMap.clear(); // 从第一个开始预加载节点
+
+            this.preloadIdx = 0;
           } // 记录一下当前的偏移量，保证数据更新之后位置也不会太偏
 
 
@@ -5054,16 +4912,13 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           } else {
             var maxOffset = this.scrollView.getMaxScrollOffset();
             math.Vec2.min(offset, offset, maxOffset);
-            this.scrollView.scrollToOffset(offset, 0);
-          } // 开启预加载
-
-
-          if (this.mode == _yx_collection_view_list_mode.PRELOAD) {
-            this._late_preload_offset = new math.Vec2(0, 0);
+            this.scrollView.scrollToOffset(offset);
           } // 更新 cell 节点
 
 
-          this.markForUpdateVisibleData(true);
+          this.markForUpdateVisibleData(true); // 偶现 bug: 列表节点有时候不正常显示，这里标记下帧再更新一下列表
+
+          this.markForUpdateVisibleData();
           this.reloadDataCounter++;
         };
         /**
@@ -5071,21 +4926,14 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
 
 
-        _proto6.reloadVisibleCells = function reloadVisibleCells(rect, isPreload) {
+        _proto5.reloadVisibleCells = function reloadVisibleCells(rect) {
           if (rect === void 0) {
             rect = null;
-          }
-
-          if (isPreload === void 0) {
-            isPreload = false;
           } // 获取当前可见区域
 
 
           if (rect == null) {
-            _rectOut.origin = this.scrollView.getScrollOffset();
-            _rectOut.x = -_rectOut.x;
-            _rectOut.size = this.scrollView.view.contentSize;
-            rect = _rectOut;
+            rect = this.visibleRect;
           } // 根据可见区域，找出对应的布局属性
 
 
@@ -5105,7 +4953,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           /*
           let poolsCounter = 0
           this.pools.forEach((a) => {
-              poolsCounter = poolsCounter + a.size
+              poolsCounter = poolsCounter + a.size()
           })
           log(`需要显示的节点数量: ${layoutAttributes.length}  当前显示的节点数量: ${this.scrollView.content.children.length}  缓存池里的节点数量: ${poolsCounter}`)
           */
@@ -5114,84 +4962,76 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
 
           for (var index = 0; index < layoutAttributes.length; index++) {
             var element = layoutAttributes[index];
+            var cellNode = null; // 检查是否已经预加载过了
 
-            if (isPreload == false) {
-              // 需要显示并且正在显示的
-              var visibleNode = this.getVisibleNode(element.indexPath) || this.allNodes[element.indexPath.toString()];
-
-              if (visibleNode) {
-                var restoreStatus = this.restoreCellNodeIfNeeds(visibleNode); // 恢复节点状态
-
-                this.applyLayoutAttributes(visibleNode, element); // 更新节点变换
-
-                if (shouldUpdateAttributesZIndex) {
-                  visibleNode.setSiblingIndex(-1);
-                } // 调整节点层级
+            if (cellNode == null) {
+              cellNode = this.preloadNodesMap.get(element.indexPath.toString());
+            } // 检查节点是否正在显示了
 
 
-                this.allVisibleNodes[element.indexPath.toString()] = visibleNode; // 标记此节点正在显示
+            if (this.reloadVisibleCellsCounter > 0 && cellNode == null) {
+              cellNode = this.getVisibleNode(element.indexPath);
+            } // 尝试通过注册标识符从节点池获取节点
 
-                if (restoreStatus == 1) {
-                  if (this.onCellDisplay) {
-                    this.onCellDisplay(visibleNode, element.indexPath, this);
-                  }
-                }
 
-                continue;
+            if (cellNode == null) {
+              cellNode = this.cellForItemAt(element.indexPath, this);
+            } // 无法正确获取节点，报错
+
+
+            if (cellNode == null) {
+              throw new Error("需要实现 cellForItemAt 方法并确保正确的返回了节点");
+            } // 恢复节点状态
+
+
+            var restoreStatus = this.restoreCellNodeIfNeeds(cellNode); // 更新节点变化
+
+            this.applyLayoutAttributes(cellNode, element); // 调整节点层级
+
+            if (shouldUpdateAttributesZIndex) {
+              cellNode.setSiblingIndex(-1);
+            } // 标记此节点正在显示
+
+
+            this.visibleNodesMap.set(element.indexPath.toString(), cellNode); // 通知 onCellDisplay 
+            // reloadVisibleCellsCounter 为 0 时候节点大小可能会发生变化，也一并通知一下
+
+            if (restoreStatus == 1 || this.reloadVisibleCellsCounter == 0) {
+              if (this.onCellDisplay) {
+                this.onCellDisplay(cellNode, element.indexPath, this);
               }
-            } else {
-              var _node = this.getVisibleNode(element.indexPath) || this.allNodes[element.indexPath.toString()];
-
-              if (_node) {
-                continue; // 去重
-              }
-            }
-            /**
-             * 需要显示但是当前未显示出来的
-             * @version 1.1.0 开始，单一 cell 类型的列表支持不实现 cellForItemAt 方法来获取重用节点，这里默认自动执行
-             */
-
-
-            var node = this.pools.size > 1 || this.cellForItemAt ? this.cellForItemAt(element.indexPath, this) : this.dequeueReusableCell(this.pools.keys().next().value);
-
-            if (node.parent != this.scrollView.content) {
-              node.parent = this.scrollView.content;
-            }
-
-            this.applyLayoutAttributes(node, element);
-            var key = element.indexPath.toString();
-            this.allVisibleNodes[key] = node; // 标记此节点正在显示
-
-            if (this.mode == _yx_collection_view_list_mode.PRELOAD || this.mode == _yx_collection_view_list_mode.ONCE) {
-              this.allNodes[key] = node; // 保存节点
-            }
-
-            if (this.onCellDisplay) {
-              this.onCellDisplay(node, element.indexPath, this);
             }
           }
 
           layoutAttributes = [];
-        }
+          this.reloadVisibleCellsCounter++;
+        };
         /**
          * 节点被回收后需要重新使用时，根据当前回收模式恢复节点的状态，保证节点可见
          */
-        ;
 
-        _proto6.restoreCellNodeIfNeeds = function restoreCellNodeIfNeeds(node) {
+
+        _proto5.restoreCellNodeIfNeeds = function restoreCellNodeIfNeeds(node) {
           // 是否触发了恢复行为，0表示节点已经可见了  1表示触发了恢复行为，节点从不可见变为了可见
           var restoreStatus = 0; // 不管哪种模式，父节点检查都是必须的，只有正确的添加了才能确保正常可见  
 
           if (node.parent != this.scrollView.content) {
             node.parent = this.scrollView.content;
             restoreStatus = 1;
+          } // 如果启用了预加载模式，给节点挂上 UIOpacity 组件，未启用则不管
+
+
+          var opacityComp = node.getComponent(UIOpacity);
+
+          if (this.mode == _yx_collection_view_list_mode.PRELOAD) {
+            if (opacityComp == null) {
+              opacityComp = node.addComponent(UIOpacity);
+            }
           }
 
-          if (this.recyclePolicy == _yx_collection_view_cell_item_pool_policy.UI_OPACITY) {
-            var comp = node.getComponent(UIOpacity) || node.addComponent(UIOpacity);
-
-            if (comp.opacity !== 255) {
-              comp.opacity = 255;
+          if (opacityComp) {
+            if (opacityComp.opacity !== 255) {
+              opacityComp.opacity = 255;
               restoreStatus = 1;
             }
           }
@@ -5203,25 +5043,22 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto6.recycleInvisibleNodes = function recycleInvisibleNodes(visibleRect) {
+        _proto5.recycleInvisibleNodes = function recycleInvisibleNodes(visibleRect) {
+          var _this6 = this;
+
           if (visibleRect === void 0) {
             visibleRect = null;
           }
 
           if (visibleRect == null) {
-            visibleRect = _recycleInvisibleNodes_visibleRect;
-            visibleRect.origin = this.scrollView.getScrollOffset();
-            visibleRect.x = -visibleRect.x;
-            visibleRect.size = this.scrollView.view.contentSize;
+            visibleRect = this.visibleRect;
           }
 
           var _realFrame = _recycleInvisibleNodes_realFrame;
-          var _contentSize = this.scrollView.content.getComponent(UITransform).contentSize;
+          var _contentSize = this.scrollView.content.getComponent(UITransform).contentSize; // 可能会触发删除元素行为，这里使用 forEach 迭代
 
-          for (var key in this.allVisibleNodes) {
-            var element = this.allVisibleNodes[key];
-
-            var _cell4 = element.getComponent(_cell_);
+          this.visibleNodesMap.forEach(function (value, key) {
+            var cell = value.getComponent(_cell_);
             /**
              * @version 1.0.2
              * 检查节点是否可见应该是通过变换后的位置来检查
@@ -5229,28 +5066,33 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
              * 把实际的 position 转换为 origin
              */
 
-
-            var boundingBox = element.getComponent(UITransform).getBoundingBox();
+            var boundingBox = value.getComponent(UITransform).getBoundingBox();
             _realFrame.size = boundingBox.size;
-            _realFrame.x = (_contentSize.width - _realFrame.width) * 0.5 + element.position.x;
-            _realFrame.y = (_contentSize.height - _realFrame.height) * 0.5 - element.position.y;
+            _realFrame.x = (_contentSize.width - _realFrame.width) * 0.5 + value.position.x;
+            _realFrame.y = (_contentSize.height - _realFrame.height) * 0.5 - value.position.y;
 
             if (visibleRect.intersects(_realFrame) == false) {
-              this.pools.get(_cell4.identifier).put(element);
-              delete this.allVisibleNodes[key];
+              if (_this6.mode == _yx_collection_view_list_mode.PRELOAD) {
+                value.getComponent(UIOpacity).opacity = 0;
+              } else {
+                _this6.pools.get(cell.identifier).put(value);
+              }
 
-              if (this.onCellEndDisplay) {
-                this.onCellEndDisplay(_cell4.node, _cell4.attributes.indexPath, this);
+              _this6.visibleNodesMap["delete"](key); // 从可见节点里删除
+
+
+              if (_this6.onCellEndDisplay) {
+                _this6.onCellEndDisplay(cell.node, cell.attributes.indexPath, _this6);
               }
             }
-          }
+          });
         }
         /**
          * 调整节点的位置/变换
          */
         ;
 
-        _proto6.applyLayoutAttributes = function applyLayoutAttributes(node, attributes) {
+        _proto5.applyLayoutAttributes = function applyLayoutAttributes(node, attributes) {
           var cell = node.getComponent(_cell_);
           cell.attributes = attributes;
           var transform = node.getComponent(UITransform) || node.addComponent(UITransform);
@@ -5284,7 +5126,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto6.scrollTo = function scrollTo(indexPath, timeInSecond, attenuated) {
+        _proto5.scrollTo = function scrollTo(indexPath, timeInSecond, attenuated) {
           if (timeInSecond === void 0) {
             timeInSecond = 0;
           }
@@ -5312,13 +5154,13 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto6.onLoad = function onLoad() {
-          var _this6 = this;
+        _proto5.onLoad = function onLoad() {
+          var _this7 = this;
 
           var _loop = function _loop() {
-            var element = _this6.registerCellForEditor[index];
+            var element = _this7.registerCellForEditor[index];
 
-            _this6.register(element.identifier, function () {
+            _this7.register(element.identifier, function () {
               return instantiate(element.prefab);
             }, element.comp);
           };
@@ -5334,40 +5176,29 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           this._scrollView._yxOnStartInertiaScroll = this.onStartInertiaScroll.bind(this);
         };
 
-        _proto6.onDestroy = function onDestroy() {
+        _proto5.onDestroy = function onDestroy() {
           this.node.off(ScrollView.EventType.SCROLL_BEGAN, this.onScrollBegan, this);
           this.node.off(ScrollView.EventType.SCROLLING, this.onScrolling, this);
           this.node.off(ScrollView.EventType.TOUCH_UP, this.onScrollTouchUp, this);
           this.node.off(ScrollView.EventType.SCROLL_ENDED, this.onScrollEnded, this); // 销毁当前所有正在显示的节点
 
-          for (var key in this.allVisibleNodes) {
-            var element = this.allVisibleNodes[key];
-
-            if (element) {
-              element.removeFromParent();
-              element.destroy();
+          this.visibleNodesMap.forEach(function (value, key) {
+            if (value) {
+              value.removeFromParent();
+              value.destroy();
             }
+          });
+          this.visibleNodesMap.clear();
+          this.visibleNodesMap = null; // 销毁所有预加载的节点
 
-            delete this.allVisibleNodes[key];
-          }
-
-          this.allVisibleNodes = {};
-          delete this.allVisibleNodes; // 销毁已经实例化的所有节点  
-
-          for (var _key5 in this.allNodes) {
-            var _element3 = this.allNodes[_key5];
-
-            if (_element3) {
-              _element3.removeFromParent();
-
-              _element3.destroy();
+          this.preloadNodesMap.forEach(function (value, key) {
+            if (value) {
+              value.removeFromParent();
+              value.destroy();
             }
-
-            delete this.allNodes[_key5];
-          }
-
-          this.allNodes = {};
-          delete this.allNodes; // 清空池子
+          });
+          this.preloadNodesMap.clear();
+          this.preloadNodesMap = null; // 清空池子
 
           this.pools.forEach(function (element) {
             element.clear();
@@ -5382,21 +5213,23 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto6.update = function update(dt) {
+        _proto5.update = function update(dt) {
           this._frameIdx++;
           this.update_reloadVisibleCellsIfNeeds(dt);
           this.update_recycleInvisibleNodesIfNeeds(dt);
-          this.update_preloadItemsIfNeeds(dt);
           this.update_reloadDataIfNeeds(dt);
+          this.update_preloadNodeIfNeeds(dt);
         };
 
-        _proto6.markForUpdateVisibleData = function markForUpdateVisibleData(force) {
+        _proto5.markForUpdateVisibleData = function markForUpdateVisibleData(force) {
           if (force === void 0) {
             force = false;
           }
 
           if (force) {
-            this.reloadVisibleCells();
+            var visibleRect = this.visibleRect;
+            this.reloadVisibleCells(visibleRect);
+            this.recycleInvisibleNodes(visibleRect);
             return;
           }
 
@@ -5408,7 +5241,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
         ;
 
-        _proto6.update_reloadVisibleCellsIfNeeds = function update_reloadVisibleCellsIfNeeds(dt) {
+        _proto5.update_reloadVisibleCellsIfNeeds = function update_reloadVisibleCellsIfNeeds(dt) {
           if (this.frameInterval <= 1 || this._frameIdx % this.frameInterval == 0) {
             if (this._late_update_visible_data) {
               this._late_update_visible_data = false;
@@ -5417,7 +5250,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto6.update_recycleInvisibleNodesIfNeeds = function update_recycleInvisibleNodesIfNeeds(dt) {
+        _proto5.update_recycleInvisibleNodesIfNeeds = function update_recycleInvisibleNodesIfNeeds(dt) {
           if (this.recycleInterval >= 1 && this._frameIdx % this.recycleInterval == 0) {
             if (this._late_recycle_invisible_node) {
               this._late_recycle_invisible_node = false;
@@ -5426,91 +5259,69 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
           }
         };
 
-        _proto6.update_preloadItemsIfNeeds = function update_preloadItemsIfNeeds(dt) {
-          /**
-           * 预加载已完成
-           */
-          if (this._late_preload_offset == null) {
-            return;
-          }
-          /**
-           * 分帧加载
-           */
-
-
-          var preloadInterval = this.preloadInterval;
-
-          if (preloadInterval < 1) {
-            preloadInterval = 1;
-          }
-
-          if (this._frameIdx % preloadInterval != 0) {
-            return;
-          }
-          /**
-           * 只有在列表静止的时候才去执行预加载行为
-           */
-
-
-          if (this.scrollView.isScrolling()) {
+        _proto5.update_preloadNodeIfNeeds = function update_preloadNodeIfNeeds(dt) {
+          if (this.mode !== _yx_collection_view_list_mode.PRELOAD) {
             return;
           }
 
-          if (this.scrollView.isAutoScrolling()) {
+          if (this.preloadIdx == null) {
             return;
           }
-          /**
-           * 预加载逻辑，暂定为每次加载一页的节点
-           */
 
-
-          var rect = _rectOut;
-          rect.size = this.scrollView.view.contentSize;
-
-          if (this.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
-            rect.x = this._late_preload_offset.x + rect.size.width;
+          if (this.preloadIdx >= this.layout.attributes.length) {
+            return;
           }
 
-          if (this.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
-            rect.y = this._late_preload_offset.y + rect.size.height;
-          }
+          var num = this.preloadNodesLimitPerFrame;
 
-          this.reloadVisibleCells(rect, true);
-          this._late_recycle_invisible_node = true;
-          this._late_preload_offset.x = rect.x;
-          this._late_preload_offset.y = rect.y;
+          for (var index = num; index > 0; index--) {
+            var attr = this.layout.attributes[this.preloadIdx];
+            var key = attr.indexPath.toString();
+            var node = null; // 检查节点是否正在显示
 
-          if (this.scrollDirection == YXCollectionView.ScrollDirection.HORIZONTAL) {
-            if (rect.xMax > this.layout.contentSize.width) {
-              this._late_preload_offset = null;
-            }
-          }
+            if (node == null) {
+              node = this.getVisibleNode(attr.indexPath);
+            } // 检查节点是否加载过了
 
-          if (this.scrollDirection == YXCollectionView.ScrollDirection.VERTICAL) {
-            if (rect.yMax > this.layout.contentSize.height) {
-              this._late_preload_offset = null;
-            }
+
+            if (node == null) {
+              node = this.preloadNodesMap.get(key);
+            } // 预加载节点
+
+
+            if (node == null) {
+              node = this.cellForItemAt(attr.indexPath, this);
+              this.restoreCellNodeIfNeeds(node);
+              this.applyLayoutAttributes(node, attr);
+              this.visibleNodesMap.set(key, node);
+              this._late_recycle_invisible_node = true;
+            } // 保存节点
+
+
+            this.preloadNodesMap.set(key, node); // 更新预加载索引
+
+            this.preloadIdx++;
           }
         };
 
-        _proto6.onScrollBegan = function onScrollBegan() {};
+        _proto5.onScrollBegan = function onScrollBegan() {};
 
-        _proto6.onScrolling = function onScrolling() {
+        _proto5.onScrolling = function onScrolling() {
           this.markForUpdateVisibleData(this.layout.shouldUpdateAttributesForBoundsChange());
           this._late_recycle_invisible_node = true;
         };
 
-        _proto6.onScrollTouchUp = function onScrollTouchUp() {
+        _proto5.onScrollTouchUp = function onScrollTouchUp() {
           this.recycleInvisibleNodes();
         };
 
-        _proto6.onScrollEnded = function onScrollEnded() {
+        _proto5.onScrollEnded = function onScrollEnded() {
           this.markForUpdateVisibleData();
           this.recycleInvisibleNodes();
           this.layout.onScrollEnded(this);
         };
 
-        _proto6.onStartInertiaScroll = function onStartInertiaScroll(touchMoveVelocity) {
+        _proto5.onStartInertiaScroll = function onStartInertiaScroll(touchMoveVelocity) {
           var endValue = this.layout.targetOffset(this, touchMoveVelocity, this._scroll_offset_on_touch_start);
 
           if (endValue) {
@@ -5538,7 +5349,7 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
          */
 
 
-        _proto6.getVisibleNodeIndexPath = function getVisibleNodeIndexPath(node) {
+        _proto5.getVisibleNodeIndexPath = function getVisibleNodeIndexPath(node) {
           var comp = this.getCellComp(node);
 
           if (comp) {
@@ -5587,64 +5398,54 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
             return this.scrollView;
           }
         }, {
-          key: "visibleNodes",
+          key: "visibleRect",
           get:
+          /**
+           * 获取列表当前的可见范围
+           */
+          function get() {
+            var visibleRect = _scroll_view_visible_rect;
+            visibleRect.origin = this.scrollView.getScrollOffset();
+            visibleRect.x = -visibleRect.x;
+            visibleRect.size = this.scrollView.view.contentSize;
+            return visibleRect;
+          }
           /**
            * 获取当前正在显示的所有节点/组件
            */
-          function get() {
+
+        }, {
+          key: "visibleNodes",
+          get: function get() {
             var result = [];
-
-            for (var key in this.allVisibleNodes) {
-              result.push(this.allVisibleNodes[key]);
-            }
-
+            this.visibleNodesMap.forEach(function (value) {
+              result.push(value);
+            });
             return result;
           }
         }, {
           key: "visibleCells",
           get: function get() {
             var result = [];
-
-            for (var key in this.allVisibleNodes) {
-              var comp = this.allVisibleNodes[key].getComponent(_cell_);
-              result.push(comp);
-            }
-
+            this.visibleNodesMap.forEach(function (value) {
+              result.push(value.getComponent(_cell_));
+            });
             return result;
           }
         }, {
           key: "visibleIndexPaths",
           get: function get() {
             var result = [];
-
-            for (var key in this.allVisibleNodes) {
-              var element = this.allVisibleNodes[key];
-
-              var _cell5 = element.getComponent(_cell_);
-
-              result.push(_cell5.attributes.indexPath.clone());
-            }
-
+            this.visibleNodesMap.forEach(function (value) {
+              var cell = value.getComponent(_cell_);
+              result.push(cell.attributes.indexPath.clone());
+            });
             return result;
           }
-        }], [{
-          key: "VERSION",
-          get:
-          /**
-           * 版本号
-           */
-          function get() {
-            return "1.1.3";
-          }
-          /**
-           * 访问定义的私有枚举
-           */
-
         }]);
 
         return YXCollectionView;
-      }(Component), _class10.Mode = _yx_collection_view_list_mode, _class10.ScrollDirection = _yx_collection_view_scroll_direction, _class10.RecyclePolicy = _yx_collection_view_cell_item_pool_policy, _class10), (_descriptor4 = _applyDecoratedDescriptor(_class9.prototype, "mask", [_dec11], {
+      }(Component), _class10.ScrollDirection = _yx_collection_view_scroll_direction, _class10.Mode = _yx_collection_view_list_mode, _class10), (_descriptor4 = _applyDecoratedDescriptor(_class9.prototype, "mask", [_dec11], {
         configurable: true,
         enumerable: true,
         writable: true,
@@ -5658,56 +5459,42 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
         initializer: function initializer() {
           return true;
         }
-      }), _descriptor6 = _applyDecoratedDescriptor(_class9.prototype, "mode", [_dec13], {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        initializer: function initializer() {
-          return YXCollectionView.Mode.RECYCLE;
-        }
-      }), _descriptor7 = _applyDecoratedDescriptor(_class9.prototype, "preloadInterval", [_dec14], {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        initializer: function initializer() {
-          return 1;
-        }
-      }), _descriptor8 = _applyDecoratedDescriptor(_class9.prototype, "scrollDirection", [_dec15], {
+      }), _descriptor6 = _applyDecoratedDescriptor(_class9.prototype, "scrollDirection", [_dec13], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return YXCollectionView.ScrollDirection.VERTICAL;
         }
-      }), _descriptor9 = _applyDecoratedDescriptor(_class9.prototype, "recyclePolicy", [_dec16], {
+      }), _descriptor7 = _applyDecoratedDescriptor(_class9.prototype, "mode", [_dec14], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
-          return YXCollectionView.RecyclePolicy.REMOVE;
+          return YXCollectionView.Mode.RECYCLE;
         }
-      }), _descriptor10 = _applyDecoratedDescriptor(_class9.prototype, "frameInterval", [_dec17], {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        initializer: function initializer() {
-          return 1;
-        }
-      }), _descriptor11 = _applyDecoratedDescriptor(_class9.prototype, "recycleInterval", [_dec18], {
+      }), _descriptor8 = _applyDecoratedDescriptor(_class9.prototype, "preloadNodesLimitPerFrame", [_dec15], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
           return 1;
         }
-      }), _descriptor12 = _applyDecoratedDescriptor(_class9.prototype, "is3DCell", [_dec19], {
+      }), _descriptor9 = _applyDecoratedDescriptor(_class9.prototype, "frameInterval", [_dec16], {
         configurable: true,
         enumerable: true,
         writable: true,
         initializer: function initializer() {
-          return false;
+          return 1;
         }
-      }), _descriptor13 = _applyDecoratedDescriptor(_class9.prototype, "registerCellForEditor", [_dec20], {
+      }), _descriptor10 = _applyDecoratedDescriptor(_class9.prototype, "recycleInterval", [_dec17], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 1;
+        }
+      }), _descriptor11 = _applyDecoratedDescriptor(_class9.prototype, "registerCellForEditor", [_dec18], {
         configurable: true,
         enumerable: true,
         writable: true,
