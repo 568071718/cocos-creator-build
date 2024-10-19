@@ -4777,9 +4777,12 @@ System.register("chunks:///_virtual/yx-collection-view.ts", ['./rollupPluginModL
               var cellComp = node.getComponent(_cell_);
 
               if (cellComp.identifier === identifier) {
-                result = node; // 此位置的节点类型跟刷新之前已经存在的节点类型一致，可以直接拿来使用  
+                // 此位置的节点类型跟刷新之前已经存在的节点类型一致，可以直接拿来使用  
+                result = node;
               } else {
-                this.pools.get(cellComp.identifier).put(node); // 此位置的节点类型发生了变化，这个节点已经没用了，直接回收掉  
+                // 此位置的节点类型发生了变化，这个节点已经没用了，直接回收掉
+                this.pools.get(cellComp.identifier).put(node);
+                this.visibleNodesMap["delete"](indexPath.toString());
               }
             }
           } // 尝试从重用池获取
